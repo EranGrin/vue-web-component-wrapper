@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- AlpineJS for quick DOM manipulation-->
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- JS for bootstrap humburger menu to work -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!-- inject the menu, footer and add debug-info -->
+</head>
+
+<body x-data="{ view: 'container' }">
+
+    <!-- Header -->
+    <header class="py-2 mb-2 bg-lime-400" style="margin-top: 6em;">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+               
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <div :class="{ container: view === 'container' || view === 'sidebar' }">
+        <pre class="px-4 py-4 mt-4 bg-light"><code>&lt;my-web-component
+    lang="de"
+    route="/route1"
+    class="my-web-component"
+    api-token="++++++++++++++++++++++++"
+    base-uri="https://my.base.uri"
+&gt;&lt;/my-web-component&gt;</code></pre>
+
+        <div :class="{'row': view === 'container' || view === 'sidebar' }">
+            <div class="my-5" :class="{ 'col-md-8': view === 'sidebar', 'col-md-12': view === 'container' }" :style="view === 'none' ? 'width: 100%' : null">
+
+                <my-web-component
+                    lang="en"
+                    route="/route1"
+                    class="my-web-component"
+                    api-token="++++++++++++++++++++++++"
+                    base-uri="https://my.base.uri"
+                ></tmy-web-component>
+
+            </div>
+        </div>
+
+    </div>
+
+        <!-- /.container -->
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- <script src="/js/current/widget.js"></script> -->
+    <!-- <script src="/js/current/js/app.js"></script> -->
+
+</body>
+
+</html>
