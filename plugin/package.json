@@ -1,0 +1,36 @@
+{
+  "name": "vue-web-component-wrapper",
+  "version": "1.0.0",
+  "description": "A Vue 3 plugin that provides a web component wrapper with styles",
+  "scripts": {
+    "build": "vite build"
+  },
+  "main": "dist/vue-web-component-wrapper.umd.js",
+  "module": "dist/vue-web-component-wrapper.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-web-component-wrapper.es.js",
+      "require": "./dist/vue-web-component-wrapper.umd.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "vue",
+    "web-component",
+    "wrapper"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.5",
+    "@babel/core": "^7.21.5",
+    "@babel/preset-env": "^7.21.5",
+    "@vitejs/plugin-vue": "^4.2.1",
+    "vite": "^4.3.4"
+  }
+}
