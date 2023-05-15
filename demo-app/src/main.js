@@ -9,7 +9,7 @@ import {store} from './store/index.js'
 import { defineCustomElement as VueDefineCustomElement, h, createApp, getCurrentInstance } from 'vue';
 
 
-import { createWebComponent } from 'vue-web-component-wrapper';
+import { createWebComponent } from 'vue3-web-component-wrapper';
 
 const pluginsWrapper = {
   install(GivenVue) {

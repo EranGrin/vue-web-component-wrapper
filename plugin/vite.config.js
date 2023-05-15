@@ -7,8 +7,8 @@ export default defineConfig({
     build: {
         lib: {
             entry: path.resolve(__dirname, 'index.js'),
-            name: 'VueWebComponentWrapper',
-            fileName: (format) => `vue-web-component-wrapper.${format}.js`
+            name: 'Vue3WebComponentWrapper',
+            fileName: (format) => `vue3-web-component-wrapper.${format}.js`
         },
         rollupOptions: {
             external: ['vue'],
