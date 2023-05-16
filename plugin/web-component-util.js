@@ -6,17 +6,16 @@ const nearestElement = (el) => {
     return el;
 };
 
-export const defineCustomElement = (
+export const defineCustomElement = ({
     rootComponent,
     plugins,
-    tailwindStyles,
+    cssFrameworkStyles,
     VueDefineCustomElement,
     h,
     createApp, 
     getCurrentInstance
-) => { 
-    VueDefineCustomElement({
-        styles: [tailwindStyles],
+}) => VueDefineCustomElement({
+        styles: [cssFrameworkStyles],
         render: () => h(rootComponent),
         props: { ...rootComponent.props },
         setup() {
@@ -50,4 +49,4 @@ export const defineCustomElement = (
             Object.assign(inst.provides, app._context.provides)
         },
     });
-};
+;

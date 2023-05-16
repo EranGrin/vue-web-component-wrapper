@@ -1,23 +1,22 @@
 
 
-# vue3-web-component-wrapper
+# vue-web-component-wrapper
 
 ## Introduction
-`vue3-web-component-wrapper` is a Vue 3 plugin that allows developers to define custom elements based on Vue's built-in custom elements. It allows seamless integration with Vuex for state management, Vue Router for routing, and Vue I18n for internationalization. You can also include your custom Tailwind CSS and Sass styles with your components.
+`vue-web-component-wrapper` is a powerful Vue 3 plugin designed for transforming full-fledged Vue applications into reusable web components (custom elements). These web components can be integrated into any website, enhancing flexibility and reusability.
 
-Please note that the plugin is currently compatible with webpack, and additional configuration is necessary for working with Tailwind CSS and Sass. Support for vite might be considered in the future based on user demand.
-
+Key Features:
+- **Vue Compatibility**: Seamlessly integrates with Vue ecosystem plugins such as Vuex, Vue Router, and Vue I18n.
+- **CSS Framework Support**: Works with popular CSS frameworks like Tailwind CSS, Bootstrap, and SASS.
+- **Scoped css**: Allows you to use scoped css in your components.
+- **Shadow DOM Support**: Facilitates the encapsulation of styles and scripts for your components, preventing clashes with the rest of your application.
 ## Installation
-To install the plugin, use one of the following commands:
+Install the plugin using npm or yarn:
 
 ```bash
-npm install vue3-web-component-wrapper
-```
-
-or
-
-```bash
-yarn add vue3-web-component-wrapper
+npm install vue-web-component-wrapper
+# or
+yarn add vue-web-component-wrapper
 ```
 
 ## Usage
@@ -32,7 +31,7 @@ import { createStore } from 'vuex'
 import { defaultRoutes} from './main.routes.js'
 import {store} from './store/index.js'
 import { defineCustomElement as VueDefineCustomElement, h, createApp, getCurrentInstance } from 'vue';
-import { createWebComponent } from 'vue3-web-component-wrapper';
+import { createWebComponent } from 'vue-web-component-wrapper';
 ```
 
 Next, create the necessary instances and use your plugin:
@@ -86,7 +85,7 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'my-component.js',
+    filename: 'my-web-component.js',
   },
   module: {
     rules: [
@@ -158,10 +157,10 @@ module.exports = {
 
 ```
 This configuration file helps webpack understand how to load and process .vue, .css, and .scss files.
+Support for vite might be considered in the future.
 
 ## Contributing
-We welcome contributions! Please see here for details.
+Contributions are welcome! For details, please refer to our contribution guidelines.
 
 ## License
 MIT
-
