@@ -1,7 +1,7 @@
 export default {
   title: 'Vue Truncate Readmore',
   description: 'A Vue.js plugin to truncate and expand text content with a customizable read more/less button.',
-  base: '/vue-read-more-truncate/',
+  base: '/vue-web-component-wrapper/',
   themeConfig: {
     nav: [
       { text: 'Installation', link: '/installation' },
