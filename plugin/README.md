@@ -5,6 +5,9 @@
 ## Introduction
 `vue-web-component-wrapper` is a powerful Vue 3 plugin designed for transforming full-fledged Vue applications into reusable web components (custom elements). These web components can be integrated into any website, enhancing flexibility and reusability.
 
+## Demo
+[Demo Project](https://stackblitz.com/edit/webpack-5-react-starter-zsn6gy?file=package.json)
+
 Key Features:
 - **Vue Compatibility**: Seamlessly integrates with Vue ecosystem plugins such as Vuex, Vue Router, and Vue I18n.
 - **CSS Framework Support**: Works with popular CSS frameworks like Tailwind CSS, Bootstrap, and SASS.
