@@ -8,8 +8,10 @@
 ## Why use `vue-web-component-wrapper`?
 As of now, Vue 3 does not support the creation of full aplication as web components out of the box. This plugin aims to solve this problem by providing a simple and easy-to-use solution for creating web components from Vue applications. It also provides support for Vue ecosystem plugins such as Vuex, Vue Router, and Vue I18n.
 ## Demo
-Check out the [Demo Project](https://stackblitz.com/edit/webpack-5-react-starter-zsn6gy?file=package.jsont) to see `vue-web-component-wrapper` in action!
+Check out the [Demo Project](https://stackblitz.com/edit/vue-web-component-wrapper-plugin?file=.stackblitzrc) to see `vue-web-component-wrapper` in action!
 
+## Documentation
+Check out the [Docs](https://erangrin.github.io/vue-web-component-wrapper)
 ## Key Features:
 - **Vue Plugins Compatibility**: Seamlessly integrates with Vue ecosystem plugins such as Vuex, Vue Router, and Vue I18n.
 - **CSS Framework Support**: Works with popular CSS frameworks like Tailwind CSS, Bootstrap.
