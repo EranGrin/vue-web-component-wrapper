@@ -1,7 +1,8 @@
 <template>
     <div>
       <h2>{{ message }}</h2>
-      <button @click="increment">Increment</button>
+      <button class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      @click="increment">Increment</button>
       <p>Count: {{ count }}</p>
     </div>
   </template>

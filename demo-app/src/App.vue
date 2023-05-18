@@ -1,11 +1,30 @@
 <template>
     <div
-     class="bg-yellow-300" 
+     
     >
-        <div>
+        <header
+         class="bg-blue-300 rounded-lg shadow-lg p-4 mx-20"
+        >
+        <nav>
+            <ul class="flex justify-between mx-20 ">
+                <li>
+                    <router-link to="/">Home</router-link>
+                </li>
+                <li>
+                    <router-link to="/test1">Test route 1</router-link>
+                </li>
+                <li>
+                    <router-link to="/test2">Test route 2</router-link>
+                </li>
+            </ul>
+        </nav>
+        </header>
+        <main
+        class="mt-4 p-4 mx-20 bg-gray-200 rounded-lg shadow-lg" 
+        >
             <router-view
             />
-        </div>
+        </main>
     </div>
 </template>
 
@@ -37,5 +56,23 @@ export default {
     font-size: 2em;
     margin-top: 2rem;
 }
+a {
+  @apply text-gray-900 hover:text-gray-700;
+}
 </style>
 
+<!-- {
+    name: 'home',
+    path: `/`,
+    component: () => import('./routes/home.vue'),
+},
+{
+    name: 'test1',
+    path: `/test1`,
+    component: () => import('./routes/test1.vue'),
+},
+{
+    name: 'test2',
+    path: `/test2`,
+    component: () => import('./routes/test2.vue'),
+}, -->
