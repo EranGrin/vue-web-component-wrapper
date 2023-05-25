@@ -17,9 +17,7 @@ import { ref } from 'vue';
 const count2 = ref(0);
 
 export default {
-  setup() {
-  
-  },
+ 
   methods: {
     clicked() {
       const delta:number = 2;
@@ -32,23 +30,27 @@ export default {
 </script>
 
 <template>
-  <h1>Web Component</h1>
-  <div><slot name="prefix" /></div>
-  <br />
-  <br />
-  <text>Start from count-default, Increased by count++</text>
-  <br />
-  <button type="button" @click="count++">+1 by one click {{ count }}</button>
-
-  <br />
-  <br />
-  <text>Increased by clicked() method</text>
-  <br />
-  <button type="button" @click="clicked">+2 by one click {{ count2 }}</button>
+  <div>
+    <h1
+      class="text-4xl font-bold text-center text-blue-500"
+    >Web Component</h1>
+    <div><slot name="prefix" /></div>
+    <br />
+    <br />
+    <text>Start from count-default, Increased by count++</text>
+    <br />
+    <button class="button" type="button" @click="count++">+1 by one click {{ count }}</button>
+    
+    <br />
+    <br />
+    <text>Increased by clicked() method</text>
+    <br />
+    <button class="button" type="button" @click="clicked">+2 by one click {{ count2 }}</button>
+  </div>
 </template>
 
 <style>
-button {
+ .button {
   background-color: #4CAF50; /* Green */
   border: none;
   color: white;

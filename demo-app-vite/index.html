@@ -9,11 +9,18 @@
 </head>
 
 <body>
-  <h1>Vite + Vue 3 + Typescript + Web Component</h1>
+  <h1 class="text-test">Vite + Vue 3 + Typescript + Web Component</h1>
   <mytwo-buttons count-default="50">
     <span slot="prefix">In index.html count-default is 50</span>
   </mytwo-buttons>
   <script type="module" src="/src/main.ts"></script>
 </body>
+<style>
+
+  .text-test {
+    color: red;
+    font-size: 2rem;
+  }
+</style>
 
 </html>

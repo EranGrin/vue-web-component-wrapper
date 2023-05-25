@@ -1,18 +1,18 @@
-import { Component, App, CreateAppFunction, getCurrentInstance, h, DefineComponent } from 'vue';
+import { Component, App } from 'vue';
 
 interface PluginObject {
-  install: (app: App) => void;
+    install: (app: App) => void;
 }
 
 export interface CreateWebComponentOptions {
-  elementName: string;
-  rootComponent: DefineComponent;
-  plugins?: PluginObject;
-  cssFrameworkStyles?: string;
-  VueDefineCustomElement: typeof DefineComponent;
-  h: typeof h;
-  createApp: CreateAppFunction;
-  getCurrentInstance: typeof getCurrentInstance;
-}
+    elementName: string;
+    rootComponent: Component;
+    plugins?: PluginObject;
+    cssFrameworkStyles?: string;
+    VueDefineCustomElement: (...args: any[]) => any;
+    h: (...args: any[]) => any;
+    getCurrentInstance: (...args: any[]) => any;
+    createApp: (...args: any[]) => any;
+  }
 
 export function createWebComponent(options: CreateWebComponentOptions): void;

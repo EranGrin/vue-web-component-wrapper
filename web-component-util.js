@@ -1,6 +1,9 @@
 
 const nearestElement = (el) => {
     while (el?.nodeType !== 1 /* ELEMENT */) {
+        if (!el.parentElement) {
+            throw new Error('No parent element found, the rootComponent must be wrapped in a HTML element (e.g. <template><div> app content </div></template>)');
+        }
         el = el.parentElement;
     }
     return el;

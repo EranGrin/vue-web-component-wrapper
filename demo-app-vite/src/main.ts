@@ -1,5 +1,6 @@
 // import { defineCustomElement } from 'vue';
 import myTwoButtons from './components/MyTwoButtons.ce.vue';
+import style from './style.css';
 
 // const myBtnsComponent = defineCustomElement(myTwoButtons);
 
@@ -8,12 +9,16 @@ import myTwoButtons from './components/MyTwoButtons.ce.vue';
 
 import { defineCustomElement as VueDefineCustomElement, h, createApp, getCurrentInstance } from 'vue';
 import { createWebComponent } from 'vue-web-component-wrapper';
-const pluginsWrapper = {};
+const pluginsWrapper = {
+  install: () => {
+   console.log('installing plugins');
+  }
+};
 createWebComponent({
   rootComponent: myTwoButtons,
   elementName: 'mytwo-buttons',
   plugins: pluginsWrapper,
-  // cssFrameworkStyles: tailwindStyles,
+  cssFrameworkStyles: style,
   VueDefineCustomElement,
   h,
   createApp,
