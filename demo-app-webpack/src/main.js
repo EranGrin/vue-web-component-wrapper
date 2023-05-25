@@ -7,8 +7,6 @@ import { createStore } from 'vuex'
 import { defaultRoutes} from './main.routes.js'
 import {store} from './store/index.js'
 import { defineCustomElement as VueDefineCustomElement, h, createApp, getCurrentInstance } from 'vue';
-
-
 import { createWebComponent } from 'vue-web-component-wrapper';
 
 const pluginsWrapper = {
