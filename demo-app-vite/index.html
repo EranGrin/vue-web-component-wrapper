@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite 4 + Vue 3.3 + Typescript 5 + Web Component</title>
+    <script src="http://localhost:8098"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vite + Vue 3.2 + Web Component</title>
-</head>
-
-<body>
-  <h1 class="text-test">Vite + Vue 3 + Typescript + Web Component</h1>
+  <body>
+    <h1 class="text-test">Vite 4 + Vue 3.3 + Typescript 5 + Web Component</h1>
     <pre class="px-4 py-4 mt-4 rounded-lg">
       <code>&lt;my-web-component
         lang="de"
@@ -21,22 +21,20 @@
       &lt;/my-web-component&gt;
       </code>
     </pre>
-  <my-web-component
-      lang="en"
+    <my-web-component
+      lang="es"
       route="/route1"
       class="my-web-component"
       api-token="++++++++++++++++++++++++"
       base-uri="https://my.base.uri"
-  ></my-web-component>
+    ></my-web-component>
 
-  <script type="module" src="/src/main.ts"></script>
-</body>
-<style>
-
-  .text-test {
-    color: red;
-    font-size: 2rem;
-  }
-</style>
-
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+  <style>
+    .text-test {
+      color: red;
+      font-size: 2rem;
+    }
+  </style>
 </html>
