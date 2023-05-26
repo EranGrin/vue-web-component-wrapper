@@ -28,17 +28,17 @@
 <body x-data="{ view: 'container' }">
 
     <!-- Header -->
-    <header class="py-2 mb-2 bg-lime-400" style="margin-top: 6em;">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-               
+    <header class=" bg-lime-400" style="margin-top: 1em;">
+        <div class="container">
+            <div class="row align-items-center">
+                <h1 >Webpack + Vue 3 + Web Component</h1>
             </div>
         </div>
     </header>
 
     <!-- Page Content -->
     <div :class="{ container: view === 'container' || view === 'sidebar' }">
-        <pre class="px-4 py-4 mt-4 rounded-lg"><code>&lt;my-web-component
+        <pre class="px-4 py-1 mt-4 rounded-lg"><code>&lt;my-web-component
     lang="de"
     route="/route1"
     class="my-web-component"
@@ -47,7 +47,7 @@
 &gt;&lt;/my-web-component&gt;</code></pre>
 
         <div :class="{'row': view === 'container' || view === 'sidebar' }">
-            <div class="my-5" :class="{ 'col-md-8': view === 'sidebar', 'col-md-12': view === 'container' }" :style="view === 'none' ? 'width: 100%' : null">
+            <div class="my-2" :class="{ 'col-md-8': view === 'sidebar', 'col-md-12': view === 'container' }" :style="view === 'none' ? 'width: 100%' : null">
 
                 <my-web-component
                     lang="en"

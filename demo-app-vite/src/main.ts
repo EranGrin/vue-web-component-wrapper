@@ -1,22 +1,39 @@
 // import { defineCustomElement } from 'vue';
-import myTwoButtons from './components/MyTwoButtons.ce.vue';
+import app from './App.vue';
 import style from './style.css';
-
-// const myBtnsComponent = defineCustomElement(myTwoButtons);
-
-// customElements.define('mytwo-buttons', myBtnsComponent);
-
-
+import { createWebHashHistory, createRouter } from "vue-router";
+import { createI18n } from 'vue-i18n';
+import { createStore } from 'vuex'
+import { defaultRoutes } from './main.routes'
+import {store} from './store/index'
 import { defineCustomElement as VueDefineCustomElement, h, createApp, getCurrentInstance } from 'vue';
 import { createWebComponent } from 'vue-web-component-wrapper';
+
 const pluginsWrapper = {
-  install: () => {
-   console.log('installing plugins');
+  install(GivenVue: any) {
+    const Vue = GivenVue;
+
+    const createdStore = createStore(store)
+    Vue.use(createdStore)
+
+    const router = createRouter({
+        history: createWebHashHistory(),
+        routes: defaultRoutes,
+    })
+    Vue.use(router);
+       
+    const i18n = createI18n(
+        {
+            locale: 'en',
+            fallbackLocale: 'en',
+        }
+    )
+    Vue.use(i18n);
   }
-};
+}
 createWebComponent({
-  rootComponent: myTwoButtons,
-  elementName: 'mytwo-buttons',
+  rootComponent: app,
+  elementName: 'my-web-component',
   plugins: pluginsWrapper,
   cssFrameworkStyles: style,
   VueDefineCustomElement,
