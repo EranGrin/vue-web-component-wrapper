@@ -1,20 +1,9 @@
-// import { defineCustomElement } from 'vue';
-import devtools from '@vue/devtools';
-import app from './App.vue';
-import style from './style.css';
-import { pluginsWrapper } from './plugins/plugins';
+import app from './App.vue'
+import style from './style.css' //Should be ./style.css?inline, need test
+import { pluginsWrapper } from './plugins'
 
-import {
-  defineCustomElement as VueDefineCustomElement,
-  h,
-  createApp,
-  getCurrentInstance
-} from 'vue';
-import { createWebComponent } from 'vue-web-component-wrapper';
-
-if (process.env.NODE_ENV === 'development') {
-  devtools.connect('localhost', 8098);
-}
+import { defineCustomElement as VueDefineCustomElement, h, createApp, getCurrentInstance } from 'vue'
+import { createWebComponent } from 'vue-web-component-wrapper'
 
 createWebComponent({
   rootComponent: app,
@@ -24,5 +13,5 @@ createWebComponent({
   VueDefineCustomElement,
   h,
   createApp,
-  getCurrentInstance
-});
+  getCurrentInstance,
+})

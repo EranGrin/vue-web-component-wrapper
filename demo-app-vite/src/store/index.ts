@@ -1,12 +1,6 @@
-
 export const store = {
+  state: {},
 
-    state: {
-    },
-
-    mutations: {
-
-    },
-    actions: {
-    },
-};
+  mutations: {},
+  actions: {},
+}

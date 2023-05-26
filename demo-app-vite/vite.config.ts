@@ -1,12 +1,12 @@
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import AutoImport from 'unplugin-auto-import/vite';
-import Components from 'unplugin-vue-components/vite';
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   define: {
-    __VUE_PROD_DEVTOOLS__: true
+    __VUE_PROD_DEVTOOLS__: true,
   },
   plugins: [
     vue({ customElement: true }),
@@ -17,16 +17,16 @@ export default defineConfig({
       dirs: ['src/plugins'],
       eslintrc: {
         enabled: true,
-        globalsPropValue: true
+        globalsPropValue: true,
       },
-      vueTemplate: true
+      vueTemplate: true,
     }),
 
     // https://github.com/antfu/unplugin-vue-components
     Components({
       dirs: ['src/components', 'src/routes'],
       extensions: ['vue'],
-      dts: './components.d.ts'
-    })
-  ]
-});
+      dts: './components.d.ts',
+    }),
+  ],
+})

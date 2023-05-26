@@ -8,10 +8,10 @@
 </template>
 
 <style scoped lang="scss">
-  .test2 {
-    color: red;
-    span {
-      color: blue;
-    }
+.test2 {
+  color: red;
+  span {
+    color: blue;
   }
+}
 </style>
