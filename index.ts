@@ -10,37 +10,42 @@ export const createWebComponent = ({
   createApp,
   getCurrentInstance
 }) => {
-  if (!rootComponent ) {
+  if (!rootComponent) {
     console.warn(
-        'No root component provided. Please provide a root component to create a web component.'
+      'No root component provided. Please provide a root component to create a web component.'
     );
     return;
   }
   if (!elementName) {
     console.warn(
-        'No element name provided. Please provide an element name to create a web component.'
+      'No element name provided. Please provide an element name to create a web component.'
     );
     return;
   }
   if (!VueDefineCustomElement) {
     console.warn(
-        'No VueDefineCustomElement provided. Please provide a VueDefineCustomElement to create a web component.'
+      'No VueDefineCustomElement provided. Please provide a VueDefineCustomElement to create a web component.'
     );
     return;
   }
   if (!h) {
-    console.warn( 'No h provided. Please provide an h to create a web component.');
+    console.warn(
+      'No h provided. Please provide an h to create a web component.'
+    );
     return;
   }
   if (!createApp) {
-    console.warn( 'No createApp provided. Please provide a createApp to create a web component.');
+    console.warn(
+      'No createApp provided. Please provide a createApp to create a web component.'
+    );
     return;
   }
   if (!getCurrentInstance) {
-    console.warn( 'No getCurrentInstance provided. Please provide a getCurrentInstance to create a web component.');
+    console.warn(
+      'No getCurrentInstance provided. Please provide a getCurrentInstance to create a web component.'
+    );
     return;
   }
-  
 
   customElements.define(
     elementName,

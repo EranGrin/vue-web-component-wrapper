@@ -33,14 +33,16 @@
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
-    "vue": "^3.3.2"
+    "vue": "^3.3.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.5",
-    "@babel/core": "^7.21.5",
-    "@babel/preset-env": "^7.21.5",
-    "@vitejs/plugin-vue": "^4.2.1",
-    "vite": "^4.3.4",
-    "vitepress": "^1.0.0-alpha.76"
+    "@babel/core": "^7.22.1",
+    "@babel/preset-env": "^7.22.2",
+    "@types/node": "^18.16.15",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.3.9",
+    "vite-plugin-dts": "^2.3.0",
+    "vitepress": "1.0.0-beta.1"
   }
 }
