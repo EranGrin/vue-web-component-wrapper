@@ -16,4 +16,9 @@ export const defaultRoutes = [
     path: `/test2`,
     component: () => import('./routes/test2.vue'),
   },
+  {
+    name: 'test3',
+    path: `/test3`,
+    component: () => import('./routes/test3.vue'),
+  },
 ]

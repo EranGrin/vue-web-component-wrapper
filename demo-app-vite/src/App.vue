@@ -12,6 +12,9 @@
           <li>
             <router-link to="/test2">Test route 2</router-link>
           </li>
+          <li>
+            <router-link to="/test3">Test route 3</router-link>
+          </li>
         </ul>
       </nav>
     </header>

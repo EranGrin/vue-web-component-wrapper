@@ -8,8 +8,13 @@ export default defineConfig({
   define: {
     __VUE_PROD_DEVTOOLS__: true,
   },
+  build: {
+    sourcemap: 'inline',
+  },
   plugins: [
-    vue({ customElement: true }),
+    vue({
+      customElement: true,
+    }),
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
       imports: ['vue'],
