@@ -1,20 +1,20 @@
-import { resolve } from "path";
-import vue from "@vitejs/plugin-vue";
-import { UserConfig } from "vite";
-import dts from "vite-plugin-dts";
+import { resolve } from 'path'
+import vue from '@vitejs/plugin-vue'
+import { UserConfig } from 'vite'
+import dts from 'vite-plugin-dts'
 
 const config: UserConfig = {
   build: {
     lib: {
-      entry: resolve(__dirname, "./index.ts"),
-      name: "Vue3WebComponentWrapper",
+      entry: resolve(__dirname, './index.ts'),
+      name: 'Vue3WebComponentWrapper',
       fileName: (format) => `vue-web-component-wrapper.${format}.js`,
     },
     rollupOptions: {
-      external: ["vue"],
+      external: ['vue'],
       output: {
         globals: {
-          vue: "Vue",
+          vue: 'Vue',
         },
       },
     },
@@ -25,6 +25,6 @@ const config: UserConfig = {
       insertTypesEntry: true,
     }),
   ],
-};
+}
 
-export default config;
+export default config
