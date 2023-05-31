@@ -26,7 +26,7 @@
 
 <script lang="ts">
 export default {
-  name: 'Main',
+  name: 'App',
   props: {
     apiToken: { type: String, required: true },
     baseUri: { type: String, default: 'test.me' },

@@ -1,4 +1,4 @@
-import { defineCustomElement } from './web-component-util'
+import { defineCustomElement } from './src/web-component-util'
 
 export const createWebComponent = ({
   elementName,

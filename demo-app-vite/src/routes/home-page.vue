@@ -8,12 +8,6 @@
 </template>
 
 <script lang="ts">
-import TestComponent1 from '../components/TestComponent1.vue'
-export default {
-  components: {
-    TestComponent1,
-  },
-}
 </script>
 
 <style></style>
