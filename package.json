@@ -1,46 +1,23 @@
 {
-  "name": "vue-web-component-wrapper",
-  "version": "1.0.5",
-  "description": "A Vue 3 plugin that provides a web component wrapper with styles, seamlessly integrating with Vuex, Vue Router, Vue I18n, and supporting Tailwind CSS and Sass styles.",
-  "types": "types.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/EranGrin/vue3-web-component-wrapper/tree/main/plugin"
-  },
-  "scripts": {
-    "build": "vite build",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs",
-    "docs:preview": "vitepress preview docs --port 8080"
-  },
-  "main": "dist/vue-web-component-wrapper.umd.js",
-  "module": "dist/vue-web-component-wrapper.es.js",
-  "exports": {
-    ".": {
-      "import": "./dist/vue-web-component-wrapper.es.js",
-      "require": "./dist/vue-web-component-wrapper.umd.js"
-    }
-  },
-  "files": [
-    "dist"
-  ],
-  "keywords": [
-    "vue",
-    "web-component",
-    "custom-element"
-  ],
-  "author": "Your Name",
-  "license": "MIT",
-  "dependencies": {
-    "vue": "^3.3.2"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.21.5",
-    "@babel/core": "^7.21.5",
-    "@babel/preset-env": "^7.21.5",
-    "@vitejs/plugin-vue": "^4.2.1",
-    "vite": "^4.3.4",
-    "vitepress": "^1.0.0-alpha.76"
-  }
+    "name": "vue-web-component-wrapper-monorepo",
+    "version": "1.0.6",
+    "description": "A Vue 3 plugin that provides a web component wrapper with styles, seamlessly integrating with Vuex, Vue Router, Vue I18n, and supporting Tailwind CSS and Sass styles.",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/EranGrin/vue3-web-component-wrapper/tree/main/plugin"
+    },
+    "scripts": {
+        "build": "npm -C package run build",
+        "docs:dev": "vitepress dev docs",
+        "docs:build": "vitepress build docs",
+        "docs:serve": "vitepress serve docs",
+        "docs:preview": "vitepress preview docs --port 8080"
+    },
+    "keywords": [
+        "vue",
+        "web-component",
+        "custom-element"
+    ],
+    "author": "Your Name",
+    "license": "MIT"
 }
