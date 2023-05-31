@@ -4,16 +4,16 @@ export const defaultRoutes = [
     {
         name: 'home',
         path: `/`,
-        component: () => import('./routes/home.vue'),
+        component: () => import('./routes/home-page.vue'),
     },
     {
         name: 'test1',
         path: `/test1`,
-        component: () => import('./routes/test1.vue'),
+        component: () => import('./routes/test1-page.vue'),
     },
     {
         name: 'test2',
         path: `/test2`,
-        component: () => import('./routes/test2.vue'),
+        component: () => import('./routes/test2-page.vue'),
     },
 ];

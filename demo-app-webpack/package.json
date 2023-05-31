@@ -11,6 +11,7 @@
     "build:tailwind": "postcss src/assets/tailwind-output.css -o src/assets/tailwind-processed.css"
   },
   "dependencies": {
+    "vue-web-component-wrapper": "workspace:^",
     "@tailwindcss/line-clamp": "^0.4.4",
     "autoprefixer": "^10",
     "node-sass": "^7.0.1",
@@ -55,23 +56,6 @@
     "webpack": "^5.81.0",
     "webpack-cli": "^5.0.2",
     "webpack-dev-server": "^4.13.3"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "globals": {
-      "defineProps": true
-    },
-    "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "@babel/eslint-parser"
-    },
-    "rules": {}
   },
   "browserslist": [
     "> 1%",

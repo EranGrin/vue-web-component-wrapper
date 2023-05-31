@@ -4,6 +4,10 @@ module.exports = {
     extends: [
         'plugin:vue/vue3-essential',
     ],
-    rules: {
-    }
+    parserOptions: {
+        ecmaVersion: 'latest',
+    },
+    env: {
+        node: true,
+    },
   }

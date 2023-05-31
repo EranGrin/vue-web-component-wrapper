@@ -1,13 +1,13 @@
 import { Component, App } from 'vue'
 
-interface PluginObject {
+interface Plugin {
   install: (app: App) => void
 }
 
 export interface CreateWebComponentOptions {
   elementName: string
   rootComponent: Component
-  plugins?: PluginObject
+  plugins?: Plugin
   cssFrameworkStyles?: string
   VueDefineCustomElement: (...args: any[]) => any
   h: (...args: any[]) => any
