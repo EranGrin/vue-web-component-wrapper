@@ -9,15 +9,11 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    Home: typeof import('./src/routes/home.vue')['default']
     HomePage: typeof import('./src/routes/home-page.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    Test1: typeof import('./src/routes/test1.vue')['default']
     Test1Page: typeof import('./src/routes/test1-page.vue')['default']
-    Test2: typeof import('./src/routes/test2.vue')['default']
     Test2Page: typeof import('./src/routes/test2-page.vue')['default']
-    Test3: typeof import('./src/routes/test3.vue')['default']
     Test3Page: typeof import('./src/routes/test3-page.vue')['default']
     TestComponent1: typeof import('./src/components/TestComponent1.vue')['default']
   }

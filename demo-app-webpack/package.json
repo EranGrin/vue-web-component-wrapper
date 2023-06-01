@@ -5,8 +5,6 @@
   "scripts": {
     "start": "webpack serve --open --mode=development",
     "build": "webpack --mode=production --progress",
-    "dev": "vite",
-    "build:dev": "vite build",
     "dist-clean": "rm -fr dist/*",
     "build:tailwind": "postcss src/assets/tailwind-output.css -o src/assets/tailwind-processed.css"
   },
