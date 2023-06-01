@@ -1,5 +1,5 @@
 {
-    "name": "vue-web-component-wrapper-monorepo",
+    "name": "vue-web-component-wrapper",
     "version": "1.1.0",
     "description": "A Vue 3 plugin that provides a web component wrapper with styles, seamlessly integrating with Vuex, Vue Router, Vue I18n, and supporting Tailwind CSS and Sass styles.",
     "repository": {
