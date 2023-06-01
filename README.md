@@ -8,7 +8,9 @@
 ## Why use `vue-web-component-wrapper`?
 As of now, Vue 3 does not support the creation of full aplication as web components out of the box. This plugin aims to solve this problem by providing a simple and easy-to-use solution for creating web components from Vue applications. It also provides support for Vue ecosystem plugins such as [Vuex](https://vuex.vuejs.org/) or [Pinia](https://pinia.vuejs.org/), [Vue Router](https://router.vuejs.org/), [Vue I18n](https://vue-i18n.intlify.dev/) and [VeeValidate](https://vee-validate.logaretm.com/v4/).
 ## Demo
-Check out this [Demo Project](https://stackblitz.com/edit/vue-web-component-wrapper-plugin) to see `vue-web-component-wrapper` in action using Webpack, or this [Demo project]() with Vite config!
+Check out these demo projects to see `vue-web-component-wrapper` in action:
+- **Webpack implentaion**: Check out this [Webpack Demo Project](https://stackblitz.com/edit/vue-web-component-wrapper-plugin)
+- **Vite.js implentaion**: Check out this [Vite Demo Project](https://stackblitz.com/edit/vue-web-component-wrapper-plugin-vite)
 
 ## Documentation
 Check out the [Docs](https://erangrin.github.io/vue-web-component-wrapper)
@@ -101,6 +103,11 @@ Each option in the `createWebComponent` function has a specific purpose:
 - `createApp`: The `createApp` function from Vue.
 - `getCurrentInstance`: The `getCurrentInstance` function from Vue.
 
+4. **Build your application**. You can use your favorite bundler to build your application.
+## Bundlers Configuration
+
+<details>
+<summary>Vite Configuration</summary>
 ## Vite.js Configuration
 
 Here's a sample Vite configuration. Comparing with Webpack, Vite.js is able to handle assets files like .css and .scss, and media files, importing them as you do regularly. Vue files will be parsed using oficial [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue) depending of config. If you would like to add plugins for Vite, just install them with your favorite Node package manager.
@@ -109,7 +116,6 @@ Here's a sample Vite configuration. Comparing with Webpack, Vite.js is able to h
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   build: {
     sourcemap: 'inline',
@@ -120,7 +126,33 @@ export default defineConfig({
     }),
   ],
 })
-````
+```
+In your main.js/ts file, you will have to import the css framework in slightly different way then webpack with ```?inline``` at the end of the import statement.
+This leads to a new iusse with fonts, which are not loaded when using ```?inline```. To fix this, you can import the font css in the App.vue file.
+### main.js/ts
+```javascript
+// ?inline can not handle import url() in css therefore fonts are not loaded, workaround is to add font css to the App.vue
+import style from './style.css?inline' 
+```
+Workaround for fonts:
+### App.vue
+```css
+<style>
+header  {
+  @apply font-sans;
+}
+
+main {
+  @apply font-sans;
+}
+</style>
+```
+</details>
+
+
+
+<details>
+<summary>Webpack Configuration</summary>
 
 ## Webpack Configuration
 
@@ -207,12 +239,19 @@ module.exports = {
 };
 
 ```
+With webpack you will have to import the css framework in slightly different way then vite with ```?raw``` at the end of the import statement.
+### main.js/ts
+```javascript
+import style from './style.css?raw' 
+```
+</details>
 
+## Tips
+- **Testing Production Build**: the easiest way to test your production build is to run a local server in the `dist` folder. I use [valet](https://laravel.com/docs/10.x/valet) for this, but any local server should work.
 ## Future Plans
 
-Here are some developments I'm planning to work on:
-1. **TypeScript Support**: Adding TypeScript support.
-2. **Vite Bundler Support**: Adding support for the Vite bundler.
+1. **TypeScript Support**: Adding proper strict types.
+
 
 ## Contributing
 Contributions are welcome! To contribute to the project, please follow these steps:
