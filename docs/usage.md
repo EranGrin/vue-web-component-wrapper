@@ -9,29 +9,40 @@ import tailwindStyles from './assets/tailwind.css?raw';
 import { createWebHashHistory, createRouter } from "vue-router";
 import { createI18n } from 'vue-i18n';
 import { createStore } from 'vuex'
-import { defaultRoutes} from './main.routes.js'
-import {store} from './store/index.js'
+import { createPinia } from 'pinia'
+import { defaultRoutes } from './main.routes.js'
+import { store } from './store/index.js'
 import { defineCustomElement as VueDefineCustomElement, h, createApp, getCurrentInstance } from 'vue';
 import { createWebComponent } from 'vue-web-component-wrapper';
 ```
-2. **Set up the instances** and use your plugins. This is where you configure your Vuex store, Vue router, and other Vue plugins.
+2. **Set up the instances** and use your plugins. This is where you configure your Vuex/Pinia store, Vue router, and other Vue plugins.
 ```javascript
-const pluginsWrapper = {
-  install(GivenVue) {
-    const Vue = GivenVue;
+export const pluginsWrapper = {
+  install(GivenVue: any) {
+    const Vue = GivenVue
 
+    //Vuex
     const createdStore = createStore(store)
     Vue.use(createdStore)
 
+    //or Pinia
+    const pinia = createPinia()
+    Vue.use(pinia)
+
+    //Vue Router
     const router = createRouter({
-        history: createWebHashHistory(),
-        routes: defaultRoutes,
+      history: createWebHashHistory(),
+      routes: defaultRoutes,
     })
-    Vue.use(router);
-       
-    const i18n = createI18n()
-    Vue.use(i18n);
-  }
+    Vue.use(router)
+
+    //Vue I18n
+    const i18n = createI18n({
+      locale: 'en',
+      fallbackLocale: 'en',
+    })
+    Vue.use(i18n)
+  },
 }
 ```
 3. **Create your web component** using `createWebComponent`. It takes an options object where you specify your root Vue component, the element name for your custom element, any plugins you want to use, and any CSS framework styles.

@@ -1,6 +1,6 @@
 ## Webpack Configuration
 
-The plugin is only tested with webpack. Here's a sample webpack configuration that helps webpack understand how to load and process .vue, .css, and .scss files. It also sets up an HTML plugin for webpack.
+Here's a sample webpack configuration that helps webpack understand how to load and process .vue, .css, and .scss files. It also sets up an HTML plugin for webpack.
 
 ```javascript
 const path = require('path');
@@ -82,4 +82,9 @@ module.exports = {
   },
 };
 
+```
+With webpack you will have to import the css framework in slightly different way then vite with ```?raw``` at the end of the import statement.
+### main.js/ts
+```javascript
+import style from './style.css?raw' 
 ```

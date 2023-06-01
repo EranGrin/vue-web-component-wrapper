@@ -9,8 +9,8 @@
 As of now, Vue 3 does not support the creation of full aplication as web components out of the box. This plugin aims to solve this problem by providing a simple and easy-to-use solution for creating web components from Vue applications. It also provides support for Vue ecosystem plugins such as [Vuex](https://vuex.vuejs.org/) or [Pinia](https://pinia.vuejs.org/), [Vue Router](https://router.vuejs.org/), [Vue I18n](https://vue-i18n.intlify.dev/) and [VeeValidate](https://vee-validate.logaretm.com/v4/).
 ## Demo
 Check out these demo projects to see `vue-web-component-wrapper` in action:
-- **Webpack implentaion**: Check out this [Webpack Demo Project](https://stackblitz.com/edit/vue-web-component-wrapper-plugin)
-- **Vite.js implentaion**: Check out this [Vite Demo Project](https://stackblitz.com/edit/vue-web-component-wrapper-plugin-vite)
+- **Webpack implentaion**: Check out this [Webpack Demo Project](https://stackblitz.com/edit/vue-web-component-wrapper?file=README.md&startScript=webpack-demo)
+- **Vite.js implentaion**: Check out this [Vite Demo Project](https://stackblitz.com/edit/vue-web-component-wrapper?file=README.md&startScript=vite-demo)
 
 ## Documentation
 Check out the [Docs](https://erangrin.github.io/vue-web-component-wrapper)
@@ -23,7 +23,6 @@ Check out the [Docs](https://erangrin.github.io/vue-web-component-wrapper)
 - **Shadow DOM Support**: Facilitates the encapsulation of styles and scripts for your components, preventing clashes with the rest of your application.
 
 ## Installation
-Install the plugin using npm or yarn:
 
 ```bash
 npm install vue-web-component-wrapper

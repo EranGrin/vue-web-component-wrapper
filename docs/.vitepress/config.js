@@ -18,6 +18,7 @@ export default {
         items: [
           { text: 'usage', link: '/usage' },
           { text: 'webpack', link: '/webpack-config' },
+          { text: 'vite', link: '/vite-config' },
         ],
       },
     ],
