@@ -12,8 +12,8 @@
         "docs:build": "vitepress build docs",
         "docs:serve": "vitepress serve docs",
         "docs:preview": "vitepress preview docs --port 8080",
-        "vite-demo": "cd demo-app-vite && pnpm dev",
-        "webpack-demo": "cd demo-app-webpack && pnpm start",
+        "vite-demo": "npm run build && npm -C demo-app-vite run dev",
+        "webpack-demo": "npm run build && npm -C demo-app-webpack run start",
         "lint": "eslint --ext .js,.vue ."
     },
     "keywords": [
