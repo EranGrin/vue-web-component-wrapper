@@ -1,5 +1,8 @@
 import app from './App.vue'
-import style from './style.css' //Should be ./style.css?inline, need test
+
+// ?inline can not handle import url() in css therefore fonts are not loaded, workaround is to add font css to the App.vue
+import style from './style.css?inline' 
+
 import { pluginsWrapper } from './plugins'
 
 import { defineCustomElement as VueDefineCustomElement, h, createApp, getCurrentInstance } from 'vue'

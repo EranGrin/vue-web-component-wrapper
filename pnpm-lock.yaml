@@ -98,6 +98,9 @@ importers:
       vue-router:
         specifier: '4'
         version: 4.2.1(vue@3.3.4)
+      vue-web-component-wrapper:
+        specifier: workspace:^
+        version: link:../package
       vuex:
         specifier: ^4.0.2
         version: 4.1.0(vue@3.3.4)
@@ -189,9 +192,6 @@ importers:
       vue-template-compiler:
         specifier: ^2.7.14
         version: 2.7.14
-      vue-web-component-wrapper:
-        specifier: ^1.0.2
-        version: link:../package
       webpack:
         specifier: ^5.81.0
         version: 5.81.0(webpack-cli@5.0.2)

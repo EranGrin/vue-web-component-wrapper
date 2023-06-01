@@ -53,4 +53,12 @@ export default {
 a {
   @apply text-gray-900 hover:text-gray-700;
 }
+
+header  {
+  @apply font-sans;
+}
+
+main {
+  @apply font-sans;
+}
 </style>
