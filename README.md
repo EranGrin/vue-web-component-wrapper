@@ -107,6 +107,7 @@ Each option in the `createWebComponent` function has a specific purpose:
 
 <details>
 <summary>Vite Configuration</summary>
+
 ## Vite.js Configuration
 
 Here's a sample Vite configuration. Comparing with Webpack, Vite.js is able to handle assets files like .css and .scss, and media files, importing them as you do regularly. Vue files will be parsed using oficial [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue) depending of config. If you would like to add plugins for Vite, just install them with your favorite Node package manager.
