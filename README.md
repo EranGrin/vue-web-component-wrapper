@@ -21,6 +21,7 @@ Check out the [Docs](https://erangrin.github.io/vue-web-component-wrapper)
 - **CSS Preprocessor Support**: Allows you to use CSS preprocessors like SCSS and LESS.
 - **Scoped CSS**: Allows you to use scoped css in your components.
 - **Shadow DOM Support**: Facilitates the encapsulation of styles and scripts for your components, preventing clashes with the rest of your application.
+- **VUE Devtool Support**: Supports the Vue DevTools browser extension.
 
 ## Installation
 

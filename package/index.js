@@ -47,6 +47,7 @@ export const createWebComponent = ({
       h,
       createApp,
       getCurrentInstance,
+      elementName,
     })
   )
 }

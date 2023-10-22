@@ -10,43 +10,55 @@ const u = (e) => {
 }, v = ({
   rootComponent: e,
   plugins: r,
-  cssFrameworkStyles: c,
-  VueDefineCustomElement: m,
-  h: p,
-  createApp: s,
-  getCurrentInstance: a
-}) => m({
-  styles: [c],
+  cssFrameworkStyles: m,
+  VueDefineCustomElement: d,
+  h: s,
+  createApp: p,
+  getCurrentInstance: i,
+  elementName: a
+}) => d({
+  styles: [m],
   props: e.props,
-  setup(i) {
-    const n = s();
-    n.component("app-root", e), n.mixin({
+  setup(l) {
+    const t = p();
+    t.component("app-root", e), t.mixin({
       mounted() {
-        var l;
-        const o = (t) => {
-          t != null && t.length && (this.__style = document.createElement("style"), this.__style.innerText = t.join().replace(/\n/g, ""), u(this.$el).prepend(this.__style));
+        var c;
+        const n = (o) => {
+          o != null && o.length && (this.__style = document.createElement("style"), this.__style.innerText = o.join().replace(/\n/g, ""), u(this.$el).prepend(this.__style));
         };
-        if (o((l = this.$) == null ? void 0 : l.type.styles), this.$options.components)
-          for (const t of Object.values(this.$options.components))
-            o(t.styles);
+        if (n((c = this.$) == null ? void 0 : c.type.styles), this.$options.components)
+          for (const o of Object.values(this.$options.components))
+            n(o.styles);
       },
       unmounted() {
-        var o;
-        (o = this.__style) == null || o.remove();
+        var n;
+        (n = this.__style) == null || n.remove();
       }
-    }), n.use(r);
-    const d = a();
-    return Object.assign(d.appContext, n._context), Object.assign(d.provides, n._context.provides), () => p(e, i);
+    }), t.use(r);
+    const _ = i();
+    if (Object.assign(_.appContext, t._context), Object.assign(_.provides, t._context.provides), process.env.NODE_ENV === "development" && window.__VUE_DEVTOOLS_GLOBAL_HOOK__) {
+      const n = document.querySelector(a);
+      t._container = n, t._instance = _;
+      const c = {
+        Comment: Symbol("v-cmt"),
+        Fragment: Symbol("v-fgt"),
+        Static: Symbol("v-stc"),
+        Text: Symbol("v-txt")
+      };
+      window.__VUE_DEVTOOLS_GLOBAL_HOOK__.emit("app:init", t, t.version, c), window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = t;
+    }
+    return () => s(e, l);
   }
 }), w = ({
   elementName: e,
   rootComponent: r,
-  plugins: c,
-  cssFrameworkStyles: m,
-  VueDefineCustomElement: p,
-  h: s,
-  createApp: a,
-  getCurrentInstance: i
+  plugins: m,
+  cssFrameworkStyles: d,
+  VueDefineCustomElement: s,
+  h: p,
+  createApp: i,
+  getCurrentInstance: a
 }) => {
   if (!r) {
     console.warn("No root component provided. Please provide a root component to create a web component.");
@@ -56,21 +68,21 @@ const u = (e) => {
     console.warn("No element name provided. Please provide an element name to create a web component.");
     return;
   }
-  if (!p) {
+  if (!s) {
     console.warn(
       "No VueDefineCustomElement provided. Please provide a VueDefineCustomElement to create a web component."
     );
     return;
   }
-  if (!s) {
+  if (!p) {
     console.warn("No h provided. Please provide an h to create a web component.");
     return;
   }
-  if (!a) {
+  if (!i) {
     console.warn("No createApp provided. Please provide a createApp to create a web component.");
     return;
   }
-  if (!i) {
+  if (!a) {
     console.warn("No getCurrentInstance provided. Please provide a getCurrentInstance to create a web component.");
     return;
   }
@@ -78,12 +90,13 @@ const u = (e) => {
     e,
     v({
       rootComponent: r,
-      plugins: c,
-      cssFrameworkStyles: m,
-      VueDefineCustomElement: p,
-      h: s,
-      createApp: a,
-      getCurrentInstance: i
+      plugins: m,
+      cssFrameworkStyles: d,
+      VueDefineCustomElement: s,
+      h: p,
+      createApp: i,
+      getCurrentInstance: a,
+      elementName: e
     })
   );
 };

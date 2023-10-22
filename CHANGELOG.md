@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [1.2.0] - 23.10.2023
+### Added
+- Added support for Vue DevTools extension
+
 ## [1.1.1] - 1.8.2023
 - Fixed README.md
 - Fixed package.json package entry point in monorepo

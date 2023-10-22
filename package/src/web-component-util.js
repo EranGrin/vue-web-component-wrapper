@@ -1,20 +1,3 @@
-// const getStylesRecursively = (component) => {
-//   const customElementStyles = []
-
-//   if (component.styles) {
-//     customElementStyles.push(...component.styles)
-//   }
-
-//   const childComponents = component.components
-//   if (childComponents) {
-//     Object.keys(childComponents).forEach((name) => {
-//       const styles = getStylesRecursively(childComponents[name])
-//       customElementStyles.push(...styles)
-//     })
-//   }
-
-//   return customElementStyles
-// }
 
 const nearestElement = (el) => {
   while (el?.nodeType !== 1 /* ELEMENT */) {
@@ -37,6 +20,7 @@ export const defineCustomElement = ({
   h,
   createApp,
   getCurrentInstance,
+  elementName,
 }) =>
   VueDefineCustomElement({
     styles: [cssFrameworkStyles],
@@ -72,6 +56,23 @@ export const defineCustomElement = ({
       const inst = getCurrentInstance()
       Object.assign(inst.appContext, app._context)
       Object.assign(inst.provides, app._context.provides)
+
+      // Add support for Vue Devtools
+      if (process.env.NODE_ENV === 'development' && window.__VUE_DEVTOOLS_GLOBAL_HOOK__) {
+        const root = document.querySelector(elementName);
+        app._container = root;
+        app._instance = inst;
+        
+        const types = {
+          Comment: Symbol('v-cmt'),
+          Fragment: Symbol('v-fgt'),
+          Static: Symbol('v-stc'),
+          Text: Symbol('v-txt'),
+        };
+        
+        window.__VUE_DEVTOOLS_GLOBAL_HOOK__.emit('app:init', app, app.version, types);
+        window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = app;
+      }
 
       return () => h(rootComponent, props)
     },
