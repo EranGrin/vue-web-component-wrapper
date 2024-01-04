@@ -21,6 +21,7 @@ export const defineCustomElement = ({
   createApp,
   getCurrentInstance,
   elementName,
+  skipRemoveStylesOnUnmount
 }) =>
   VueDefineCustomElement({
     styles: [cssFrameworkStyles],
@@ -47,7 +48,9 @@ export const defineCustomElement = ({
           }
         },
         unmounted() {
-          this.__style?.remove()
+          if(!skipRemoveStylesOnUnmount) {
+            this.__style?.remove()
+          }
         },
       })
 
