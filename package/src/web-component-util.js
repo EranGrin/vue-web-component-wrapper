@@ -32,11 +32,11 @@ export const defineCustomElement = ({
       ...rootComponent.props,
       modelValue: { type: [String, Number, Boolean, Array, Object] } // v-model support
     }, 
-    emits: rootComponent.emits,
+    emits: rootComponent?.emits,
     
 
     setup(props) {
-      const emitsList = [...rootComponent.emits, 'update:modelValue']
+      const emitsList = [...(rootComponent?.emits || []), 'update:modelValue']
       const app = createApp()
       app.component('app-root', rootComponent)
       app.mixin({

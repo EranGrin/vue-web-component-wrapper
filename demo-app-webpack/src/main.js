@@ -1,4 +1,3 @@
-
 import App from './App.vue';
 import tailwindStyles from './assets/tailwind.css?raw';
 import { createWebHashHistory, createRouter } from "vue-router";
@@ -36,6 +35,7 @@ createWebComponent({
   VueDefineCustomElement,
   h,
   createApp,
-  getCurrentInstance
+  getCurrentInstance,
+  disableRemoveStylesOnUnmount: true,
 });
 
