@@ -10,12 +10,17 @@ Check out these demo projects to see `vue-web-component-wrapper` in action:
 - **Webpack implentaion**: Check out this [Webpack Demo Project](https://stackblitz.com/edit/vue-web-component-wrapper?file=README.md&startScript=webpack-demo)
 - **Vite.js implentaion**: Check out this [Vite Demo Project](https://stackblitz.com/edit/vue-web-component-wrapper?file=README.md&startScript=vite-demo)
 
-## Key Features:
-- **Vue Plugins Compatibility**: Seamlessly integrates with Vue ecosystem plugins such as Vuex, Vue Router, and Vue I18n.
-- **CSS Framework Support**: Works with popular CSS frameworks like Tailwind CSS, Bootstrap.
-- **CSS Preprocessor Support**: Allows you to use CSS preprocessors like SCSS and LESS.
-- **Scoped CSS**: Allows you to use scoped css in your components.
-- **Shadow DOM Support**: Facilitates the encapsulation of styles and scripts for your components, preventing clashes with the rest of your application.
+## Key Features
+- **Vue Plugins Compatibility**: Integrates seamlessly with key Vue ecosystem plugins.
+- **CSS Framework Support**: Compatible with major CSS frameworks like Tailwind CSS and Bootstrap.
+- **CSS Preprocessor Support**: Supports CSS preprocessors including SCSS and LESS.
+- **Scoped CSS**: Enables the use of scoped CSS in your components.
+- **Shadow DOM Support**: Facilitates the encapsulation of styles and scripts, preventing clashes with the rest of your application.
+- **VUE Devtool Support**: Fully supports the Vue DevTools browser extension.
+- **Slot and Named Slot Support**: Allows for the definition and use of slots and named slots within web components.
+- **Enhanced v-model Support**: Improved support for two-way data binding using the `v-model` architecture.
+- **Event Emitting Capability**: Enables the emission and handling of custom events from web components.
+- **Disable Style Removal on Unmount**: Option to control the removal of styles upon component unmount, addressing issues with CSS transition.
 
 
 ## Tips

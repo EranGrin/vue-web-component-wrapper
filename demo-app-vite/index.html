@@ -8,32 +8,110 @@
   </head>
 
   <body>
-    <h1 class="text-test" style="text-align:center;">Vite 4 + Vue 3.3 + Typescript 5 + Web Component</h1>
-    <pre style="margin-left: 3%;">
-      <code>&lt;my-web-component
-        lang="de"
-        route="/route1"
-        class="my-web-component"
-        api-token="++++++++++++++++++++++++"
-        base-uri="https://my.base.uri"
-      &gt;
-      &lt;/my-web-component&gt;
-      </code>
-    </pre>
+    <div style="margin-bottom: 30px; display: flex; flex-direction: column; max-width: 70%; margin-left: auto; margin-right: auto;">
+      <h1 class="text-title" style="text-align:center;">Vite 4 + Vue 3.3 + Typescript 5 + Web Component</h1>
+      <div style="border: 1px solid rgb(78, 77, 77); border-radius: 10px; font-size:x-small;">
+        <pre >
+          <code>&lt;my-web-component
+            lang="de"
+            route="/route1"
+            class="my-web-component"
+            api-token="++++++++++++++++++++++++"
+            base-uri="https://my.base.uri"
+            model-value="v-model-value"
+          &gt;
+            &lt;!-- default slot --&gt;
+            &lt;h1&gt;I am a default slot&lt;/h1&gt;
+            
+            &lt;!-- named slot --&gt;
+            &lt;div slot="customName"&gt;I am a custom slot &lt;/div&gt;
+          &lt;/my-web-component&gt;
+          </code>
+        </pre>
+      </div>
+      <div style="display: flex; justify-content: space-between;">
+        <div style="max-width: 40%;">
+          <h2>2 Way binding(v-model)</h2>
+          <input id="myInput" type="text" />
+        </div>
+        
+        <div>
+          <h2>Custom Event</h2>
+          <div id="color-changing-div" style="width: 100px; height: 30px;">event is fiered</div>
+        </div>
+      </div>
+    </div>
+    <hr>
     <my-web-component
       lang="de"
       route="/route1"
       class="my-web-component"
       api-token="++++++++++++++++++++++++"
       base-uri="https://my.base.uri"
-    ></my-web-component>
+      model-value="v-model-value"
+    >
+      <!-- default slot -->
+      <h1>I am a default slot</h1>
+      
+      <!-- named slot -->
+      <div slot="customName">I am a custom slot </div>
+    </my-web-component>
 
     <script type="module" src="./src/main.ts"></script>
+  
+    <script >
+      const myWebComponent = document.querySelector('my-web-component');
+      const myInput = document.querySelector('#myInput');
+
+      myWebComponent.addEventListener('customEventTest', (event) => {
+        console.log('emit-event', event);
+      });
+
+      // v-model 2 way binding
+      myWebComponent.addEventListener('update:modelValue', (event) => {
+          console.log('v-model-event', event);
+          // update the vue component prop value of the v-model
+          myWebComponent.setAttribute('model-value', event.detail[0]);
+          // update the external input value
+          myInput.value = event.detail[0];
+      })
+
+      // update the vue component prop value of the v-model
+      myInput.addEventListener('input', (event) => {
+        myWebComponent.setAttribute('model-value', event.target.value);
+      })
+
+      const colorChangingDiv = document.querySelector('#color-changing-div');
+        let colors = ['blue', 'green', 'red', 'yellow', 'purple', 'orange'];
+        let currentColorIndex = 0;
+
+        myWebComponent.addEventListener('customEventTest', () => {
+          currentColorIndex = (currentColorIndex + 1) % colors.length;
+          colorChangingDiv.style.backgroundColor = colors[currentColorIndex];
+        });
+    </script>
   </body>
   <style>
-    .text-test {
-      color: red;
-      font-size: 2rem;
+    .text-title {
+      color: #4a90e2; /* A more subtle shade of blue */
+      font-size: 1.5rem; /* Slightly larger size */
+      font-weight: 700; /* Bold font weight */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
+      margin-bottom: 20px; /* Space below the title */
+      font-family: 'Arial', sans-serif; /* A clean, modern font */
+      text-transform: uppercase; /* Capitalize all letters for emphasis */
+      letter-spacing: 1.5px; /* Slightly more space between letters */
     }
+    #color-changing-div {
+    border: 3px solid #555;
+    border-radius: 15px;              
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+    transition: background-color 0.5s ease; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+  }
   </style>
 </html>

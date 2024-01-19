@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [1.3.0] - 19.01.2024
+### Added
+- Added support for slots and named slots
+- Added support for event emitting
+- Added support for enhanced v-model
+### Fixed
+- Added support for disabling style removal on unmount
+
 ## [1.2.0] - 23.10.2023
 ### Added
 - Added support for Vue DevTools extension

@@ -16,7 +16,9 @@ export default {
       {
         text: 'Usage',
         items: [
-          { text: 'usage', link: '/usage' },
+          { text: 'config', link: '/usage' },
+          { text: 'slots', link: '/slots' },
+          { text: 'event-emitting', link: '/event-emitting' },
           { text: 'webpack', link: '/webpack-config' },
           { text: 'vite', link: '/vite-config' },
         ],

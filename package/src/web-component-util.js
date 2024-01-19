@@ -11,6 +11,9 @@ const nearestElement = (el) => {
   return el
 }
 
+function convertToOnEventName(eventName) {
+  return 'on' + eventName.charAt(0).toUpperCase() + eventName.slice(1);
+}
 
 export const defineCustomElement = ({
   rootComponent,
@@ -21,12 +24,19 @@ export const defineCustomElement = ({
   createApp,
   getCurrentInstance,
   elementName,
-  skipRemoveStylesOnUnmount
+  disableRemoveStylesOnUnmount
 }) =>
   VueDefineCustomElement({
     styles: [cssFrameworkStyles],
-    props: rootComponent.props,
+    props: {
+      ...rootComponent.props,
+      modelValue: { type: [String, Number, Boolean, Array, Object] } // v-model support
+    }, 
+    emits: rootComponent.emits,
+    
+
     setup(props) {
+      const emitsList = [...rootComponent.emits, 'update:modelValue']
       const app = createApp()
       app.component('app-root', rootComponent)
       app.mixin({
@@ -36,7 +46,6 @@ export const defineCustomElement = ({
               this.__style = document.createElement('style')
               this.__style.innerText = styles.join().replace(/\n/g, '')
               nearestElement(this.$el).prepend(this.__style)
-              // console.log('__Style', this.__style.innerText)
             }
           }
 
@@ -48,7 +57,7 @@ export const defineCustomElement = ({
           }
         },
         unmounted() {
-          if(!skipRemoveStylesOnUnmount) {
+          if(!disableRemoveStylesOnUnmount) {
             this.__style?.remove()
           }
         },
@@ -77,6 +86,29 @@ export const defineCustomElement = ({
         window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = app;
       }
 
-      return () => h(rootComponent, props)
+      // Forward all emitted events to the custom element
+      const eventListeners = emitsList?.reduce((acc, eventName) => {
+        const onEventName = convertToOnEventName(eventName);
+        acc[onEventName] = (e) => { inst.emit(eventName, e); };
+        return acc;
+      }, {});
+
+      // Establish named slots
+      const namedSlots = rootComponent?.namedSlots?.reduce((acc, slotsName) => {
+        acc[slotsName] = () => h('slot',{ name: slotsName});
+        return acc;
+      }, {});
+
+      return () => h(
+        rootComponent,
+        {
+          ...props,
+          ...eventListeners,
+        },
+        {
+          default: () => h('slot'),
+          ...namedSlots,
+        }
+      );
     },
   })

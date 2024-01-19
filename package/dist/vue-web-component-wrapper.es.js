@@ -1,4 +1,4 @@
-const u = (e) => {
+const b = (e) => {
   for (; (e == null ? void 0 : e.nodeType) !== 1; ) {
     if (!e.parentElement)
       throw new Error(
@@ -7,60 +7,88 @@ const u = (e) => {
     e = e.parentElement;
   }
   return e;
-}, v = ({
+};
+function y(e) {
+  return "on" + e.charAt(0).toUpperCase() + e.slice(1);
+}
+const S = ({
   rootComponent: e,
-  plugins: r,
+  plugins: i,
   cssFrameworkStyles: m,
-  VueDefineCustomElement: d,
+  VueDefineCustomElement: l,
   h: s,
-  createApp: p,
-  getCurrentInstance: i,
-  elementName: a
-}) => d({
+  createApp: a,
+  getCurrentInstance: c,
+  elementName: p,
+  disableRemoveStylesOnUnmount: u
+}) => l({
   styles: [m],
-  props: e.props,
-  setup(l) {
-    const t = p();
-    t.component("app-root", e), t.mixin({
+  props: {
+    ...e.props,
+    modelValue: { type: [String, Number, Boolean, Array, Object] }
+    // v-model support
+  },
+  emits: e.emits,
+  setup(w) {
+    var v;
+    const _ = [...e.emits, "update:modelValue"], n = a();
+    n.component("app-root", e), n.mixin({
       mounted() {
-        var c;
-        const n = (o) => {
-          o != null && o.length && (this.__style = document.createElement("style"), this.__style.innerText = o.join().replace(/\n/g, ""), u(this.$el).prepend(this.__style));
+        var o;
+        const t = (r) => {
+          r != null && r.length && (this.__style = document.createElement("style"), this.__style.innerText = r.join().replace(/\n/g, ""), b(this.$el).prepend(this.__style));
         };
-        if (n((c = this.$) == null ? void 0 : c.type.styles), this.$options.components)
-          for (const o of Object.values(this.$options.components))
-            n(o.styles);
+        if (t((o = this.$) == null ? void 0 : o.type.styles), this.$options.components)
+          for (const r of Object.values(this.$options.components))
+            t(r.styles);
       },
       unmounted() {
-        var n;
-        (n = this.__style) == null || n.remove();
+        var t;
+        u || (t = this.__style) == null || t.remove();
       }
-    }), t.use(r);
-    const _ = i();
-    if (Object.assign(_.appContext, t._context), Object.assign(_.provides, t._context.provides), process.env.NODE_ENV === "development" && window.__VUE_DEVTOOLS_GLOBAL_HOOK__) {
-      const n = document.querySelector(a);
-      t._container = n, t._instance = _;
-      const c = {
+    }), n.use(i);
+    const d = c();
+    if (Object.assign(d.appContext, n._context), Object.assign(d.provides, n._context.provides), process.env.NODE_ENV === "development" && window.__VUE_DEVTOOLS_GLOBAL_HOOK__) {
+      const t = document.querySelector(p);
+      n._container = t, n._instance = d;
+      const o = {
         Comment: Symbol("v-cmt"),
         Fragment: Symbol("v-fgt"),
         Static: Symbol("v-stc"),
         Text: Symbol("v-txt")
       };
-      window.__VUE_DEVTOOLS_GLOBAL_HOOK__.emit("app:init", t, t.version, c), window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = t;
+      window.__VUE_DEVTOOLS_GLOBAL_HOOK__.emit("app:init", n, n.version, o), window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = n;
     }
-    return () => s(e, l);
+    const O = _ == null ? void 0 : _.reduce((t, o) => {
+      const r = y(o);
+      return t[r] = (E) => {
+        d.emit(o, E);
+      }, t;
+    }, {}), f = (v = e == null ? void 0 : e.namedSlots) == null ? void 0 : v.reduce((t, o) => (t[o] = () => s("slot", { name: o }), t), {});
+    return () => s(
+      e,
+      {
+        ...w,
+        ...O
+      },
+      {
+        default: () => s("slot"),
+        ...f
+      }
+    );
   }
-}), w = ({
+}), h = ({
   elementName: e,
-  rootComponent: r,
+  rootComponent: i,
   plugins: m,
-  cssFrameworkStyles: d,
+  cssFrameworkStyles: l,
   VueDefineCustomElement: s,
-  h: p,
-  createApp: i,
-  getCurrentInstance: a
+  h: a,
+  createApp: c,
+  getCurrentInstance: p,
+  disableRemoveStylesOnUnmount: u
 }) => {
-  if (!r) {
+  if (!i) {
     console.warn("No root component provided. Please provide a root component to create a web component.");
     return;
   }
@@ -74,32 +102,33 @@ const u = (e) => {
     );
     return;
   }
-  if (!p) {
+  if (!a) {
     console.warn("No h provided. Please provide an h to create a web component.");
     return;
   }
-  if (!i) {
+  if (!c) {
     console.warn("No createApp provided. Please provide a createApp to create a web component.");
     return;
   }
-  if (!a) {
+  if (!p) {
     console.warn("No getCurrentInstance provided. Please provide a getCurrentInstance to create a web component.");
     return;
   }
   customElements.define(
     e,
-    v({
-      rootComponent: r,
+    S({
+      rootComponent: i,
       plugins: m,
-      cssFrameworkStyles: d,
+      cssFrameworkStyles: l,
       VueDefineCustomElement: s,
-      h: p,
-      createApp: i,
-      getCurrentInstance: a,
-      elementName: e
+      h: a,
+      createApp: c,
+      getCurrentInstance: p,
+      elementName: e,
+      disableRemoveStylesOnUnmount: u
     })
   );
 };
 export {
-  w as createWebComponent
+  h as createWebComponent
 };

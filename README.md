@@ -22,6 +22,11 @@ Check out the [Docs](https://erangrin.github.io/vue-web-component-wrapper)
 - **Scoped CSS**: Allows you to use scoped css in your components.
 - **Shadow DOM Support**: Facilitates the encapsulation of styles and scripts for your components, preventing clashes with the rest of your application.
 - **VUE Devtool Support**: Supports the Vue DevTools browser extension.
+- **Slot and Named Slot Support**: Define and use slots and named slots within web components.
+- **v-model Support**: Improved support for two-way data binding using `v-model` architecture.
+- **Event Emitting Support**: Emit and handle custom events from web components.
+- **Disable Removal of Styles on Unmount**: Control the removal of styles upon component unmount which can solve issue with css transition.
+
 
 ## Installation
 
@@ -90,7 +95,8 @@ createWebComponent({
   VueDefineCustomElement,
   h,
   createApp,
-  getCurrentInstance
+  getCurrentInstance,
+  disableStyleRemoval: false,
 });
 ```
 Each option in the `createWebComponent` function has a specific purpose:
@@ -102,6 +108,7 @@ Each option in the `createWebComponent` function has a specific purpose:
 - `h`: The `h` function from Vue.
 - `createApp`: The `createApp` function from Vue.
 - `getCurrentInstance`: The `getCurrentInstance` function from Vue.
+- `disableStyleRemoval`: Boolean to disable removal of styles on unmount.
 
 4. **Build your application**. You can use your favorite bundler to build your application.
 ## Bundlers Configuration

@@ -55,7 +55,8 @@ createWebComponent({
   VueDefineCustomElement,
   h,
   createApp,
-  getCurrentInstance
+  getCurrentInstance,
+  disableStyleRemoval: false,
 });
 ```
 Each option in the `createWebComponent` function has a specific purpose:
@@ -67,3 +68,4 @@ Each option in the `createWebComponent` function has a specific purpose:
 - `h`: The `h` function from Vue.
 - `createApp`: The `createApp` function from Vue.
 - `getCurrentInstance`: The `getCurrentInstance` function from Vue.
+- `disableStyleRemoval`: A boolean value that determines whether or not to remove styles on unmount. This is useful for CSS transitions.

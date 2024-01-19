@@ -13,7 +13,7 @@ export interface CreateWebComponentOptions {
   h: (...args: any[]) => any
   getCurrentInstance: (...args: any[]) => any
   createApp: (...args: any[]) => any
-  skipRemoveStylesOnUnmount?: boolean
+  disableRemoveStylesOnUnmount?: boolean
 }
 
 export function createWebComponent(options: CreateWebComponentOptions): void
