@@ -25,6 +25,7 @@ Check out the [Docs](https://erangrin.github.io/vue-web-component-wrapper)
 - **Slot and Named Slot Support**: Define and use slots and named slots within web components.
 - **v-model Support**: Improved support for two-way data binding using `v-model` architecture.
 - **Event Emitting Support**: Emit and handle custom events from web components.
+- **Provide/Inject Support**: Pass data from parent to child components using `provide` and `inject`.
 - **Disable Removal of Styles on Unmount**: Control the removal of styles upon component unmount which can solve issue with css transition.
 
 
