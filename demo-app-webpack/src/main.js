@@ -1,4 +1,5 @@
 import App from './App.vue';
+import AppChild from './AppChild.vue';
 import tailwindStyles from './assets/tailwind.css?raw';
 import { createWebHashHistory, createRouter } from "vue-router";
 import { createI18n } from 'vue-i18n';
@@ -6,7 +7,7 @@ import { createStore } from 'vuex'
 import { defaultRoutes} from './main.routes.js'
 import { store } from './store/index.js'
 import { defineCustomElement as VueDefineCustomElement, h, createApp, getCurrentInstance } from 'vue';
-import { createWebComponent } from 'vue-web-component-wrapper';
+import { createWebComponent } from '../../package/index.js';
 
 const pluginsWrapper = {
   install(GivenVue) {
@@ -39,3 +40,14 @@ createWebComponent({
   disableRemoveStylesOnUnmount: true,
 });
 
+createWebComponent({
+  rootComponent: AppChild,
+  elementName: 'my-child-component',
+  plugins: pluginsWrapper,
+  cssFrameworkStyles: tailwindStyles,
+  VueDefineCustomElement,
+  h,
+  createApp,
+  getCurrentInstance,
+  disableRemoveStylesOnUnmount: true,
+});
