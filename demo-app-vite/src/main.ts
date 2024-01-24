@@ -1,4 +1,5 @@
 import app from './App.vue'
+import appChild from './AppChild.vue'
 
 // ?inline can not handle import url() in css therefore fonts are not loaded, workaround is to add font css to the App.vue
 import style from './style.css?inline' 
@@ -13,6 +14,17 @@ import { createWebComponent } from '../../package/index.js'
 createWebComponent({
   rootComponent: app,
   elementName: 'my-web-component',
+  plugins: pluginsWrapper,
+  cssFrameworkStyles: style,
+  VueDefineCustomElement,
+  h,
+  createApp,
+  getCurrentInstance,
+})
+
+createWebComponent({
+  rootComponent: appChild,
+  elementName: 'my-child-component',
   plugins: pluginsWrapper,
   cssFrameworkStyles: style,
   VueDefineCustomElement,

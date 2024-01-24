@@ -24,7 +24,7 @@ export const defineCustomElement = ({
   createApp,
   getCurrentInstance,
   elementName,
-  disableRemoveStylesOnUnmount
+  disableRemoveStylesOnUnmount,
 }) =>
   VueDefineCustomElement({
     styles: [cssFrameworkStyles],
@@ -39,6 +39,18 @@ export const defineCustomElement = ({
       const emitsList = [...(rootComponent?.emits || []), 'update:modelValue']
       const app = createApp()
       app.component('app-root', rootComponent)
+
+      if (rootComponent.provide) {
+        const provide = typeof rootComponent.provide === 'function'
+          ? rootComponent.provide() 
+          : rootComponent.provide;
+        
+        // Setup provide
+        Object.keys(provide).forEach(key => {
+          app.provide(key, provide[key]);
+        });
+      }
+      
       app.mixin({
         mounted() {
           const insertStyles = (styles) => {

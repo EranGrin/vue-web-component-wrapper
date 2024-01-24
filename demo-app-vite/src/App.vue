@@ -64,6 +64,11 @@ export default {
   name: 'App',
   namedSlots: ['customName'],
   emits: ['customEventTest', 'update:modelValue'],
+  provide() {
+    return {
+      testKey: 'I am provide/inject data via default slot',
+    };
+  },
   props: {
     apiToken: { type: String, required: true },
     baseUri: { type: String, default: 'test.me' },

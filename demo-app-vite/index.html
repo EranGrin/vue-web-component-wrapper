@@ -51,10 +51,14 @@
       model-value="v-model-value"
     >
       <!-- default slot -->
-      <h1>I am a default slot</h1>
+    <my-child-component
+      lang="de"
+      route="/route1"
+      class="my-child-component"
+    ></my-child-component>
       
       <!-- named slot -->
-      <div slot="customName">I am a custom slot </div>
+      <div slot="customName">I am a custom named slot </div>
     </my-web-component>
 
     <script type="module" src="./src/main.ts"></script>
