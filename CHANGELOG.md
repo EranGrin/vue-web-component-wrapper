@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+## [1.4.0] - 25.01.2024
+### Added
+- Added support for provide/inject
+- Fixed demo app
+- Added documentation for provide/inject
+
 ## [1.3.4] - 19.01.2024
 ### Fixed
 - Fixed WEBPACK 5 support example
