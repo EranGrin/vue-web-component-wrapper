@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+
+## [1.4.1] - 25.04.2024
+### Fixed
+- Issue with :root selector
+### Added
+- Add auto function to replace all :root selector css with :host selector
+
+
 ## [1.4.0] - 25.01.2024
 ### Added
 - Added support for provide/inject

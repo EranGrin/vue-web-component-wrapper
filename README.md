@@ -1,6 +1,17 @@
+<p align="center">
+    <h1 align="center">vue-web-component-wrapper</h1>
+</p>
+<p align="center">
+    <em>Transforming full-fledged Vue3 applications into reusable web components</em>
+</p>
+<p align="center">
+	<img src="https://img.shields.io/badge/license-MIT-green" alt="License MIT">
+	<img src="https://img.shields.io/badge/version-1.4.1-blue" alt="version 1.4.1">
+	<img src="https://img.shields.io/badge/maintained-yes-brightgreen" alt="maintained yes">
+</p>
 
+<hr>
 
-# vue-web-component-wrapper
 
 ## Introduction
 `vue-web-component-wrapper` is a powerful Vue 3 plugin designed for transforming full-fledged Vue applications into reusable web components (custom elements). These web components can be integrated into any website, enhancing flexibility and reusability.
@@ -111,7 +122,10 @@ Each option in the `createWebComponent` function has a specific purpose:
 - `getCurrentInstance`: The `getCurrentInstance` function from Vue.
 - `disableStyleRemoval`: Boolean to disable removal of styles on unmount.
 
-4. **Build your application**. You can use your favorite bundler to build your application.
+### cssFrameworkStyles
+The `cssFrameworkStyles` option is used to import the CSS of your CSS framework or any other css style that your application needs to have globally, this option can also handle css vars that define on a `:root` selector.
+
+4. **Build your application**. Tested bundler to build the web-component application.
 ## Bundlers Configuration
 
 <details>
