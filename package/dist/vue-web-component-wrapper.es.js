@@ -17,12 +17,12 @@ const h = ({
   cssFrameworkStyles: l,
   VueDefineCustomElement: u,
   h: s,
-  createApp: a,
-  getCurrentInstance: o,
+  createApp: o,
+  getCurrentInstance: a,
   elementName: p,
   disableRemoveStylesOnUnmount: _
 }) => u({
-  styles: [l],
+  styles: [replaceAllRootWithHost(l)],
   props: {
     ...e.props,
     modelValue: { type: [String, Number, Boolean, Array, Object] }
@@ -31,7 +31,7 @@ const h = ({
   emits: e == null ? void 0 : e.emits,
   setup(f) {
     var m;
-    const v = [...(e == null ? void 0 : e.emits) || [], "update:modelValue"], r = a();
+    const v = [...(e == null ? void 0 : e.emits) || [], "update:modelValue"], r = o();
     if (r.component("app-root", e), e.provide) {
       const t = typeof e.provide == "function" ? e.provide() : e.provide;
       Object.keys(t).forEach((n) => {
@@ -53,7 +53,7 @@ const h = ({
         _ || (t = this.__style) == null || t.remove();
       }
     }), r.use(c);
-    const d = o();
+    const d = a();
     if (Object.assign(d.appContext, r._context), Object.assign(d.provides, r._context.provides), process.env.NODE_ENV === "development" && window.__VUE_DEVTOOLS_GLOBAL_HOOK__) {
       const t = document.querySelector(p);
       r._container = t, r._instance = d;
@@ -89,8 +89,8 @@ const h = ({
   plugins: l,
   cssFrameworkStyles: u,
   VueDefineCustomElement: s,
-  h: a,
-  createApp: o,
+  h: o,
+  createApp: a,
   getCurrentInstance: p,
   disableRemoveStylesOnUnmount: _
 }) => {
@@ -108,11 +108,11 @@ const h = ({
     );
     return;
   }
-  if (!a) {
+  if (!o) {
     console.warn("No h provided. Please provide an h to create a web component.");
     return;
   }
-  if (!o) {
+  if (!a) {
     console.warn("No createApp provided. Please provide a createApp to create a web component.");
     return;
   }
@@ -127,8 +127,8 @@ const h = ({
       plugins: l,
       cssFrameworkStyles: u,
       VueDefineCustomElement: s,
-      h: a,
-      createApp: o,
+      h: o,
+      createApp: a,
       getCurrentInstance: p,
       elementName: e,
       disableRemoveStylesOnUnmount: _

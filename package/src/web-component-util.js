@@ -15,9 +15,10 @@ function convertToOnEventName(eventName) {
   return 'on' + eventName.charAt(0).toUpperCase() + eventName.slice(1);
 }
 
-function replaceAllRootWithHost(css) {
-  return css.replace(/:root/g, ':host');
-}
+// TODO: consider this as a feature
+// function replaceAllRootWithHost(css) {
+//   return css.replace(/:root/g, ':host');
+// }
 
 export const defineCustomElement = ({
   rootComponent,
