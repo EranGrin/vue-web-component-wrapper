@@ -15,11 +15,6 @@ function convertToOnEventName(eventName) {
   return 'on' + eventName.charAt(0).toUpperCase() + eventName.slice(1);
 }
 
-// TODO: consider this as a feature
-// function replaceAllRootWithHost(css) {
-//   return css.replace(/:root/g, ':host');
-// }
-
 export const defineCustomElement = ({
   rootComponent,
   plugins,
@@ -32,7 +27,7 @@ export const defineCustomElement = ({
   disableRemoveStylesOnUnmount,
 }) =>
   VueDefineCustomElement({
-    styles: [replaceAllRootWithHost(cssFrameworkStyles)],
+    styles: [cssFrameworkStyles],
     props: {
       ...rootComponent.props,
       modelValue: { type: [String, Number, Boolean, Array, Object] } // v-model support

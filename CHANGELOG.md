@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [1.4.4] - 03.05.2024
+### Fixed
+- Rollback changes with :root replacement as most use cases are for css variables and this does work web components
+- Fixed package types
+
+
 ## [1.4.1] - 25.04.2024
 ### Fixed
 - Issue with :root selector
