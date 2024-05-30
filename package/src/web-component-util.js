@@ -1,4 +1,5 @@
 
+import { defineCustomElement as VueDefineCustomElement}  from "./apiCustomElement"
 const nearestElement = (el) => {
   while (el?.nodeType !== 1 /* ELEMENT */) {
     if (!el.parentElement) {
@@ -19,7 +20,7 @@ export const defineCustomElement = ({
   rootComponent,
   plugins,
   cssFrameworkStyles,
-  VueDefineCustomElement,
+  // VueDefineCustomElement,
   h,
   createApp,
   getCurrentInstance,
@@ -123,4 +124,4 @@ export const defineCustomElement = ({
         }
       );
     },
-  })
+  }, { shadowRoot: false })

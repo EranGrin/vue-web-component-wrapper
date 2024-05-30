@@ -37,6 +37,8 @@
     "@babel/preset-env": "^7.22.4",
     "@types/node": "^18.16.16",
     "@vitejs/plugin-vue": "^4.2.3",
+    "@vue/runtime-core": "^3.4.27",
+    "@vue/shared": "^3.4.27",
     "vite": "^4.3.9",
     "vite-plugin-dts": "^2.3.0",
     "vitepress": "^1.0.0-rc.39"

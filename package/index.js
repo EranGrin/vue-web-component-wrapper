@@ -38,18 +38,22 @@ export const createWebComponent = ({
     return
   }
 
+  const customElementConfig = defineCustomElement({
+    rootComponent,
+    plugins,
+    cssFrameworkStyles,
+    VueDefineCustomElement,
+    h,
+    createApp,
+    getCurrentInstance,
+    elementName,
+    disableRemoveStylesOnUnmount
+  }, )
+
+  console.log('customElementConfig', customElementConfig)
+
   customElements.define(
     elementName,
-    defineCustomElement({
-      rootComponent,
-      plugins,
-      cssFrameworkStyles,
-      VueDefineCustomElement,
-      h,
-      createApp,
-      getCurrentInstance,
-      elementName,
-      disableRemoveStylesOnUnmount
-    })
+    customElementConfig
   )
 }
