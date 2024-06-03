@@ -7,10 +7,13 @@ import style from './style.css?inline'
 import { pluginsWrapper } from './plugins'
 
 import { defineCustomElement as VueDefineCustomElement, h, createApp, getCurrentInstance } from 'vue'
-// import createWebComponent  from '../../package/index.js'
+import createWebComponent  from '../../package/index.js'
 // import { createWebComponent }  from '../../package/index.js'
-import createWebComponent from 'vue-web-component-wrapper'
 
+//////////////////////////////////////////////////////////////////////////////////////
+////// in real use case, you should import createWebComponent from 'vue-web-component-wrapper'
+// import createWebComponent from 'vue-web-component-wrapper'
+// add vue-web-component-wrapper to package.json asl well
 
 createWebComponent({
   rootComponent: app,
