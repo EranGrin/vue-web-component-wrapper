@@ -29,7 +29,9 @@
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "@vue/runtime-core": "^3.4.27",
+    "@vue/runtime-dom": "^3.4.27"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.5",
@@ -37,8 +39,6 @@
     "@babel/preset-env": "^7.22.4",
     "@types/node": "^18.16.16",
     "@vitejs/plugin-vue": "^4.2.3",
-    "@vue/runtime-core": "^3.4.27",
-    "@vue/runtime-dom": "^3.4.27",
     "@vue/shared": "^3.4.27",
     "vite": "^4.3.9",
     "vite-plugin-dts": "^2.3.0"
