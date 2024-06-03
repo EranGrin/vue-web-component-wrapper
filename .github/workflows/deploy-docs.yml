@@ -20,7 +20,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 6 # Adjust the version as needed
+          version: 9 # Adjust the version as needed
       - uses: actions/setup-node@v3
         with:
           node-version: 18
