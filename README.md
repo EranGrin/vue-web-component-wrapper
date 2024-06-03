@@ -38,6 +38,7 @@ Check out the [Docs](https://erangrin.github.io/vue-web-component-wrapper)
 - **Event Emitting Support**: Emit and handle custom events from web components.
 - **Provide/Inject Support**: Pass data from parent to child components using `provide` and `inject`.
 - **Disable Removal of Styles on Unmount**: Control the removal of styles upon component unmount which can solve issue with css transition.
+- **Disable Shadow DOM**: Disable shadow DOM for web components.
 
 
 ## Installation
@@ -108,7 +109,8 @@ createWebComponent({
   h,
   createApp,
   getCurrentInstance,
-  disableStyleRemoval: false,
+  disableStyleRemoval: false, //default is false
+  disableShadowDOM: false, //default is false
 });
 ```
 Each option in the `createWebComponent` function has a specific purpose:
@@ -121,6 +123,7 @@ Each option in the `createWebComponent` function has a specific purpose:
 - `createApp`: The `createApp` function from Vue.
 - `getCurrentInstance`: The `getCurrentInstance` function from Vue.
 - `disableStyleRemoval`: Boolean to disable removal of styles on unmount.
+- `disableShadowDOM`: Boolean to disable shadow DOM.
 
 ### cssFrameworkStyles
 The `cssFrameworkStyles` option is used to import the CSS of your CSS framework or any other css style that your application needs to have globally, this option can also handle css vars that define on a `:root` selector.
@@ -269,11 +272,17 @@ import style from './style.css?raw'
 ```
 </details>
 
+## Web Component without Shadow DOM
+If you want to create a web component without shadow DOM, you can set the `disableShadowDOM` option to `true` in the `createWebComponent` function. This will create a web component without shadow DOM encapsulation.
+This feature uses a patch to the Vue source code, which could lead to some issues with future versions of Vue. If you encounter any issues, please report them in the issues section of this repository.
+
+
 ## Tips
 - **Testing Production Build**: the easiest way to test your production build is to run a local server in the `dist` folder. I use [valet](https://laravel.com/docs/10.x/valet) for this, but any local server should work.
 ## Future Plans
 
 1. **TypeScript Support**: Adding proper strict types.
+2. **Vuetify Example**: Adding an example usage with Vuetify.
 
 
 ## Contributing

@@ -9,8 +9,8 @@ import { defineCustomElement } from './src/web-component-util'
   h,
   createApp,
   getCurrentInstance,
-  disableRemoveStylesOnUnmount,
-  disableShadowDOM = true
+  disableRemoveStylesOnUnmount = false,
+  disableShadowDOM = false
 }) => {
   if (!rootComponent) {
     console.warn('No root component provided. Please provide a root component to create a web component.')

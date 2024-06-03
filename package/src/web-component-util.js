@@ -123,7 +123,7 @@ export const defineCustomElement = ({
         {
           default: () => h('slot'),
           ...namedSlots,
-          ...slots, 
+          ...slots,
         }
       );
     },

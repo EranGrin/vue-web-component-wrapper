@@ -8,9 +8,9 @@ export default {
     ],
     sidebar: [
       {
-        text: 'Installation & Registration',
+        text: 'Installation',
         items: [
-          { text: 'installation', link: '/installation' },
+          { text: 'package installation', link: '/installation' },
         ],
       },
       {
@@ -19,8 +19,15 @@ export default {
           { text: 'config', link: '/usage' },
           { text: 'slots', link: '/slots' },
           { text: 'event-emitting', link: '/event-emitting' },
-          { text: 'webpack', link: '/webpack-config' },
+          { text: 'disable-shadow-dom', link: '/disable-shadow-dom' },
+          { text: 'host-implementation', link: '/host-implementation' },
+        ],
+      },
+      {
+        text: 'Bundlers',
+        items: [
           { text: 'vite', link: '/vite-config' },
+          { text: 'webpack', link: '/webpack-config' },
         ],
       },
       {
