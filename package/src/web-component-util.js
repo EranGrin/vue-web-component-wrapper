@@ -1,5 +1,5 @@
 
-import { defineCustomElement as VueDefineCustomElement}  from "./apiCustomElement"
+import { defineCustomElement as VueDefineCustomElementPatch}  from "./api-custom-element"
 const nearestElement = (el) => {
   while (el?.nodeType !== 1 /* ELEMENT */) {
     if (!el.parentElement) {
@@ -20,14 +20,17 @@ export const defineCustomElement = ({
   rootComponent,
   plugins,
   cssFrameworkStyles,
-  // VueDefineCustomElement,
+  VueDefineCustomElement,
   h,
   createApp,
   getCurrentInstance,
   elementName,
   disableRemoveStylesOnUnmount,
+  disableShadowDOM
 }) =>
-  VueDefineCustomElement({
+  {
+    const customElementDefiner = disableShadowDOM ? VueDefineCustomElementPatch : VueDefineCustomElement
+    return customElementDefiner({
     styles: [cssFrameworkStyles],
     props: {
       ...rootComponent.props,
@@ -35,8 +38,7 @@ export const defineCustomElement = ({
     }, 
     emits: rootComponent?.emits,
     
-
-    setup(props) {
+    setup(props, { slots }) {
       const emitsList = [...(rootComponent?.emits || []), 'update:modelValue']
       const app = createApp()
       app.component('app-root', rootComponent)
@@ -121,7 +123,8 @@ export const defineCustomElement = ({
         {
           default: () => h('slot'),
           ...namedSlots,
+          ...slots, 
         }
       );
     },
-  }, { shadowRoot: false })
+  }, disableShadowDOM && { shadowRoot: false })}

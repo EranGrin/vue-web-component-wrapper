@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-xl">
+    <h1 class="text-xl border border-y-indigo-50 rounded-lg bg-cyan-700">
       {{ testInject }}
     </h1>
   </div>

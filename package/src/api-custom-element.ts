@@ -1,13 +1,10 @@
 
-/* eslint-disable */
-
 import {
   type ComponentOptionsMixin,
   type ComponentOptionsWithArrayProps,
   type ComponentOptionsWithObjectProps,
   type ComponentOptionsWithoutProps,
   type ComponentPropsOptions,
-  type ComponentPublicInstance,
   type ComputedOptions,
   type EmitsOptions,
   type MethodOptions,
@@ -21,13 +18,14 @@ import {
   defineComponent,
   nextTick,
   warn,
+  h,
   type ConcreteComponent,
   type ComponentOptions,
   type ComponentInjectOptions,
-  type SlotsType
+  type SlotsType,
+  DefineComponent
 } from '@vue/runtime-core'
 import { camelize, extend, hyphenate, isArray, toNumber } from '@vue/shared'
-import HTMLParsedElement from './html-parsed-element'
 import { hydrate, render } from 'vue'
 
 // @ts-ignore
@@ -52,9 +50,9 @@ export interface DefineCustomElementConfig {
 export function defineCustomElement<Props, RawBindings = object>(
   setup: (
     props: Readonly<Props>,
-    ctx: SetupContext
+    ctx: SetupContext,
   ) => RawBindings | RenderFunction,
-  config?: DefineCustomElementConfig
+  config?: DefineCustomElementConfig,
 ): VueElementConstructor<Props>
 
 // overload 2: object format with no props
@@ -70,7 +68,7 @@ export function defineCustomElement<
   EE extends string = string,
   I extends ComponentInjectOptions = {},
   II extends string = string,
-  S extends SlotsType = {}
+  S extends SlotsType = {},
 >(
   options: ComponentOptionsWithoutProps<
     Props,
@@ -102,7 +100,7 @@ export function defineCustomElement<
   EE extends string = string,
   I extends ComponentInjectOptions = {},
   II extends string = string,
-  S extends SlotsType = {}
+  S extends SlotsType = {},
 >(
   options: ComponentOptionsWithArrayProps<
     PropNames,
@@ -134,7 +132,7 @@ export function defineCustomElement<
   EE extends string = string,
   I extends ComponentInjectOptions = {},
   II extends string = string,
-  S extends SlotsType = {}
+  S extends SlotsType = {},
 >(
   options: ComponentOptionsWithObjectProps<
     PropsOptions,
@@ -155,18 +153,16 @@ export function defineCustomElement<
 
 // overload 5: defining a custom element from the returned value of
 // `defineComponent`
-export function defineCustomElement(
-  options: {
-    new (...args: any[]): ComponentPublicInstance
-  },
+export function defineCustomElement<P>(
+  options: DefineComponent<P, any, any, any>,
   config?: DefineCustomElementConfig
-): VueElementConstructor
+): VueElementConstructor<ExtractPropTypes<P>>
 
 /*! #__NO_SIDE_EFFECTS__ */
 export function defineCustomElement(
   options: any,
   config?: DefineCustomElementConfig,
-  hydrate?: RootHydrateFunction
+  hydrate?: RootHydrateFunction,
 ): VueElementConstructor {
   const Comp = defineComponent(options) as any
   class VueCustomElement extends VueElement {
@@ -184,89 +180,68 @@ export const defineSSRCustomElement = ((
   options: any,
   config?: DefineCustomElementConfig
 ) => {
+  
   // @ts-expect-error
-  return defineCustomElement(options, config, hydrate)
+  return defineCustomElement(options, hydrate)
 }) as typeof defineCustomElement
 
 const BaseClass = (
-  typeof HTMLElement !== 'undefined' ? HTMLParsedElement : class {}
+  typeof HTMLElement !== 'undefined' ? HTMLElement : class {}
 ) as typeof HTMLElement
 
 type InnerComponentDef = ConcreteComponent & { styles?: string[] }
+
+// extend the interface ComponentInternalInstance
+// to add the `styles` property
+interface ComponentInternalInstanceCe extends ComponentInternalInstance {
+  ceReload?: (newStyles: string[] | undefined) => void
+  isCE?: boolean
+  provides?: Record<string, any>
+}
 
 export class VueElement extends BaseClass {
   /**
    * @internal
    */
-  _instance: ComponentInternalInstance | null = null
+  _instance: ComponentInternalInstanceCe | null = null
 
   private _connected = false
   private _resolved = false
   private _numberProps: Record<string, true> | null = null
   private _styles?: HTMLStyleElement[]
-  private _slots?: Element[]
+  private _slots: { [key: string]: VNode[] } = {};
   private _ob?: MutationObserver | null = null
-
   constructor(
     private _def: InnerComponentDef,
     private _props: Record<string, any> = {},
     private _config: DefineCustomElementConfig = {},
-    hydrate?: RootHydrateFunction
+    hydrate?: RootHydrateFunction,
   ) {
     super()
-    this._config = extend(
-      {
-        shadowRoot: true
-      },
-      this._config
-    )
-
-    if (this._config.shadowRoot) {
-      if (this.shadowRoot && hydrate) {
-        hydrate(this._createVNode(), this._root!)
-      } else {
-        if (__DEV__ && this.shadowRoot) {
-          warn(
-            `Custom element has pre-rendered declarative shadow root but is not ` +
-              `defined as hydratable. Use \`defineSSRCustomElement\`.`
-          )
-        }
-        this.attachShadow({ mode: 'open' })
-        if (!(this._def as ComponentOptions).__asyncLoader) {
-          // for sync component defs we can immediately resolve props
-          this._resolveProps(this._def)
-        }
-      }
+    if (this._root && hydrate) {
+      hydrate(this._createVNode(), this._root)
     } else {
-      if (hydrate) {
-        hydrate(this._createVNode(), this._root!)
+      if (__DEV__ && this._root) {
+        warn(
+          `Custom element has pre-rendered declarative shadow root but is not ` +
+            `defined as hydratable. Use \`defineSSRCustomElement\`.`,
+        )
+      }
+      if (this._config.shadowRoot !== false) {
+        this.attachShadow({ mode: 'open' })
+      }
+
+      if (!(this._def as ComponentOptions).__asyncLoader) {
+        // for sync component defs we can immediately resolve props
+        this._resolveProps(this._def)
       }
     }
   }
-
   get _root(): Element | ShadowRoot | null {
     return this._config.shadowRoot ? this.shadowRoot : this
   }
 
   connectedCallback() {
-    if (this._config.shadowRoot) {
-      this._connect()
-    } else {
-      // @ts-expect-error
-      super.connectedCallback()
-    }
-  }
-
-  // use of parsedCallback when shadowRoot is disabled
-  // to wait for slots to be parsed
-  // see https://stackoverflow.com/a/52884370
-  parsedCallback() {
-    if (!this._config.shadowRoot) {
-      this._connect()
-    }
-  }
-
-  _connect() {
     this._connected = true
     if (!this._instance) {
       if (this._resolved) {
@@ -279,12 +254,12 @@ export class VueElement extends BaseClass {
 
   disconnectedCallback() {
     this._connected = false
-    if (this._ob) {
-      this._ob.disconnect()
-      this._ob = null
-    }
     nextTick(() => {
       if (!this._connected) {
+        if (this._ob) {
+          this._ob.disconnect()
+          this._ob = null
+        }
         render(null, this._root!)
         this._instance = null
       }
@@ -339,10 +314,15 @@ export class VueElement extends BaseClass {
 
       // replace slot
       if (!this._config.shadowRoot) {
-        this._slots = Array.from(this.children).map(
-          n => n.cloneNode(true) as Element
-        )
-        this.replaceChildren()
+        this._slots = {};
+        for (const child of Array.from(this.children)) {
+          const slotName = child.getAttribute('slot') || 'default';
+          if (!this._slots[slotName]) {
+            this._slots[slotName] = [];
+          }
+          this._slots[slotName].push(h(child.tagName.toLowerCase(), {}, child.innerHTML));
+        }
+        this.replaceChildren();
       }
 
       // apply CSS
@@ -379,13 +359,13 @@ export class VueElement extends BaseClass {
         },
         set(val) {
           this._setProp(key, val)
-        }
+        },
       })
     }
   }
 
   protected _setAttr(key: string) {
-    let value = this.getAttribute(key)
+    let value = this.hasAttribute(key) ? this.getAttribute(key) : undefined
     const camelKey = camelize(key)
     if (this._numberProps && this._numberProps[camelKey]) {
       value = toNumber(value)
@@ -407,7 +387,7 @@ export class VueElement extends BaseClass {
     key: string,
     val: any,
     shouldReflect = true,
-    shouldUpdate = true
+    shouldUpdate = true,
   ) {
     if (val !== this._props[key]) {
       this._props[key] = val
@@ -432,35 +412,15 @@ export class VueElement extends BaseClass {
   }
 
   private _createVNode(): VNode<any, any> {
-    let childs = null
-    // web components without shadow DOM do not supports native slot
-    // so, we create a VNode based on the content of child nodes.
-    // NB: named slots are currently not supported
-    if (!this._config.shadowRoot) {
-      childs = () => {
-        const toObj = (a: NamedNodeMap) => {
-          const res: Record<string, string | null> = {}
-          for (let i = 0, l = a.length; i < l; i++) {
-            const attr = a[i]
-            res[attr.nodeName] = attr.nodeValue
-          }
-          return res
-        }
-        return this._slots!.map(ele => {
-          const attrs = ele.attributes ? toObj(ele.attributes) : {}
-          attrs.innerHTML = ele.innerHTML
-          return createVNode(ele.tagName, attrs, null)
-        })
-      }
+
+    const vnode = createVNode(this._def, extend({}, this._props), this._slots) as VNode & {
+      ce?: (instance: ComponentInternalInstance) => void
     }
-    const vnode = createVNode(this._def, extend({}, this._props), childs)
+
     if (!this._instance) {
-      // @ts-ignore
-      vnode.ce = instance => {
+      vnode.ce = (instance: ComponentInternalInstanceCe) => {
         this._instance = instance
-        if (this._config.shadowRoot) {
-          instance.isCE = true
-        }
+        instance.isCE = true
         // HMR
         if (__DEV__) {
           instance.ceReload = (newStyles: string[] | undefined) => {
@@ -478,12 +438,11 @@ export class VueElement extends BaseClass {
         const dispatch = (event: string, args: any[]) => {
           this.dispatchEvent(
             new CustomEvent(event, {
-              detail: args
-            })
+              detail: args,
+            }),
           )
         }
 
-        // intercept emit
         instance.emit = (event: string, ...args: any[]) => {
           // dispatch both the raw and hyphenated versions of an event
           // to match Vue behavior
@@ -501,7 +460,6 @@ export class VueElement extends BaseClass {
         ) {
           if (parent instanceof VueElement) {
             instance.parent = parent._instance
-            // @ts-ignore
             instance.provides = parent._instance!.provides
             break
           }
@@ -517,7 +475,6 @@ export class VueElement extends BaseClass {
         const s = document.createElement('style')
         s.textContent = css
         this._root!.appendChild(s)
-        // record for HMR
         if (__DEV__) {
           ;(this._styles || (this._styles = [])).push(s)
         }

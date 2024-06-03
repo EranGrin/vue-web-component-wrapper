@@ -1,6 +1,6 @@
 import { defineCustomElement } from './src/web-component-util'
 
-export const createWebComponent = ({
+ export const createWebComponent = ({
   elementName,
   rootComponent,
   plugins,
@@ -9,7 +9,8 @@ export const createWebComponent = ({
   h,
   createApp,
   getCurrentInstance,
-  disableRemoveStylesOnUnmount
+  disableRemoveStylesOnUnmount,
+  disableShadowDOM = true
 }) => {
   if (!rootComponent) {
     console.warn('No root component provided. Please provide a root component to create a web component.')
@@ -47,13 +48,15 @@ export const createWebComponent = ({
     createApp,
     getCurrentInstance,
     elementName,
-    disableRemoveStylesOnUnmount
+    disableRemoveStylesOnUnmount,
+    disableShadowDOM
   }, )
 
-  console.log('customElementConfig', customElementConfig)
 
   customElements.define(
     elementName,
     customElementConfig
   )
 }
+
+export default createWebComponent;

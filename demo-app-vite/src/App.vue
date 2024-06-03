@@ -62,7 +62,7 @@
 <script lang="ts">
 export default {
   name: 'App',
-  namedSlots: ['customName'],
+  namedSlots: ['customName'], // only needed with Shadow DOM
   emits: ['customEventTest', 'update:modelValue'],
   provide() {
     return {
