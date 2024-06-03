@@ -275,6 +275,8 @@ import style from './style.css?raw'
 ## Web Component without Shadow DOM
 If you want to create a web component without shadow DOM, you can set the `disableShadowDOM` option to `true` in the `createWebComponent` function. This will create a web component without shadow DOM encapsulation.
 This feature uses a patch to the Vue source code, which could lead to some issues with future versions of Vue. If you encounter any issues, please report them in the issues section of this repository.
+### Demo without Shadow DOM
+[Demo](https://stackblitz.com/~/github.com/EranGrin/web-component-no-shadow-dom-demo)
 
 
 ## Tips
