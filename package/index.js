@@ -1,6 +1,6 @@
 import { defineCustomElement } from './src/web-component-util'
 
-export const createWebComponent = ({
+ export const createWebComponent = ({
   elementName,
   rootComponent,
   plugins,
@@ -9,7 +9,8 @@ export const createWebComponent = ({
   h,
   createApp,
   getCurrentInstance,
-  disableRemoveStylesOnUnmount
+  disableRemoveStylesOnUnmount = false,
+  disableShadowDOM = false
 }) => {
   if (!rootComponent) {
     console.warn('No root component provided. Please provide a root component to create a web component.')
@@ -38,18 +39,24 @@ export const createWebComponent = ({
     return
   }
 
+  const customElementConfig = defineCustomElement({
+    rootComponent,
+    plugins,
+    cssFrameworkStyles,
+    VueDefineCustomElement,
+    h,
+    createApp,
+    getCurrentInstance,
+    elementName,
+    disableRemoveStylesOnUnmount,
+    disableShadowDOM
+  }, )
+
+
   customElements.define(
     elementName,
-    defineCustomElement({
-      rootComponent,
-      plugins,
-      cssFrameworkStyles,
-      VueDefineCustomElement,
-      h,
-      createApp,
-      getCurrentInstance,
-      elementName,
-      disableRemoveStylesOnUnmount
-    })
+    customElementConfig
   )
 }
+
+export default createWebComponent;

@@ -43,8 +43,12 @@ In this example, App.vue declares a named slot customName by specifying it in th
 ```
 Here, the `<h1>` tag is passed into the default slot of `my-web-component`, and the `<div>` with `slot="customName"` is passed into the named slot `customName`.
 
-### Tips
 
+### Web Component without Shadow DOM
+if useing `disableShadowDOM` option in `createWebComponent` function, the named slots will be rendered in the light DOM without the need of defining the named slots in the Vue component.
+`namedSlots: ['customName']`: Not needed if `disableShadowDOM` is `true` 
+
+### Tips
 - The slot names defined in your Vue component (`header`, `footer`, etc.) should match the `slot` attributes used in the HTML where the web component is utilized.
 - The `slot` attribute in the HTML should match the `name` attribute in the Vue component.
 - The `namedSlots` attribute in the Vue component should be an array of strings, where each string is the name of a named slot.

@@ -21,6 +21,7 @@ Check out these demo projects to see `vue-web-component-wrapper` in action:
 - **Enhanced v-model Support**: Improved support for two-way data binding using the `v-model` architecture.
 - **Event Emitting Capability**: Enables the emission and handling of custom events from web components.
 - **Disable Style Removal on Unmount**: Option to control the removal of styles upon component unmount, addressing issues with CSS transition.
+- **Disable Shadow DOM**: Option to disable the Shadow DOM, rendering content in the light DOM.
 
 
 ## Tips

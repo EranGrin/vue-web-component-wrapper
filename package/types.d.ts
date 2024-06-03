@@ -14,6 +14,7 @@ export interface CreateWebComponentOptions {
   getCurrentInstance: (...args: any[]) => any
   createApp: (...args: any[]) => any
   disableRemoveStylesOnUnmount?: boolean
+  disableShadowDOM?: boolean
 }
 
 export function createWebComponent(options: CreateWebComponentOptions): void

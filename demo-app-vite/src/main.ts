@@ -7,8 +7,9 @@ import style from './style.css?inline'
 import { pluginsWrapper } from './plugins'
 
 import { defineCustomElement as VueDefineCustomElement, h, createApp, getCurrentInstance } from 'vue'
-import { createWebComponent } from '../../package/index.js'
-// import { createWebComponent } from 'vue-web-component-wrapper'
+// import createWebComponent  from '../../package/index.js'
+// import { createWebComponent }  from '../../package/index.js'
+import createWebComponent from 'vue-web-component-wrapper'
 
 
 createWebComponent({

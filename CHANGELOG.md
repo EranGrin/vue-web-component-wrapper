@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [1.5.0] - 03.06.2024
+### Added
+- Added support for web components without shadow DOM
+
 ## [1.4.4] - 03.05.2024
 ### Fixed
 - Rollback changes with :root replacement as most use cases are for css variables and this does work web components
