@@ -11,8 +11,8 @@
     "types": "package/types.d.ts",
     "exports": {
         ".": {
-        "import": "./package/dist/vue-web-component-wrapper.es.js",
-        "require": "./package/dist/vue-web-component-wrapper.umd.js"
+            "import": "./package/dist/vue-web-component-wrapper.es.js",
+            "require": "./package/dist/vue-web-component-wrapper.umd.js"
         }
     },
     "scripts": {
@@ -39,9 +39,9 @@
     "author": "Your Name",
     "license": "MIT",
     "devDependencies": {
-        "@rushstack/eslint-patch": "^1.3.0",
-        "eslint": "^8.41.0",
-        "eslint-plugin-vue": "^9.14.1",
-        "vitepress": "^1.2.2"
+        "@rushstack/eslint-patch": "^1.10.3",
+        "eslint": "^8.57.0",
+        "eslint-plugin-vue": "^9.26.0",
+        "vitepress": "^1.2.3"
     }
 }

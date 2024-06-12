@@ -1,30 +1,34 @@
 
+import type {
+  ComponentOptionsMixin,
+  ComponentOptionsWithArrayProps,
+  ComponentOptionsWithObjectProps,
+  ComponentOptionsWithoutProps,
+  ComponentPropsOptions,
+  ComputedOptions,
+  EmitsOptions,
+  MethodOptions,
+  RenderFunction,
+  SetupContext,
+  ComponentInternalInstance,
+  VNode,
+  RootHydrateFunction,
+  ExtractPropTypes,
+  ConcreteComponent,
+  ComponentOptions,
+  ComponentInjectOptions,
+  SlotsType,
+  DefineComponent
+} from '@vue/runtime-core';
+
 import {
-  type ComponentOptionsMixin,
-  type ComponentOptionsWithArrayProps,
-  type ComponentOptionsWithObjectProps,
-  type ComponentOptionsWithoutProps,
-  type ComponentPropsOptions,
-  type ComputedOptions,
-  type EmitsOptions,
-  type MethodOptions,
-  type RenderFunction,
-  type SetupContext,
-  type ComponentInternalInstance,
-  type VNode,
-  type RootHydrateFunction,
-  type ExtractPropTypes,
   createVNode,
   defineComponent,
   nextTick,
   warn,
-  h,
-  type ConcreteComponent,
-  type ComponentOptions,
-  type ComponentInjectOptions,
-  type SlotsType,
-  DefineComponent
-} from '@vue/runtime-core'
+  h
+} from 'vue';
+
 import { camelize, extend, hyphenate, isArray, toNumber } from '@vue/shared'
 import { hydrate, render } from 'vue'
 
