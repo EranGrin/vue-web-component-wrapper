@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [1.5.1] - 12.06.2024
+### Fixed
+- Fixed issue with HMR in Vite.js
+
 ## [1.5.0] - 03.06.2024
 ### Added
 - Added support for web components without shadow DOM
