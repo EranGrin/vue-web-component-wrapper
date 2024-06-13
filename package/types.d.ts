@@ -18,3 +18,10 @@ export interface CreateWebComponentOptions {
 }
 
 export function createWebComponent(options: CreateWebComponentOptions): void
+
+
+interface defineCustomElementSFCOptions {
+  ShadowRoot: boolean
+}
+
+export function defineCustomElementSFC(component: Component, options: defineCustomElementSFCOptions): any

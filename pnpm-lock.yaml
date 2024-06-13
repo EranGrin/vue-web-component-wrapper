@@ -218,8 +218,8 @@ importers:
         specifier: ^3.4.27
         version: 3.4.27
       vue:
-        specifier: ^3.3.4
-        version: 3.3.4
+        specifier: ^3.4.27
+        version: 3.4.27(typescript@5.0.4)
     devDependencies:
       '@babel/cli':
         specifier: ^7.21.5
@@ -235,7 +235,7 @@ importers:
         version: 18.16.16
       '@vitejs/plugin-vue':
         specifier: ^4.2.3
-        version: 4.2.3(vite@4.3.9(@types/node@18.16.16)(sass@1.62.1)(terser@5.17.6))(vue@3.3.4)
+        version: 4.2.3(vite@4.3.9(@types/node@18.16.16)(sass@1.62.1)(terser@5.17.6))(vue@3.4.27(typescript@5.0.4))
       '@vue/shared':
         specifier: ^3.4.27
         version: 3.4.27
@@ -6158,11 +6158,11 @@ snapshots:
 
   '@babel/helper-annotate-as-pure@7.18.6':
     dependencies:
-      '@babel/types': 7.22.4
+      '@babel/types': 7.24.7
 
   '@babel/helper-builder-binary-assignment-operator-visitor@7.22.3':
     dependencies:
-      '@babel/types': 7.22.4
+      '@babel/types': 7.24.7
 
   '@babel/helper-compilation-targets@7.22.1(@babel/core@7.22.1)':
     dependencies:
@@ -6212,15 +6212,15 @@ snapshots:
   '@babel/helper-function-name@7.21.0':
     dependencies:
       '@babel/template': 7.21.9
-      '@babel/types': 7.22.4
+      '@babel/types': 7.24.7
 
   '@babel/helper-hoist-variables@7.18.6':
     dependencies:
-      '@babel/types': 7.22.4
+      '@babel/types': 7.24.7
 
   '@babel/helper-member-expression-to-functions@7.22.3':
     dependencies:
-      '@babel/types': 7.22.4
+      '@babel/types': 7.24.7
 
   '@babel/helper-module-imports@7.21.4':
     dependencies:
@@ -6241,7 +6241,7 @@ snapshots:
 
   '@babel/helper-optimise-call-expression@7.18.6':
     dependencies:
-      '@babel/types': 7.22.4
+      '@babel/types': 7.24.7
 
   '@babel/helper-plugin-utils@7.21.5': {}
 
@@ -6251,7 +6251,7 @@ snapshots:
       '@babel/helper-annotate-as-pure': 7.18.6
       '@babel/helper-environment-visitor': 7.22.1
       '@babel/helper-wrap-function': 7.20.5
-      '@babel/types': 7.22.4
+      '@babel/types': 7.24.7
     transitivePeerDependencies:
       - supports-color
 
@@ -6262,21 +6262,21 @@ snapshots:
       '@babel/helper-optimise-call-expression': 7.18.6
       '@babel/template': 7.21.9
       '@babel/traverse': 7.22.4
-      '@babel/types': 7.22.4
+      '@babel/types': 7.24.7
     transitivePeerDependencies:
       - supports-color
 
   '@babel/helper-simple-access@7.21.5':
     dependencies:
-      '@babel/types': 7.22.4
+      '@babel/types': 7.24.7
 
   '@babel/helper-skip-transparent-expression-wrappers@7.20.0':
     dependencies:
-      '@babel/types': 7.22.4
+      '@babel/types': 7.24.7
 
   '@babel/helper-split-export-declaration@7.18.6':
     dependencies:
-      '@babel/types': 7.22.4
+      '@babel/types': 7.24.7
 
   '@babel/helper-string-parser@7.21.5': {}
 
@@ -6293,7 +6293,7 @@ snapshots:
       '@babel/helper-function-name': 7.21.0
       '@babel/template': 7.21.9
       '@babel/traverse': 7.22.4
-      '@babel/types': 7.22.4
+      '@babel/types': 7.24.7
     transitivePeerDependencies:
       - supports-color
 
@@ -7605,10 +7605,10 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
-  '@vitejs/plugin-vue@4.2.3(vite@4.3.9(@types/node@18.16.16)(sass@1.62.1)(terser@5.17.6))(vue@3.3.4)':
+  '@vitejs/plugin-vue@4.2.3(vite@4.3.9(@types/node@18.16.16)(sass@1.62.1)(terser@5.17.6))(vue@3.4.27(typescript@5.0.4))':
     dependencies:
       vite: 4.3.9(@types/node@18.16.16)(sass@1.62.1)(terser@5.17.6)
-      vue: 3.3.4
+      vue: 3.4.27(typescript@5.0.4)
 
   '@vitejs/plugin-vue@4.2.3(vite@4.3.9(@types/node@20.4.5)(sass@1.62.1)(terser@5.17.6))(vue@3.3.4)':
     dependencies:
@@ -7642,8 +7642,8 @@ snapshots:
     dependencies:
       '@volar/language-core': 1.4.1
       '@volar/source-map': 1.4.1
-      '@vue/compiler-dom': 3.3.4
-      '@vue/compiler-sfc': 3.3.4
+      '@vue/compiler-dom': 3.4.27
+      '@vue/compiler-sfc': 3.4.27
       '@vue/reactivity': 3.3.4
       '@vue/shared': 3.4.27
       minimatch: 9.0.1
@@ -7666,7 +7666,7 @@ snapshots:
       '@babel/plugin-syntax-jsx': 7.21.4(@babel/core@7.22.1)
       '@babel/template': 7.21.9
       '@babel/traverse': 7.22.4
-      '@babel/types': 7.22.4
+      '@babel/types': 7.24.7
       '@vue/babel-helper-vue-transform-on': 1.0.2
       camelcase: 6.3.0
       html-tags: 3.3.1
@@ -8100,7 +8100,7 @@ snapshots:
 
   '@vue/reactivity-transform@3.3.4':
     dependencies:
-      '@babel/parser': 7.22.4
+      '@babel/parser': 7.24.7
       '@vue/compiler-core': 3.3.4
       '@vue/shared': 3.3.4
       estree-walker: 2.0.2

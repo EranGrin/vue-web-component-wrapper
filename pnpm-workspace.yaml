@@ -3,3 +3,4 @@ packages:
   - docs/
   - demo-app-vite/
   - demo-app-webpack/
+  - demo-SFC-vite/

@@ -1,6 +1,8 @@
 import { defineCustomElement } from './src/web-component-util'
+import { defineCustomElement as defineCustomElementSFC}  from "./src/api-custom-element"
 
- export const createWebComponent = ({
+export { defineCustomElementSFC };
+export const createWebComponent = ({
   elementName,
   rootComponent,
   plugins,
@@ -58,5 +60,7 @@ import { defineCustomElement } from './src/web-component-util'
     customElementConfig
   )
 }
+
+export { defineCustomElement } from './src/web-component-util'
 
 export default createWebComponent;

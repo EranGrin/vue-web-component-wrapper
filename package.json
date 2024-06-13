@@ -23,6 +23,7 @@
         "docs:preview": "vitepress preview docs --port 8080",
         "vite-demo": "pnpm -C demo-app-vite run dev",
         "webpack-demo": "pnpm -C demo-app-webpack run start",
+        "SFC-demo": "pnpm -C demo-SFC-vite run build && pnpm -C demo-SFC-vite run dev",
         "lint": "eslint --ext .js,.vue ."
     },
     "keywords": [

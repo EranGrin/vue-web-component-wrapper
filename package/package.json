@@ -29,7 +29,7 @@
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
-    "vue": "^3.3.4",
+    "vue": "^3.4.27",
     "@vue/runtime-core": "^3.4.27",
     "@vue/runtime-dom": "^3.4.27"
   },

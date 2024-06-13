@@ -26,7 +26,8 @@ import {
   defineComponent,
   nextTick,
   warn,
-  h
+  h,
+  FunctionalComponent
 } from 'vue';
 
 import { camelize, extend, hyphenate, isArray, toNumber } from '@vue/shared'
@@ -193,7 +194,7 @@ const BaseClass = (
   typeof HTMLElement !== 'undefined' ? HTMLElement : class {}
 ) as typeof HTMLElement
 
-type InnerComponentDef = ConcreteComponent & { styles?: string[] }
+type InnerComponentDef = ConcreteComponent & { styles?: string[], components?: { [key: string]: InnerComponentDef } }
 
 // extend the interface ComponentInternalInstance
 // to add the `styles` property
@@ -218,7 +219,7 @@ export class VueElement extends BaseClass {
   constructor(
     private _def: InnerComponentDef,
     private _props: Record<string, any> = {},
-    private _config: DefineCustomElementConfig = {},
+    private _config: DefineCustomElementConfig = { shadowRoot: true },
     hydrate?: RootHydrateFunction,
   ) {
     super()
@@ -291,8 +292,9 @@ export class VueElement extends BaseClass {
     this._ob.observe(this, { attributes: true })
 
     const resolve = (def: InnerComponentDef, isAsync = false) => {
-      const { props, styles } = def
+      const { props } = def
 
+      const styles = this._collectNestedStyles(def);
       // cast Number-type props set before resolve
       let numberProps
       if (props && !isArray(props)) {
@@ -324,7 +326,9 @@ export class VueElement extends BaseClass {
           if (!this._slots[slotName]) {
             this._slots[slotName] = [];
           }
-          this._slots[slotName].push(h(child.tagName.toLowerCase(), {}, child.innerHTML));
+          this._slots[slotName].push(
+            h(child.tagName.toLowerCase(), {}, child.innerHTML)
+          );
         }
         this.replaceChildren();
       }
@@ -417,7 +421,7 @@ export class VueElement extends BaseClass {
 
   private _createVNode(): VNode<any, any> {
 
-    const vnode = createVNode(this._def, extend({}, this._props), this._slots) as VNode & {
+    const vnode = createVNode(this._def as FunctionalComponent, extend({}, this._props), this._slots) as VNode & {
       ce?: (instance: ComponentInternalInstance) => void
     }
 
@@ -484,5 +488,18 @@ export class VueElement extends BaseClass {
         }
       })
     }
+  }
+
+  private _collectNestedStyles(componentDef: 
+    InnerComponentDef
+  ): string[] {
+    let styles = componentDef.styles ?? [];
+
+    if (componentDef.components) {
+      Object.values(componentDef.components).forEach(subComponent => {
+        styles = styles.concat(this._collectNestedStyles(subComponent as InnerComponentDef));
+      });
+    }
+    return styles;
   }
 }

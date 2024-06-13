@@ -19,7 +19,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .test-apply {
   @apply text-4xl font-bold text-center text-blue-500;
 }
