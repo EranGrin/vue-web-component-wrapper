@@ -276,7 +276,24 @@ import style from './style.css?raw'
 If you want to create a web component without shadow DOM, you can set the `disableShadowDOM` option to `true` in the `createWebComponent` function. This will create a web component without shadow DOM encapsulation.
 This feature uses a patch to the Vue source code, which could lead to some issues with future versions of Vue. If you encounter any issues, please report them in the issues section of this repository.
 ### Demo without Shadow DOM
-[Demo](https://stackblitz.com/~/github.com/EranGrin/web-component-no-shadow-dom-demo)
+[Demo Link](https://stackblitz.com/~/github.com/EranGrin/web-component-no-shadow-dom-demo)
+
+
+## SFC as Custom Element
+enhance the core functionality of SFC as Custom Element [defineCustomElement](https://vuejs.org/guide/extras/web-components#sfc-as-custom-element) with 2 new features:
+1. **Nested Components**: You can use nested components with styles and for example share base components between multiple custom elements.
+2. **Shadow DOM option**: You can disable shadow DOM for the SFC custom element.
+
+### Usage
+```javascript
+// main.js
+import { defineCustomElementSFC } from 'vue-web-component-wrapper';
+const MyComponentElement = defineCustomElementSFC(MyComponent, {shadowRoot: false})
+customElements.define('my-component', MyComponentElement)
+```
+
+### Demo
+[Demo Link](https://stackblitz.com/edit/vue-web-component-wrapper?file=README.md&startScript=sfc-demo)
 
 
 ## Tips

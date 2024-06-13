@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [1.6.0] - 13.06.2024
+### Added
+- Added support for SFC custom elements
+
 ## [1.5.1] - 12.06.2024
 ### Fixed
 - Fixed issue with HMR in Vite.js

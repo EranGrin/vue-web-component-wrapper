@@ -21,6 +21,7 @@ export default {
           { text: 'event-emitting', link: '/event-emitting' },
           { text: 'disable-shadow-dom', link: '/disable-shadow-dom' },
           { text: 'host-implementation', link: '/host-implementation' },
+          { text: 'SFC as Custom Element', link: '/sfc-as-custom-element' },
         ],
       },
       {
