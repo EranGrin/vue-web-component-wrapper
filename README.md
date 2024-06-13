@@ -292,8 +292,8 @@ const MyComponentElement = defineCustomElementSFC(MyComponent, {shadowRoot: fals
 customElements.define('my-component', MyComponentElement)
 ```
 
-### Demo
-[Demo Link](https://stackblitz.com/edit/vue-web-component-wrapper?file=README.md&startScript=sfc-demo)
+### Demo SFC Custom Element
+[Demo Link](https://stackblitz.com/edit/vue-web-component-wrapper?file=README.md&startScript=SFC-demo)
 
 
 ## Tips
