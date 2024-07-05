@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [1.6.2] - 05.07.2024
+### Fixed
+- Fixed issue style tag injection order
+- Fixed TS types issue with SFC
+
 ## [1.6.0] - 13.06.2024
 ### Added
 - Added support for SFC custom elements
