@@ -204,7 +204,7 @@ const G = ({
       mounted() {
         var l;
         const c = (u) => {
-          u != null && u.length && (this.__style = document.createElement("style"), this.__style.innerText = u.join().replace(/\n/g, ""), C(this.$el).prepend(this.__style));
+          u != null && u.length && (this.__style = document.createElement("style"), this.__style.innerText = u.join().replace(/\n/g, ""), C(this.$el).append(this.__style));
         };
         if (c((l = this.$) == null ? void 0 : l.type.styles), this.$options.components)
           for (const u of Object.values(this.$options.components))
