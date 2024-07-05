@@ -60,7 +60,7 @@ export const defineCustomElement = ({
             if (styles?.length) {
               this.__style = document.createElement('style')
               this.__style.innerText = styles.join().replace(/\n/g, '')
-              nearestElement(this.$el).prepend(this.__style)
+              nearestElement(this.$el).append(this.__style)
             }
           }
 
