@@ -24,6 +24,7 @@ createWebComponent({
   h,
   createApp,
   getCurrentInstance,
+  asyncInitialization: () => new Promise((res) => setTimeout(() => res("p1"), 1000))
 })
 
 createWebComponent({
@@ -35,4 +36,5 @@ createWebComponent({
   h,
   createApp,
   getCurrentInstance,
+  asyncInitialization: () => new Promise((res) => setTimeout(() => res("p1"), 1000))
 })
