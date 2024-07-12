@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [1.6.3] - 12.07.2024
+### Added
+- Fixed issue with style tag injection order SFC
+- Fixed duplicate style tags for cssFrameworkStyles
+
 ## [1.6.2] - 05.07.2024
 ### Fixed
 - Fixed issue style tag injection order

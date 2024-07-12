@@ -23,8 +23,10 @@ Check out these demo projects to see `vue-web-component-wrapper` in action:
 - **Webpack implentaion**: Check out this [Webpack Demo Project](https://stackblitz.com/edit/vue-web-component-wrapper?file=README.md&startScript=webpack-demo)
 - **Vite.js implentaion**: Check out this [Vite Demo Project](https://stackblitz.com/edit/vue-web-component-wrapper?file=README.md&startScript=vite-demo)
 
+
+
 ## Documentation
-Check out the [Docs](https://erangrin.github.io/vue-web-component-wrapper)
+See [Docs](https://erangrin.github.io/vue-web-component-wrapper)
 
 ## Key Features:
 - **Vue Plugins Compatibility**: Seamlessly integrates with Vue ecosystem plugins such as Vuex, Vue Router, and Vue I18n.
@@ -40,6 +42,13 @@ Check out the [Docs](https://erangrin.github.io/vue-web-component-wrapper)
 - **Disable Removal of Styles on Unmount**: Control the removal of styles upon component unmount which can solve issue with css transition.
 - **Disable Shadow DOM**: Disable shadow DOM for web components.
 
+
+## CSS Frameworks Examples
+- **Tailwind CSS** - [Demo](https://stackblitz.com/edit/vue-web-component-wrapper?file=README.md&startScript=tailwind-demo)
+- **UnoCSS** - [Demo](https://stackblitz.com/~/github.com/EranGrin/element-plus-unocss-web-component?file=src/style.css:L1-L2)
+- **Vuetify** - [Demo](https://stackblitz.com/~/github.com/EranGrin/vuetify-web-component-wrapper)
+- **Element Plus** - [Demo](https://stackblitz.com/~/github.com/EranGrin/element-plus-unocss-web-component?file=src/style.css:L1-L2)
+See documentation for more details [Docs](https://erangrin.github.io/vue-web-component-wrapper)
 
 ## Installation
 
@@ -301,7 +310,7 @@ customElements.define('my-component', MyComponentElement)
 ## Future Plans
 
 1. **TypeScript Support**: Adding proper strict types.
-2. **Vuetify Example**: Adding an example usage with Vuetify.
+
 
 
 ## Contributing
