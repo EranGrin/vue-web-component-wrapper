@@ -31,6 +31,7 @@ export const defineCustomElement = ({
   {
     const customElementDefiner = disableShadowDOM ? VueDefineCustomElementPatch : VueDefineCustomElement
     return customElementDefiner({
+    name: 'vue-custom-element-root-component',
     styles: [cssFrameworkStyles],
     props: {
       ...rootComponent.props,
@@ -55,7 +56,13 @@ export const defineCustomElement = ({
       }
       
       app.mixin({
+
         mounted() {
+
+          if (this.$?.type?.name === 'vue-custom-element-root-component') {
+            return
+          }
+
           const insertStyles = (styles) => {
             if (styles?.length) {
               this.__style = document.createElement('style')
