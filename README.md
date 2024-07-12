@@ -6,7 +6,7 @@
 </p>
 <p align="center">
 	<img src="https://img.shields.io/badge/license-MIT-green" alt="License MIT">
-	<img src="https://img.shields.io/badge/version-1.6.3-blue" alt="version 1.6.3">
+	<img src="https://img.shields.io/badge/version-1.6.4-blue" alt="version 1.6.4">
 	<img src="https://img.shields.io/badge/maintained-yes-brightgreen" alt="maintained yes">
 </p>
 
@@ -48,6 +48,7 @@ See [Docs](https://erangrin.github.io/vue-web-component-wrapper)
 - **UnoCSS** - [Demo](https://stackblitz.com/~/github.com/EranGrin/element-plus-unocss-web-component?file=src/style.css:L1-L2)
 - **Vuetify** - [Demo](https://stackblitz.com/~/github.com/EranGrin/vuetify-web-component-wrapper)
 - **Element Plus** - [Demo](https://stackblitz.com/~/github.com/EranGrin/element-plus-unocss-web-component?file=src/style.css:L1-L2)
+
 See documentation for more details [Docs](https://erangrin.github.io/vue-web-component-wrapper)
 
 ## Installation
