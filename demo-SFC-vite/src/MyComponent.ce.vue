@@ -1,12 +1,10 @@
 <template>
   <div id="test">Hello, Web Component!</div>
-  <other-component/>
+  <slot></slot>
 </template>
 
 <script lang="ts">
-import OtherComponent from './OtherComponent.vue';
 export default {
-  components: { OtherComponent },
   name: 'MyComponent',
 }
 </script>

@@ -482,7 +482,7 @@ export class VueElement extends BaseClass {
       styles.forEach(css => {
         const s = document.createElement('style')
         s.textContent = css
-        this._root!.appendChild(s)
+        this._root!.prepend(s)
         if (__DEV__) {
           ;(this._styles || (this._styles = [])).push(s)
         }
