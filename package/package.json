@@ -14,8 +14,14 @@
   "module": "dist/vue-web-component-wrapper.es.js",
   "exports": {
     ".": {
-      "import": "./dist/vue-web-component-wrapper.es.js",
-      "require": "./dist/vue-web-component-wrapper.umd.js"
+      "import": {
+        "types": "./types.d.ts",
+        "default": "./dist/vue-web-component-wrapper.es.js"
+      },
+      "require": {
+        "types": "./types.d.ts",
+        "default": "./dist/vue-web-component-wrapper.umd.js"
+      }
     }
   },
   "files": [
