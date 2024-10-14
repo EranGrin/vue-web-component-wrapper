@@ -4,7 +4,7 @@
     "description": "A Vue 3 plugin that provides a web component wrapper with styles, seamlessly integrating with Vuex, Vue Router, Vue I18n, and supporting Tailwind CSS and Sass styles.",
     "repository": {
         "type": "git",
-        "url": "https://github.com/EranGrin/vue3-web-component-wrapper/tree/main/plugin"
+        "url": "git+https://github.com/EranGrin/vue3-web-component-wrapper.git#main"
     },
     "homepage": "https://erangrin.github.io/vue-web-component-wrapper/",
     "main": "package/dist/vue-web-component-wrapper.umd.js",
