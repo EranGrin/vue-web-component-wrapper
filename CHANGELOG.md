@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [1.6.4] - 14.10.2024
+### Added
+- Added support for replaceRootWithHost option
+
 ## [1.6.3] - 12.07.2024
 ### Added
 - Fixed issue with style tag injection order SFC

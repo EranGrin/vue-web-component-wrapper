@@ -12,7 +12,8 @@ export const createWebComponent = ({
   createApp,
   getCurrentInstance,
   disableRemoveStylesOnUnmount = false,
-  disableShadowDOM = false
+  disableShadowDOM = false,
+  replaceRootWithHostInCssFramework = false
 }) => {
   if (!rootComponent) {
     console.warn('No root component provided. Please provide a root component to create a web component.')
@@ -51,7 +52,8 @@ export const createWebComponent = ({
     getCurrentInstance,
     elementName,
     disableRemoveStylesOnUnmount,
-    disableShadowDOM
+    disableShadowDOM,
+    replaceRootWithHostInCssFramework
   }, )
 
 

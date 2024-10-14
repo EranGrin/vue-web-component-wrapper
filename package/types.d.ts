@@ -18,6 +18,7 @@ export interface CreateWebComponentOptions {
 }
 
 export function createWebComponent(options: CreateWebComponentOptions): void
+export default createWebComponent
 
 
 interface defineCustomElementSFCOptions {

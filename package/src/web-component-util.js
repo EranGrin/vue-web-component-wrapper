@@ -16,6 +16,17 @@ function convertToOnEventName(eventName) {
   return 'on' + eventName.charAt(0).toUpperCase() + eventName.slice(1);
 }
 
+// Function to replace ':root' with ':host' in CSS
+function replaceRootWithHost(styles) {
+  if (typeof styles === 'string') {
+    return styles.replace(/:root/g, ':host');
+  } else if (Array.isArray(styles)) {
+    return styles.map(style => style.replace(/:root/g, ':host'));
+  } else {
+    return styles;
+  }
+}
+
 export const defineCustomElement = ({
   rootComponent,
   plugins,
@@ -26,84 +37,87 @@ export const defineCustomElement = ({
   getCurrentInstance,
   elementName,
   disableRemoveStylesOnUnmount,
-  disableShadowDOM
-}) =>
-  {
-    const customElementDefiner = disableShadowDOM ? VueDefineCustomElementPatch : VueDefineCustomElement
-    return customElementDefiner({
+  disableShadowDOM,
+  replaceRootWithHostInCssFramework,
+}) => {
+  const customElementDefiner = disableShadowDOM ? VueDefineCustomElementPatch : VueDefineCustomElement;
+
+  const modifiedCssFrameworkStyles = replaceRootWithHostInCssFramework
+    ? replaceRootWithHost(cssFrameworkStyles) 
+    : cssFrameworkStyles;
+
+  return customElementDefiner({
     name: 'vue-custom-element-root-component',
-    styles: [cssFrameworkStyles],
+    styles: [modifiedCssFrameworkStyles],
     props: {
       ...rootComponent.props,
       modelValue: { type: [String, Number, Boolean, Array, Object] } // v-model support
-    }, 
+    },
     emits: rootComponent?.emits,
-    
+
     setup(props, { slots }) {
-      const emitsList = [...(rootComponent?.emits || []), 'update:modelValue']
-      const app = createApp()
-      app.component('app-root', rootComponent)
+      const emitsList = [...(rootComponent?.emits || []), 'update:modelValue'];
+      const app = createApp();
+      app.component('app-root', rootComponent);
 
       if (rootComponent.provide) {
         const provide = typeof rootComponent.provide === 'function'
-          ? rootComponent.provide() 
+          ? rootComponent.provide()
           : rootComponent.provide;
-        
+
         // Setup provide
         Object.keys(provide).forEach(key => {
           app.provide(key, provide[key]);
         });
       }
-      
+
       app.mixin({
-
         mounted() {
-
           if (this.$?.type?.name === 'vue-custom-element-root-component') {
-            return
+            return;
           }
 
           const insertStyles = (styles) => {
             if (styles?.length) {
-              this.__style = document.createElement('style')
-              this.__style.innerText = styles.join().replace(/\n/g, '')
-              nearestElement(this.$el).append(this.__style)
+              this.__style = document.createElement('style');
+              this.__style.innerText = styles.join().replace(/\n/g, '');
+              nearestElement(this.$el).append(this.__style);
             }
-          }
+          };
 
-          insertStyles(this.$?.type.styles)
+          insertStyles(this.$?.type.styles);
           if (this.$options.components) {
             for (const comp of Object.values(this.$options.components)) {
-              insertStyles(comp.styles)
+              insertStyles(comp.styles);
             }
           }
         },
         unmounted() {
-          if(!disableRemoveStylesOnUnmount) {
-            this.__style?.remove()
+          if (!disableRemoveStylesOnUnmount) {
+            this.__style?.remove();
           }
         },
-      })
+      });
 
-      app.use(plugins)
-      
-      const inst = getCurrentInstance()
-      Object.assign(inst.appContext, app._context)
-      Object.assign(inst.provides, app._context.provides)
+      app.use(plugins);
+
+      const inst = getCurrentInstance();
+      Object.assign(inst.appContext, app._context);
+      Object.assign(inst.provides, app._context.provides);
 
       // Add support for Vue Devtools
       if (process.env.NODE_ENV === 'development' && window.__VUE_DEVTOOLS_GLOBAL_HOOK__) {
         const root = document.querySelector(elementName);
         app._container = root;
         app._instance = inst;
-        
+
         const types = {
           Comment: Symbol('v-cmt'),
           Fragment: Symbol('v-fgt'),
           Static: Symbol('v-stc'),
           Text: Symbol('v-txt'),
         };
-        
+
         window.__VUE_DEVTOOLS_GLOBAL_HOOK__.emit('app:init', app, app.version, types);
         window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = app;
       }
@@ -117,7 +131,7 @@ export const defineCustomElement = ({
 
       // Establish named slots
       const namedSlots = rootComponent?.namedSlots?.reduce((acc, slotsName) => {
-        acc[slotsName] = () => h('slot',{ name: slotsName});
+        acc[slotsName] = () => h('slot', { name: slotsName });
         return acc;
       }, {});
 
@@ -134,4 +148,5 @@ export const defineCustomElement = ({
         }
       );
     },
-  }, disableShadowDOM && { shadowRoot: false })}
+  }, disableShadowDOM && { shadowRoot: false });
+}
