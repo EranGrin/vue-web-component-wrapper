@@ -1,7 +1,7 @@
-var T = Object.defineProperty;
-var D = (e, i, t) => i in e ? T(e, i, { enumerable: !0, configurable: !0, writable: !0, value: t }) : e[i] = t;
-var u = (e, i, t) => (D(e, typeof i != "symbol" ? i + "" : i, t), t);
-import { defineComponent as R, nextTick as H, render as g, createVNode as $, h as B } from "vue";
+var D = Object.defineProperty;
+var H = (e, r, t) => r in e ? D(e, r, { enumerable: !0, configurable: !0, writable: !0, value: t }) : e[r] = t;
+var u = (e, r, t) => (H(e, typeof r != "symbol" ? r + "" : r, t), t);
+import { defineComponent as $, nextTick as B, render as A, createVNode as K, h as U } from "vue";
 /**
 * @vue/shared v3.4.27
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
@@ -10,28 +10,28 @@ import { defineComponent as R, nextTick as H, render as g, createVNode as $, h a
 /*! #__NO_SIDE_EFFECTS__ */
 process.env.NODE_ENV !== "production" && Object.freeze({});
 process.env.NODE_ENV !== "production" && Object.freeze([]);
-const K = Object.assign, P = Array.isArray, U = (e) => typeof e == "string", A = (e) => {
-  const i = /* @__PURE__ */ Object.create(null);
-  return (t) => i[t] || (i[t] = e(t));
-}, z = /-(\w)/g, w = A((e) => e.replace(z, (i, t) => t ? t.toUpperCase() : "")), M = /\B([A-Z])/g, m = A(
-  (e) => e.replace(M, "-$1").toLowerCase()
+const z = Object.assign, P = Array.isArray, M = (e) => typeof e == "string", L = (e) => {
+  const r = /* @__PURE__ */ Object.create(null);
+  return (t) => r[t] || (r[t] = e(t));
+}, k = /-(\w)/g, O = L((e) => e.replace(k, (r, t) => t ? t.toUpperCase() : "")), C = /\B([A-Z])/g, m = L(
+  (e) => e.replace(C, "-$1").toLowerCase()
 ), S = (e) => {
-  const i = U(e) ? Number(e) : NaN;
-  return isNaN(i) ? e : i;
+  const r = M(e) ? Number(e) : NaN;
+  return isNaN(r) ? e : r;
 };
 /*! #__NO_SIDE_EFFECTS__ */
-function k(e, i, t) {
-  const s = R(e);
-  class o extends O {
-    constructor(r) {
-      super(s, r, i, t);
+function F(e, r, t) {
+  const s = $(e);
+  class o extends g {
+    constructor(i) {
+      super(s, i, r, t);
     }
   }
   return u(o, "def", s), o;
 }
-const F = typeof HTMLElement < "u" ? HTMLElement : class {
+const G = typeof HTMLElement < "u" ? HTMLElement : class {
 };
-class O extends F {
+class g extends G {
   constructor(t, s = {}, o = { shadowRoot: !0 }, n) {
     super();
     /**
@@ -53,8 +53,8 @@ class O extends F {
     this._connected = !0, this._instance || (this._resolved ? this._update() : this._resolveDef());
   }
   disconnectedCallback() {
-    this._connected = !1, H(() => {
-      this._connected || (this._ob && (this._ob.disconnect(), this._ob = null), g(null, this._root), this._instance = null);
+    this._connected = !1, B(() => {
+      this._connected || (this._ob && (this._ob.disconnect(), this._ob = null), A(null, this._root), this._instance = null);
     });
   }
   /**
@@ -69,19 +69,19 @@ class O extends F {
         this._setAttr(n.attributeName);
     }), this._ob.observe(this, { attributes: !0 });
     const t = (o, n = !1) => {
-      const { props: r } = o, p = this._collectNestedStyles(o);
+      const { props: i } = o, p = this._collectNestedStyles(o);
       let d;
-      if (r && !P(r))
-        for (const a in r) {
-          const _ = r[a];
-          (_ === Number || _ && _.type === Number) && (a in this._props && (this._props[a] = S(this._props[a])), (d || (d = /* @__PURE__ */ Object.create(null)))[w(a)] = !0);
+      if (i && !P(i))
+        for (const a in i) {
+          const h = i[a];
+          (h === Number || h && h.type === Number) && (a in this._props && (this._props[a] = S(this._props[a])), (d || (d = /* @__PURE__ */ Object.create(null)))[O(a)] = !0);
         }
       if (this._numberProps = d, n && this._resolveProps(o), !this._config.shadowRoot) {
         this._slots = {};
         for (const a of Array.from(this.children)) {
-          const _ = a.getAttribute("slot") || "default";
-          this._slots[_] || (this._slots[_] = []), this._slots[_].push(
-            B(a.tagName.toLowerCase(), {}, a.innerHTML)
+          const h = a.getAttribute("slot") || "default";
+          this._slots[h] || (this._slots[h] = []), this._slots[h].push(
+            U(a.tagName.toLowerCase(), {}, a.innerHTML)
           );
         }
         this.replaceChildren();
@@ -94,19 +94,19 @@ class O extends F {
     const { props: s } = t, o = P(s) ? s : Object.keys(s || {});
     for (const n of Object.keys(this))
       n[0] !== "_" && o.includes(n) && this._setProp(n, this[n], !0, !1);
-    for (const n of o.map(w))
+    for (const n of o.map(O))
       Object.defineProperty(this, n, {
         get() {
           return this._getProp(n);
         },
-        set(r) {
-          this._setProp(n, r);
+        set(i) {
+          this._setProp(n, i);
         }
       });
   }
   _setAttr(t) {
     let s = this.hasAttribute(t) ? this.getAttribute(t) : void 0;
-    const o = w(t);
+    const o = O(t);
     this._numberProps && this._numberProps[o] && (s = S(s)), this._setProp(o, s, !1);
   }
   /**
@@ -122,25 +122,25 @@ class O extends F {
     s !== this._props[t] && (this._props[t] = s, n && this._instance && this._update(), o && (s === !0 ? this.setAttribute(m(t), "") : typeof s == "string" || typeof s == "number" ? this.setAttribute(m(t), s + "") : s || this.removeAttribute(m(t))));
   }
   _update() {
-    g(this._createVNode(), this._root);
+    A(this._createVNode(), this._root);
   }
   _createVNode() {
-    const t = $(this._def, K({}, this._props), this._slots);
+    const t = K(this._def, z({}, this._props), this._slots);
     return this._instance || (t.ce = (s) => {
       this._instance = s, s.isCE = !0;
-      const o = (r, p) => {
+      const o = (i, p) => {
         this.dispatchEvent(
-          new CustomEvent(r, {
+          new CustomEvent(i, {
             detail: p
           })
         );
       };
-      s.emit = (r, ...p) => {
-        o(r, p), m(r) !== r && o(m(r), p);
+      s.emit = (i, ...p) => {
+        o(i, p), m(i) !== i && o(m(i), p);
       };
       let n = this;
       for (; n = n && (n.parentNode || n.host); )
-        if (n instanceof O) {
+        if (n instanceof g) {
           s.parent = n._instance, s.provides = n._instance.provides;
           break;
         }
@@ -159,7 +159,7 @@ class O extends F {
     }), s;
   }
 }
-const G = (e) => {
+const W = (e) => {
   for (; (e == null ? void 0 : e.nodeType) !== 1; ) {
     if (!e.parentElement)
       throw new Error(
@@ -169,99 +169,107 @@ const G = (e) => {
   }
   return e;
 };
-function C(e) {
+function q(e) {
   return "on" + e.charAt(0).toUpperCase() + e.slice(1);
 }
-const q = ({
+function I(e) {
+  return typeof e == "string" ? e.replace(/:root/g, ":host") : Array.isArray(e) ? e.map((r) => r.replace(/:root/g, ":host")) : e;
+}
+const Z = ({
   rootComponent: e,
-  plugins: i,
+  plugins: r,
   cssFrameworkStyles: t,
   VueDefineCustomElement: s,
   h: o,
   createApp: n,
-  getCurrentInstance: r,
+  getCurrentInstance: i,
   elementName: p,
   disableRemoveStylesOnUnmount: d,
-  disableShadowDOM: a
-}) => (a ? k : s)({
-  name: "vue-custom-element-root-component",
-  styles: [t],
-  props: {
-    ...e.props,
-    modelValue: { type: [String, Number, Boolean, Array, Object] }
-    // v-model support
-  },
-  emits: e == null ? void 0 : e.emits,
-  setup(L, { slots: V }) {
-    var N;
-    const E = [...(e == null ? void 0 : e.emits) || [], "update:modelValue"], h = n();
-    if (h.component("app-root", e), e.provide) {
-      const c = typeof e.provide == "function" ? e.provide() : e.provide;
-      Object.keys(c).forEach((l) => {
-        h.provide(l, c[l]);
-      });
-    }
-    h.mixin({
-      mounted() {
-        var l, v, y;
-        if (((v = (l = this.$) == null ? void 0 : l.type) == null ? void 0 : v.name) === "vue-custom-element-root-component")
-          return;
-        const c = (f) => {
-          f != null && f.length && (this.__style = document.createElement("style"), this.__style.innerText = f.join().replace(/\n/g, ""), G(this.$el).append(this.__style));
+  disableShadowDOM: a,
+  replaceRootWithHostInCssFramework: h
+}) => {
+  const E = a ? F : s, V = h ? I(t) : t;
+  return E({
+    name: "vue-custom-element-root-component",
+    styles: [V],
+    props: {
+      ...e.props,
+      modelValue: { type: [String, Number, Boolean, Array, Object] }
+      // v-model support
+    },
+    emits: e == null ? void 0 : e.emits,
+    setup(j, { slots: x }) {
+      var N;
+      const w = [...(e == null ? void 0 : e.emits) || [], "update:modelValue"], _ = n();
+      if (_.component("app-root", e), e.provide) {
+        const c = typeof e.provide == "function" ? e.provide() : e.provide;
+        Object.keys(c).forEach((l) => {
+          _.provide(l, c[l]);
+        });
+      }
+      _.mixin({
+        mounted() {
+          var l, v, y;
+          if (((v = (l = this.$) == null ? void 0 : l.type) == null ? void 0 : v.name) === "vue-custom-element-root-component")
+            return;
+          const c = (f) => {
+            f != null && f.length && (this.__style = document.createElement("style"), this.__style.innerText = f.join().replace(/\n/g, ""), W(this.$el).append(this.__style));
+          };
+          if (c((y = this.$) == null ? void 0 : y.type.styles), this.$options.components)
+            for (const f of Object.values(this.$options.components))
+              c(f.styles);
+        },
+        unmounted() {
+          var c;
+          d || (c = this.__style) == null || c.remove();
+        }
+      }), _.use(r);
+      const b = i();
+      if (Object.assign(b.appContext, _._context), Object.assign(b.provides, _._context.provides), process.env.NODE_ENV === "development" && window.__VUE_DEVTOOLS_GLOBAL_HOOK__) {
+        const c = document.querySelector(p);
+        _._container = c, _._instance = b;
+        const l = {
+          Comment: Symbol("v-cmt"),
+          Fragment: Symbol("v-fgt"),
+          Static: Symbol("v-stc"),
+          Text: Symbol("v-txt")
         };
-        if (c((y = this.$) == null ? void 0 : y.type.styles), this.$options.components)
-          for (const f of Object.values(this.$options.components))
-            c(f.styles);
-      },
-      unmounted() {
-        var c;
-        d || (c = this.__style) == null || c.remove();
+        window.__VUE_DEVTOOLS_GLOBAL_HOOK__.emit("app:init", _, _.version, l), window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = _;
       }
-    }), h.use(i);
-    const b = r();
-    if (Object.assign(b.appContext, h._context), Object.assign(b.provides, h._context.provides), process.env.NODE_ENV === "development" && window.__VUE_DEVTOOLS_GLOBAL_HOOK__) {
-      const c = document.querySelector(p);
-      h._container = c, h._instance = b;
-      const l = {
-        Comment: Symbol("v-cmt"),
-        Fragment: Symbol("v-fgt"),
-        Static: Symbol("v-stc"),
-        Text: Symbol("v-txt")
-      };
-      window.__VUE_DEVTOOLS_GLOBAL_HOOK__.emit("app:init", h, h.version, l), window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = h;
+      const T = w == null ? void 0 : w.reduce((c, l) => {
+        const v = q(l);
+        return c[v] = (y) => {
+          b.emit(l, y);
+        }, c;
+      }, {}), R = (N = e == null ? void 0 : e.namedSlots) == null ? void 0 : N.reduce((c, l) => (c[l] = () => o("slot", { name: l }), c), {});
+      return () => o(
+        e,
+        {
+          ...j,
+          ...T
+        },
+        {
+          default: () => o("slot"),
+          ...R,
+          ...x
+        }
+      );
     }
-    const j = E == null ? void 0 : E.reduce((c, l) => {
-      const v = C(l);
-      return c[v] = (y) => {
-        b.emit(l, y);
-      }, c;
-    }, {}), x = (N = e == null ? void 0 : e.namedSlots) == null ? void 0 : N.reduce((c, l) => (c[l] = () => o("slot", { name: l }), c), {});
-    return () => o(
-      e,
-      {
-        ...L,
-        ...j
-      },
-      {
-        default: () => o("slot"),
-        ...x,
-        ...V
-      }
-    );
-  }
-}, a && { shadowRoot: !1 }), Z = ({
+  }, a && { shadowRoot: !1 });
+}, X = ({
   elementName: e,
-  rootComponent: i,
+  rootComponent: r,
   plugins: t,
   cssFrameworkStyles: s,
   VueDefineCustomElement: o,
   h: n,
-  createApp: r,
+  createApp: i,
   getCurrentInstance: p,
   disableRemoveStylesOnUnmount: d = !1,
-  disableShadowDOM: a = !1
+  disableShadowDOM: a = !1,
+  replaceRootWithHostInCssFramework: h = !1
 }) => {
-  if (!i) {
+  if (!r) {
     console.warn("No root component provided. Please provide a root component to create a web component.");
     return;
   }
@@ -279,7 +287,7 @@ const q = ({
     console.warn("No h provided. Please provide an h to create a web component.");
     return;
   }
-  if (!r) {
+  if (!i) {
     console.warn("No createApp provided. Please provide a createApp to create a web component.");
     return;
   }
@@ -287,26 +295,27 @@ const q = ({
     console.warn("No getCurrentInstance provided. Please provide a getCurrentInstance to create a web component.");
     return;
   }
-  const _ = q({
-    rootComponent: i,
+  const E = Z({
+    rootComponent: r,
     plugins: t,
     cssFrameworkStyles: s,
     VueDefineCustomElement: o,
     h: n,
-    createApp: r,
+    createApp: i,
     getCurrentInstance: p,
     elementName: e,
     disableRemoveStylesOnUnmount: d,
-    disableShadowDOM: a
+    disableShadowDOM: a,
+    replaceRootWithHostInCssFramework: h
   });
   customElements.define(
     e,
-    _
+    E
   );
 };
 export {
-  Z as createWebComponent,
-  Z as default,
-  q as defineCustomElement,
-  k as defineCustomElementSFC
+  X as createWebComponent,
+  X as default,
+  Z as defineCustomElement,
+  F as defineCustomElementSFC
 };

@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
-## [1.6.5] - 14.10.2024
+## [1.6.6] - 14.10.2024
 ### Added
 - Added support for replaceRootWithHost option
 
