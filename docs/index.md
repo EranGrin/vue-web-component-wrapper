@@ -28,7 +28,6 @@ Check out these demo projects to see `vue-web-component-wrapper` in action:
 ## New Feature Highlight: Replace `:root` with `:host`
 Our latest feature allows you to automatically replace `:root` selectors with `:host` in your CSS styles. This is particularly useful when working with CSS frameworks or custom styles that define variables or styles on the `:root` selector. By replacing `:root` with `:host`, these styles are correctly scoped within your web component's Shadow DOM.
 
-[Learn more about the Replace `:root` with `:host` feature](./guide/replace-root-with-host.md)
 
 ## Tips
 - **Testing Production Build**: The easiest way to test your production build is to run a local server in the `dist` folder. You can use [valet](https://laravel.com/docs/10.x/valet) for this, but any local server should work.
