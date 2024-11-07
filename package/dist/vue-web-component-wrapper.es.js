@@ -7,7 +7,6 @@ import { defineComponent as $, nextTick as B, render as A, createVNode as K, h a
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
-/*! #__NO_SIDE_EFFECTS__ */
 process.env.NODE_ENV !== "production" && Object.freeze({});
 process.env.NODE_ENV !== "production" && Object.freeze([]);
 const z = Object.assign, P = Array.isArray, M = (e) => typeof e == "string", L = (e) => {
@@ -19,7 +18,7 @@ const z = Object.assign, P = Array.isArray, M = (e) => typeof e == "string", L =
   const r = M(e) ? Number(e) : NaN;
   return isNaN(r) ? e : r;
 };
-/*! #__NO_SIDE_EFFECTS__ */
+/*! @__NO_SIDE_EFFECTS__ */
 function F(e, r, t) {
   const s = $(e);
   class o extends g {
