@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [1.6.9] - 13.11.2024
+### Fixed
+- Fixed waning about the __NO_SIDE_EFFECTS__ after building with vite
+### Added
+- Improved documentation
+
 ## [1.6.7] - 14.10.2024
 ### Added
 - Added support for replaceRootWithHost option

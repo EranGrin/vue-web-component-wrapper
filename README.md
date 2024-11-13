@@ -330,6 +330,70 @@ import style from './style.css?raw';
 
 </details>
 
+<details>
+<summary>Vite + Rollup Configuration</summary>
+
+### Vite + Rollup Configuration
+
+This configuration provides enhanced build options using Vite with Rollup, including custom element support and development features.
+
+```typescript
+import { defineConfig, UserConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+export default defineConfig(({ mode }): UserConfig => {
+  return {
+    esbuild: {
+      // Drop debugger statements in production
+      drop: mode === 'production' ? ['debugger'] : [],
+    },
+    build: {
+      emptyOutDir: true,
+      target: 'ES2020',
+      rollupOptions: {
+        output: {
+          // Output files will maintain their original names
+          entryFileNames: '[name].js',
+        },
+      },
+      // Prevent CSS code splitting
+      cssCodeSplit: false,
+    },
+    plugins: [
+      vue({
+        template: {
+          compilerOptions: {
+            // Define custom elements that start with 'app-element'
+            isCustomElement: (tag) => tag.startsWith('app-element'),
+          },
+        },
+        customElement: true,
+      }),
+      {
+        // Hot reload fix for Vue components
+        name: 'force-reload',
+        handleHotUpdate({ file, server }) {
+          if (file.endsWith('.vue')) {
+            server.ws.send({ type: 'full-reload' });
+            return [];
+          }
+        },
+      },
+    ],
+  };
+});
+```
+
+This configuration includes:
+- Production optimization with debugger statement removal
+- ES2020 target for modern JavaScript features
+- Custom element support for tags starting with 'app-element'
+- Disabled CSS code splitting for better web component compatibility
+- Hot reload improvements for Vue components
+- Rollup output configuration for maintaining file names
+
+</details>
+
 ## Web Component without Shadow DOM
 
 If you want to create a web component without Shadow DOM, you can set the `disableShadowDOM` option to `true` in the `createWebComponent` function. This will create a web component without Shadow DOM encapsulation.
