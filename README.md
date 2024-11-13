@@ -6,54 +6,56 @@
 </p>
 <p align="center">
 	<img src="https://img.shields.io/badge/license-MIT-green" alt="License MIT">
-	<img src="https://img.shields.io/badge/version-1.6.7-blue" alt="version 1.6.7">
+	<img src="https://img.shields.io/badge/version-1.6.8-blue" alt="version 1.6.8">
 	<img src="https://img.shields.io/badge/maintained-yes-brightgreen" alt="maintained yes">
 </p>
 
 <hr>
 
-
 ## Introduction
-`vue-web-component-wrapper` is a powerful Vue 3 plugin designed for transforming full-fledged Vue applications into reusable web components (custom elements). These web components can be integrated into any website, enhancing flexibility and reusability.
 
-## Why use `vue-web-component-wrapper`?
+**vue-web-component-wrapper** is a powerful Vue 3 plugin designed to transform full-fledged Vue applications into reusable web components (custom elements). These web components can be integrated into any website, enhancing flexibility and reusability.
+
+## Why Use vue-web-component-wrapper?
+
 As of now, Vue 3 does not support the creation of full applications as web components out of the box. This plugin aims to solve this problem by providing a simple and easy-to-use solution for creating web components from Vue applications. It also provides support for Vue ecosystem plugins such as [Vuex](https://vuex.vuejs.org/), [Pinia](https://pinia.vuejs.org/), [Vue Router](https://router.vuejs.org/), [Vue I18n](https://vue-i18n.intlify.dev/), and [VeeValidate](https://vee-validate.logaretm.com/v4/).
 
 ## Demo
-Check out these demo projects to see `vue-web-component-wrapper` in action:
-- **Webpack implementation**: Check out this [Webpack Demo Project](https://stackblitz.com/edit/vue-web-component-wrapper?file=README.md&startScript=webpack-demo)
-- **Vite.js implementation**: Check out this [Vite Demo Project](https://stackblitz.com/edit/vue-web-component-wrapper?file=README.md&startScript=vite-demo)
 
+Check out these demo projects to see **vue-web-component-wrapper** in action:
 
+- **Webpack Implementation**: [Webpack Demo Project](https://stackblitz.com/edit/vue-web-component-wrapper?file=README.md&startScript=webpack-demo)
+- **Vite.js Implementation**: [Vite Demo Project](https://stackblitz.com/edit/vue-web-component-wrapper?file=README.md&startScript=vite-demo)
 
 ## Documentation
-See [Docs](https://erangrin.github.io/vue-web-component-wrapper)
 
-## Key Features:
-- **Vue Plugins Compatibility**: Seamlessly integrates with Vue ecosystem plugins such as Vuex, Vue Router, and Vue I18n.
-- **CSS Framework Support**: Works with popular CSS frameworks like Tailwind CSS, Bootstrap, Vuetify, Element Plus, and more.
-- **CSS Preprocessor Support**: Allows you to use CSS preprocessors like SCSS and LESS.
-- **Scoped CSS**: Allows you to use scoped CSS in your components.
-- **Shadow DOM Support**: Facilitates the encapsulation of styles and scripts for your components, preventing clashes with the rest of your application.
-- **VUE Devtool Support**: Supports the Vue DevTools browser extension.
+See the [Documentation](https://erangrin.github.io/vue-web-component-wrapper) for more details.
+
+## Key Features
+
+- **Vue Plugins Compatibility**: Seamlessly integrates with Vue ecosystem plugins like Vuex, Vue Router, and Vue I18n.
+- **CSS Framework Support**: Works with popular CSS frameworks such as Tailwind CSS, Bootstrap, Vuetify, Element Plus, and more.
+- **CSS Preprocessor Support**: Allows the use of CSS preprocessors like SCSS and LESS.
+- **Scoped CSS**: Supports scoped CSS in your components.
+- **Shadow DOM Support**: Encapsulates styles and scripts to prevent clashes with the rest of your application.
+- **Vue DevTools Support**: Compatible with the Vue DevTools browser extension.
 - **Slot and Named Slot Support**: Define and use slots and named slots within web components.
-- **v-model Support**: Improved support for two-way data binding using `v-model` architecture.
+- **v-model Support**: Improved support for two-way data binding using the `v-model` architecture.
 - **Event Emitting Support**: Emit and handle custom events from web components.
 - **Provide/Inject Support**: Pass data from parent to child components using `provide` and `inject`.
-- **Disable Removal of Styles on Unmount**: Control the removal of styles upon component unmount, which can solve issues with CSS transitions.
-- **Disable Shadow DOM**: Disable Shadow DOM for web components.
+- **Disable Removal of Styles on Unmount**: Control the removal of styles upon component unmount to solve issues with CSS transitions.
+- **Disable Shadow DOM**: Option to disable Shadow DOM for web components.
 - **Replace `:root` with `:host`**: Optionally replace `:root` selectors with `:host` in your CSS to ensure styles are correctly scoped within the Shadow DOM.
 
 ## CSS Frameworks Examples
-- **Tailwind CSS** - [Demo](https://stackblitz.com/edit/vue-web-component-wrapper?file=README.md&startScript=tailwind-demo)
-- **UnoCSS** - [Demo](https://stackblitz.com/~/github.com/EranGrin/element-plus-unocss-web-component?file=src/style.css:L1-L2)
-- **Vuetify** - [Demo](https://stackblitz.com/~/github.com/EranGrin/vuetify-web-component-wrapper)
-- **Element Plus** - [Demo](https://stackblitz.com/~/github.com/EranGrin/element-plus-unocss-web-component?file=src/style.css:L1-L2)
-- **Bootstrap** - [Demo](https://stackblitz.com/~/github.com/EranGrin/bootstrap-demo-webcomponent)
 
+- **Tailwind CSS**: [Demo](https://stackblitz.com/edit/vue-web-component-wrapper?file=README.md&startScript=tailwind-demo)
+- **UnoCSS**: [Demo](https://stackblitz.com/~/github.com/EranGrin/element-plus-unocss-web-component?file=src/style.css:L1-L2)
+- **Vuetify**: [Demo](https://stackblitz.com/~/github.com/EranGrin/vuetify-web-component-wrapper)
+- **Element Plus**: [Demo](https://stackblitz.com/~/github.com/EranGrin/element-plus-unocss-web-component?file=src/style.css:L1-L2)
+- **Bootstrap**: [Demo](https://stackblitz.com/~/github.com/EranGrin/bootstrap-demo-webcomponent)
 
-
-See documentation for more details [Docs](https://erangrin.github.io/vue-web-component-wrapper)
+For more details, see the [Documentation](https://erangrin.github.io/vue-web-component-wrapper).
 
 ## Installation
 
@@ -67,9 +69,11 @@ pnpm add vue-web-component-wrapper
 
 ## Usage
 
-To create a web component using `vue-web-component-wrapper`, follow the steps below:
+To create a web component using **vue-web-component-wrapper**, follow the steps below:
 
-1. **Import the necessary modules** in your entry file:
+### 1. Import the Necessary Modules
+
+In your entry file, import the required modules:
 
 ```javascript
 import App from './App.vue';
@@ -80,11 +84,18 @@ import { createStore } from 'vuex';
 import { createPinia } from 'pinia';
 import { defaultRoutes } from './main.routes.js';
 import { store } from './store/index.js';
-import { defineCustomElement as VueDefineCustomElement, h, createApp, getCurrentInstance } from 'vue';
+import {
+  defineCustomElement as VueDefineCustomElement,
+  h,
+  createApp,
+  getCurrentInstance,
+} from 'vue';
 import { createWebComponent } from 'vue-web-component-wrapper';
 ```
 
-2. **Set up the instances** and use your plugins. This is where you configure your Vuex/Pinia store, Vue Router, and other Vue plugins.
+### 2. Set Up the Instances and Plugins
+
+Configure your Vuex/Pinia store, Vue Router, and other Vue plugins:
 
 ```javascript
 export const pluginsWrapper = {
@@ -95,7 +106,7 @@ export const pluginsWrapper = {
     const createdStore = createStore(store);
     Vue.use(createdStore);
 
-    // or Pinia
+    // Or Pinia
     const pinia = createPinia();
     Vue.use(pinia);
 
@@ -116,7 +127,9 @@ export const pluginsWrapper = {
 };
 ```
 
-3. **Create your web component** using `createWebComponent`. It takes an options object where you specify your root Vue component, the element name for your custom element, any plugins you want to use, and any CSS framework styles.
+### 3. Create Your Web Component
+
+Use `createWebComponent` to create your web component. Specify your root Vue component, the element name, any plugins, and CSS framework styles:
 
 ```javascript
 createWebComponent({
@@ -134,25 +147,25 @@ createWebComponent({
 });
 ```
 
-Each option in the `createWebComponent` function has a specific purpose:
+#### Options Explained
 
-- `rootComponent`: The root component of your Vue application.
-- `elementName`: The tag name for your custom web component. It must contain a hyphen and be lowercase.
-- `plugins`: Any Vue plugins you want to use in your application.
-- `cssFrameworkStyles`: Any CSS or SCSS styles that your application needs.
-- `VueDefineCustomElement`: The `defineCustomElement` function from Vue.
-- `h`: The `h` function from Vue.
-- `createApp`: The `createApp` function from Vue.
-- `getCurrentInstance`: The `getCurrentInstance` function from Vue.
-- `disableStyleRemoval`: Boolean to disable removal of styles on unmount, which can solve issues with CSS transitions.
-- `disableShadowDOM`: Boolean to disable Shadow DOM for web components.
-- `replaceRootWithHost`: **New Feature** (default `false`). Boolean to replace `:root` selectors with `:host` in your CSS styles.
+- **rootComponent**: The root component of your Vue application.
+- **elementName**: The tag name for your custom web component (must contain a hyphen and be lowercase).
+- **plugins**: Vue plugins to use in your application.
+- **cssFrameworkStyles**: Global CSS or SCSS styles your application needs.
+- **VueDefineCustomElement**: The `defineCustomElement` function from Vue.
+- **h**: The `h` function from Vue.
+- **createApp**: The `createApp` function from Vue.
+- **getCurrentInstance**: The `getCurrentInstance` function from Vue.
+- **disableStyleRemoval**: Disable removal of styles on unmount (useful for CSS transitions).
+- **disableShadowDOM**: Disable Shadow DOM for web components.
+- **replaceRootWithHost**: Replace `:root` selectors with `:host` in your CSS styles.
 
 ### replaceRootWithHost
 
-The `replaceRootWithHost` option allows you to replace all occurrences of `:root` with `:host` in your `cssFrameworkStyles`. This is particularly useful when working with CSS variables defined on `:root`, ensuring they are properly scoped within the Shadow DOM of your web component.
+The `replaceRootWithHost` option replaces all occurrences of `:root` with `:host` in your `cssFrameworkStyles`. This is useful when working with CSS variables defined on `:root`, ensuring they are properly scoped within the Shadow DOM.
 
-#### Example Usage:
+#### Example Usage
 
 ```javascript
 createWebComponent({
@@ -170,22 +183,20 @@ createWebComponent({
 
 ### cssFrameworkStyles
 
-The `cssFrameworkStyles` option is used to import the CSS of your CSS framework or any other CSS styles that your application needs to have globally. This option can also handle CSS variables that are defined on a `:root` selector.
+The `cssFrameworkStyles` option imports the CSS of your CSS framework or any other global CSS styles your application needs. By setting `replaceRootWithHost` to `true`, any `:root` selectors in your styles will be replaced with `:host`, ensuring correct scoping within the web component.
 
-By setting `replaceRootWithHost` to `true`, any `:root` selectors in your CSS framework styles will be replaced with `:host`. This ensures that styles and CSS variables are correctly scoped to the web component, preventing unintended style leakage or conflicts with the parent document.
+### 4. Build Your Application
 
-In some cases, you might want to use CSS variables defined in `:root` that penetrate the Shadow DOM. To achieve this, you need to import the CSS variables to the host of the web component.
+Tested bundlers to build the web-component application.
 
-4. **Build your application**. Tested bundler to build the web-component application.
-
-## Bundlers Configuration
+## Bundler Configurations
 
 <details>
 <summary>Vite Configuration</summary>
 
 ### Vite.js Configuration
 
-Here's a sample Vite configuration. Comparing with Webpack, Vite.js is able to handle asset files like `.css` and `.scss`, and media files, importing them as you do regularly. Vue files will be parsed using the official [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue) depending on config. If you would like to add plugins for Vite, just install them with your favorite Node package manager.
+Here's a sample Vite configuration. Vite.js handles asset files like `.css` and `.scss`, and media files, importing them as usual. Vue files are parsed using the official [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue).
 
 ```javascript
 import { defineConfig } from 'vite';
@@ -203,24 +214,24 @@ export default defineConfig({
 });
 ```
 
-In your `main.js/ts` file, you will have to import the CSS framework in a slightly different way than Webpack with `?inline` at the end of the import statement. This leads to a new issue with fonts, which are not loaded when using `?inline`. To fix this, you can import the font CSS in the `App.vue` file.
+#### `main.js/ts`
 
-#### main.js/ts
+In your main file, import the CSS framework with `?inline`:
 
 ```javascript
-// ?inline cannot handle import url() in CSS; therefore, fonts are not loaded. Workaround is to add font CSS to the App.vue
+// Fonts are not loaded with ?inline; import font CSS in App.vue
 import style from './style.css?inline';
 ```
 
-Workaround for fonts:
+#### `App.vue`
 
-#### App.vue
+Workaround for fonts:
 
 ```html
 <style>
 @import url('https://fonts.googleapis.com/css2?family=YourFont');
 
-header  {
+header {
   @apply font-sans;
 }
 
@@ -237,7 +248,7 @@ main {
 
 ### Webpack Configuration
 
-Here's a sample webpack configuration that helps webpack understand how to load and process `.vue`, `.css`, and `.scss` files. It also sets up an HTML plugin for webpack.
+Here's a sample webpack configuration to handle `.vue`, `.css`, and `.scss` files:
 
 ```javascript
 const path = require('path');
@@ -273,7 +284,7 @@ module.exports = {
                 loader: 'sass-loader',
                 options: {
                   sassOptions: {
-                    indentedSyntax: false, // Use the SCSS syntax
+                    indentedSyntax: false,
                   },
                 },
               },
@@ -288,7 +299,7 @@ module.exports = {
                 loader: 'sass-loader',
                 options: {
                   sassOptions: {
-                    indentedSyntax: false, // Use the SCSS syntax
+                    indentedSyntax: false,
                   },
                 },
               },
@@ -320,9 +331,9 @@ module.exports = {
 };
 ```
 
-With webpack, you will have to import the CSS framework in a slightly different way than Vite with `?raw` at the end of the import statement.
+#### `main.js/ts`
 
-#### main.js/ts
+Import the CSS framework with `?raw`:
 
 ```javascript
 import style from './style.css?raw';
@@ -335,7 +346,7 @@ import style from './style.css?raw';
 
 ### Vite + Rollup Configuration
 
-This configuration provides enhanced build options using Vite with Rollup, including custom element support and development features.
+This configuration provides enhanced build options using Vite with Rollup:
 
 ```typescript
 import { defineConfig, UserConfig } from 'vite';
@@ -344,7 +355,7 @@ import vue from '@vitejs/plugin-vue';
 export default defineConfig(({ mode }): UserConfig => {
   return {
     esbuild: {
-      // Drop debugger statements in production
+      // Remove debugger statements in production
       drop: mode === 'production' ? ['debugger'] : [],
     },
     build: {
@@ -352,18 +363,18 @@ export default defineConfig(({ mode }): UserConfig => {
       target: 'ES2020',
       rollupOptions: {
         output: {
-          // Output files will maintain their original names
+          // Maintain original file names
           entryFileNames: '[name].js',
         },
       },
-      // Prevent CSS code splitting
+      // Disable CSS code splitting
       cssCodeSplit: false,
     },
     plugins: [
       vue({
         template: {
           compilerOptions: {
-            // Define custom elements that start with 'app-element'
+            // Define custom elements starting with 'app-element'
             isCustomElement: (tag) => tag.startsWith('app-element'),
           },
         },
@@ -384,32 +395,39 @@ export default defineConfig(({ mode }): UserConfig => {
 });
 ```
 
-This configuration includes:
-- Production optimization with debugger statement removal
-- ES2020 target for modern JavaScript features
-- Custom element support for tags starting with 'app-element'
-- Disabled CSS code splitting for better web component compatibility
-- Hot reload improvements for Vue components
-- Rollup output configuration for maintaining file names
+**Features:**
+
+
+- Custom element support for tags starting with 'app-element'.
+- Disabled CSS code splitting for better web component compatibility.
+- Hot reload improvements for Vue components.
+- Rollup output configuration to maintain file names.
 
 </details>
 
-## Web Component without Shadow DOM
+## Web Component Without Shadow DOM
 
-If you want to create a web component without Shadow DOM, you can set the `disableShadowDOM` option to `true` in the `createWebComponent` function. This will create a web component without Shadow DOM encapsulation.
+To create a web component without Shadow DOM, set the `disableShadowDOM` option to `true` in the `createWebComponent` function:
 
-This feature uses a patch to the Vue source code, which could lead to some issues with future versions of Vue. If you encounter any issues, please report them in the issues section of this repository.
+```javascript
+createWebComponent({
+  // ...other options
+  disableShadowDOM: true,
+});
+```
 
-### Demo without Shadow DOM
+This feature uses a patch to the Vue source code, which may lead to issues with future versions of Vue. Please report any issues in the repository.
+
+### Demo Without Shadow DOM
 
 [Demo Link](https://stackblitz.com/~/github.com/EranGrin/web-component-no-shadow-dom-demo)
 
 ## SFC as Custom Element
 
-Enhance the core functionality of Single File Components (SFC) as Custom Elements [defineCustomElement](https://vuejs.org/guide/extras/web-components#sfc-as-custom-element) with two new features:
+Enhance the functionality of Single File Components (SFC) as Custom Elements using `defineCustomElement` with two new features:
 
-1. **Nested Components**: You can use nested components with styles and, for example, share base components between multiple custom elements.
-2. **Shadow DOM Option**: You can disable Shadow DOM for the SFC custom element.
+1. **Nested Components**: Use nested components with styles, sharing base components between multiple custom elements.
+2. **Shadow DOM Option**: Disable Shadow DOM for the SFC custom element.
 
 ### Usage
 
@@ -425,23 +443,27 @@ customElements.define('my-component', MyComponentElement);
 [Demo Link](https://stackblitz.com/edit/vue-web-component-wrapper?file=README.md&startScript=SFC-demo)
 
 ## Tips
-- **Testing Production Build**: The easiest way to test your production build is to run a local server in the `dist` folder. You can use [valet](https://laravel.com/docs/10.x/valet) for this, but any local server should work.
+
+- **Testing Production Build**: To test your production build, run a local server in the `dist` folder. You can use [Valet](https://laravel.com/docs/10.x/valet) or any local server.
 
 ## Future Plans
 
 1. **TypeScript Support**: Adding proper strict types.
 
 ## Contributing
-Contributions are welcome! To contribute to the project, please follow these steps:
-- Fork the repository
-- Create a new branch for your feature or bug fix
-- Make your changes and commit them with a clear message
-- Push your changes to your fork
-- Submit a pull request to the main repository
 
-Please make sure to follow the code style and conventions used in the project.
+Contributions are welcome! To contribute:
 
-If you find a bug or have a feature request, please open an issue on the repository.
+- **Fork** the repository.
+- **Create a new branch** for your feature or bug fix.
+- **Make your changes** and commit them with a clear message.
+- **Push your changes** to your fork.
+- **Submit a pull request** to the main repository.
+
+Please follow the code style and conventions used in the project.
+
+If you find a bug or have a feature request, please [open an issue](https://github.com/EranGrin/vue-web-component-wrapper/issues).
 
 ## License
+
 This project is licensed under the MIT License.
