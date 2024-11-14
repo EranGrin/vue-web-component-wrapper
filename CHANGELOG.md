@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [1.6.9] - 14.11.2024
+### Fixed
+- Fixed warning about the __NO_SIDE_EFFECTS__ after building with vite rollup second try
+
 ## [1.6.8] - 13.11.2024
 ### Fixed
 - Fixed waning about the __NO_SIDE_EFFECTS__ after building with vite
