@@ -163,7 +163,7 @@ export function defineCustomElement<P>(
   config?: DefineCustomElementConfig
 ): VueElementConstructor<ExtractPropTypes<P>>
 
-/*! @__NO_SIDE_EFFECTS__ */
+/*!#__NO_SIDE_EFFECTS__*/
 export function defineCustomElement(
   options: any,
   config?: DefineCustomElementConfig,
@@ -180,7 +180,7 @@ export function defineCustomElement(
   return VueCustomElement
 }
 
-/*! @__NO_SIDE_EFFECTS__ */
+/*!#__NO_SIDE_EFFECTS__*/
 export const defineSSRCustomElement = ((
   options: any,
   config?: DefineCustomElementConfig
