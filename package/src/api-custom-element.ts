@@ -321,15 +321,58 @@ export class VueElement extends BaseClass {
       // replace slot
       if (!this._config.shadowRoot) {
         this._slots = {};
-        for (const child of Array.from(this.children)) {
-          const slotName = child.getAttribute('slot') || 'default';
+
+        const processChildNodes = (nodes: NodeListOf<ChildNode>): any[] => {
+          return Array.from(nodes)
+            .map((node) => {
+              if (node.nodeType === Node.ELEMENT_NODE) {
+                const element = node as HTMLElement;
+                const attributes = Object.fromEntries(
+                  Array.from(element.attributes).map((attr) => [attr.name, attr.value])
+                );
+                return h(
+                  element.tagName.toLowerCase(),
+                  attributes,
+                  processChildNodes(element.childNodes)
+                );
+              } else if (node.nodeType === Node.TEXT_NODE) {
+                return node.textContent?.trim() || null;
+              }
+              return null;
+            })
+            .filter(Boolean);
+        };
+
+        for (const child of Array.from(this.childNodes)) {
+          const slotName = child.nodeType === Node.ELEMENT_NODE
+          ? (child as HTMLElement).getAttribute('slot') || 'default'
+          : 'default';
+
           if (!this._slots[slotName]) {
             this._slots[slotName] = [];
           }
-          this._slots[slotName].push(
-            h(child.tagName.toLowerCase(), {}, child.innerHTML)
-          );
+
+          if (child.nodeType === Node.ELEMENT_NODE) {
+            const element = child as HTMLElement;
+            const attributes = Object.fromEntries(
+              Array.from(element.attributes).map((attr) => [attr.name, attr.value])
+            );
+            this._slots[slotName].push(
+              h(
+                element.tagName.toLowerCase(),
+                attributes,
+                processChildNodes(element.childNodes)
+              )
+            );
+          } else if (child.nodeType === Node.TEXT_NODE) {
+            const textContent = child.textContent?.trim();
+            if (textContent) {
+              // @ts-ignore
+              this._slots[slotName].push(textContent);
+            }
+          }
         }
+
         this.replaceChildren();
       }
 
