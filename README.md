@@ -143,7 +143,7 @@ createWebComponent({
   getCurrentInstance,
   disableStyleRemoval: false, // default is false
   disableShadowDOM: false,    // default is false
-  replaceRootWithHost: false, // default is false
+  replaceRootWithHostInCssFramework: false, // default is false
 });
 ```
 
@@ -159,11 +159,11 @@ createWebComponent({
 - **getCurrentInstance**: The `getCurrentInstance` function from Vue.
 - **disableStyleRemoval**: Disable removal of styles on unmount (useful for CSS transitions).
 - **disableShadowDOM**: Disable Shadow DOM for web components.
-- **replaceRootWithHost**: Replace `:root` selectors with `:host` in your CSS styles.
+- **replaceRootWithHostInCssFramework**: Replace `:root` selectors with `:host` in your CSS styles.
 
-### replaceRootWithHost
+### replaceRootWithHostInCssFramework
 
-The `replaceRootWithHost` option replaces all occurrences of `:root` with `:host` in your `cssFrameworkStyles`. This is useful when working with CSS variables defined on `:root`, ensuring they are properly scoped within the Shadow DOM.
+The `replaceRootWithHostInCssFramework` option replaces all occurrences of `:root` with `:host` in your `cssFrameworkStyles`. This is useful when working with CSS variables defined on `:root`, ensuring they are properly scoped within the Shadow DOM.
 
 #### Example Usage
 
@@ -183,7 +183,7 @@ createWebComponent({
 
 ### cssFrameworkStyles
 
-The `cssFrameworkStyles` option imports the CSS of your CSS framework or any other global CSS styles your application needs. By setting `replaceRootWithHost` to `true`, any `:root` selectors in your styles will be replaced with `:host`, ensuring correct scoping within the web component.
+The `cssFrameworkStyles` option imports the CSS of your CSS framework or any other global CSS styles your application needs. By setting `replaceRootWithHostInCssFramework` to `true`, any `:root` selectors in your styles will be replaced with `:host`, ensuring correct scoping within the web component.
 
 ### 4. Build Your Application
 
