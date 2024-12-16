@@ -48,8 +48,8 @@
     "license": "MIT",
     "devDependencies": {
         "@rushstack/eslint-patch": "^1.10.3",
-        "eslint": "^8.57.0",
-        "eslint-plugin-vue": "^9.26.0",
+        "eslint": "^9.16.0",
+        "eslint-plugin-vue": "^9.32.0",
         "vitepress": "^1.2.3"
     }
 }
