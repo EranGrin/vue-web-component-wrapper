@@ -3,6 +3,9 @@
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+## [1.6.10] - 16.12.2024
+### Fixed
+- Fixed docs attribute name replaceRootWithHostInCssFramework
 
 ## [1.6.9] - 14.11.2024
 ### Fixed
