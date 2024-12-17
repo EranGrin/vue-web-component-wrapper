@@ -322,9 +322,9 @@ export class VueElement extends BaseClass {
       if (!this._config.shadowRoot) {
         this._slots = {};
 
-        const processChildNodes = (nodes: NodeList): (string | VNode)[] => {
+        const processChildNodes = (nodes: NodeList): (VNode | string)[] => {
           return Array.from(nodes)
-            .map((node) : string | VNode | null  => {
+            .map((node) : VNode | string | null  => {
               if (node.nodeType === Node.ELEMENT_NODE) {
                 const element = node as HTMLElement;
                 const attributes = Object.fromEntries(
@@ -340,7 +340,7 @@ export class VueElement extends BaseClass {
               }
               return null;
             })
-            .filter((node): node is string | VNode => node != null);
+            .filter((node): node is VNode | string => node != null);
         };
 
         for (const child of Array.from(this.childNodes)) {
