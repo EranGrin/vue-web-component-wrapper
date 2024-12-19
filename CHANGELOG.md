@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+
+## [1.6.11] - 16.12.2024
+### Fixed
+- Fixed issue with slots with no shadow DOM
+
 ## [1.6.10] - 16.12.2024
 ### Fixed
 - Fixed docs attribute name replaceRootWithHostInCssFramework
