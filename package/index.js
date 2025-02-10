@@ -13,7 +13,7 @@ export const createWebComponent = ({
   getCurrentInstance,
   disableRemoveStylesOnUnmount = false,
   disableShadowDOM = false,
-  asyncInitialization = () => Promise.resolve()
+  asyncInitialization = () => Promise.resolve(),
   replaceRootWithHostInCssFramework = false
 }) => {
   if (!rootComponent) {

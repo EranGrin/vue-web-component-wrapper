@@ -1,4 +1,3 @@
-
 import { defineCustomElement as VueDefineCustomElementPatch}  from "./api-custom-element"
 const nearestElement = (el) => {
   while (el?.nodeType !== 1 /* ELEMENT */) {
@@ -47,7 +46,7 @@ export const defineCustomElement = ({
     const modifiedCssFrameworkStyles = replaceRootWithHostInCssFramework
     ? replaceRootWithHost(cssFrameworkStyles) 
     : cssFrameworkStyles;
-    return customElementDefiner({
+    const customElementConfig = customElementDefiner({
     styles: [modifiedCssFrameworkStyles],
     props: {
       ...rootComponent.props,
