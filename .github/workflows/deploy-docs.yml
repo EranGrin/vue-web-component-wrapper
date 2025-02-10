@@ -29,9 +29,9 @@ jobs:
       - name: Build
         run: pnpm run docs:build # Ensure this is the correct command to build your docs
       - uses: actions/configure-pages@v2
-      - uses: actions/upload-pages-artifact@v1
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: docs/.vitepress/dist
       - name: Deploy
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
