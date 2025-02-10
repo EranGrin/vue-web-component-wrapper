@@ -1,4 +1,3 @@
-
 import { defineCustomElement as VueDefineCustomElementPatch}  from "./api-custom-element"
 const nearestElement = (el) => {
   while (el?.nodeType !== 1 /* ELEMENT */) {
@@ -39,57 +38,77 @@ export const defineCustomElement = ({
   disableRemoveStylesOnUnmount,
   disableShadowDOM,
   replaceRootWithHostInCssFramework,
-}) => {
-  const customElementDefiner = disableShadowDOM ? VueDefineCustomElementPatch : VueDefineCustomElement;
+  asyncInitialization,
+  loaderAttribute,
+  hideSlotContentUntilMounted
+}) =>
+  {
+    const customElementDefiner = disableShadowDOM ? VueDefineCustomElementPatch : VueDefineCustomElement
 
-  const modifiedCssFrameworkStyles = replaceRootWithHostInCssFramework
+    const modifiedCssFrameworkStyles = replaceRootWithHostInCssFramework
     ? replaceRootWithHost(cssFrameworkStyles) 
     : cssFrameworkStyles;
-
-  return customElementDefiner({
-    name: 'vue-custom-element-root-component',
+    const customElementConfig = customElementDefiner({
     styles: [modifiedCssFrameworkStyles],
     props: {
       ...rootComponent.props,
       modelValue: { type: [String, Number, Boolean, Array, Object] } // v-model support
-    },
+    }, 
     emits: rootComponent?.emits,
-
+    
     setup(props, { slots }) {
-      const emitsList = [...(rootComponent?.emits || []), 'update:modelValue'];
-      const app = createApp();
-      app.component('app-root', rootComponent);
+      const emitsList = [...(rootComponent?.emits || []), 'update:modelValue']
+      const app = createApp()
+      app.component('app-root', rootComponent)
 
       if (rootComponent.provide) {
         const provide = typeof rootComponent.provide === 'function'
-          ? rootComponent.provide()
+          ? rootComponent.provide() 
           : rootComponent.provide;
-
+        
         // Setup provide
         Object.keys(provide).forEach(key => {
           app.provide(key, provide[key]);
         });
       }
-
+      
       app.mixin({
         mounted() {
           if (this.$?.type?.name === 'vue-custom-element-root-component') {
             return;
-          }
+          }          
 
           const insertStyles = (styles) => {
             if (styles?.length) {
-              this.__style = document.createElement('style');
-              this.__style.innerText = styles.join().replace(/\n/g, '');
-              nearestElement(this.$el).append(this.__style);
+              this.__style = document.createElement('style')
+              this.__style.innerText = styles.join().replace(/\n/g, '')
+              nearestElement(this.$el).append(this.__style)
             }
-          };
+          }
 
           insertStyles(this.$?.type.styles);
           if (this.$options.components) {
             for (const comp of Object.values(this.$options.components)) {
               insertStyles(comp.styles);
             }
+          }
+
+          const host = this.$el.getRootNode()?.host || nearestElement(this.$el);
+          if (host) {
+            console.log('hideSlotContentUntilMounted', hideSlotContentUntilMounted)
+            if (hideSlotContentUntilMounted) {
+              console.log('hideSlotContentUntilMounted', hideSlotContentUntilMounted)
+              const hiddenEls = host.querySelectorAll(`[hidden]`);
+              hiddenEls.forEach(el => {
+                el.removeAttribute('hidden');
+              });
+            }
+            
+            const loaderEls = host.querySelectorAll(`[${loaderAttribute}]`);
+            loaderEls.forEach(el => {
+              el.remove();
+            });
+
           }
         },
         unmounted() {
@@ -122,16 +141,19 @@ export const defineCustomElement = ({
         window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = app;
       }
 
-      // Forward all emitted events to the custom element
-      const eventListeners = emitsList?.reduce((acc, eventName) => {
-        const onEventName = convertToOnEventName(eventName);
-        acc[onEventName] = (e) => { inst.emit(eventName, e); };
-        return acc;
-      }, {});
+        // Forward all emitted events to the custom element
+        const eventListeners = emitsList?.reduce((acc, eventName) => {
+          const onEventName = convertToOnEventName(eventName);
+          acc[onEventName] = (e) => { inst.emit(eventName, e); };
+          return acc;
+        }, {});
 
-      // Establish named slots
+      // Establish named slots with an onSlotchange listener that iterates over
+      // all parent nodes of the slot (non recursive) and removes the "hidden" attribute from each.
       const namedSlots = rootComponent?.namedSlots?.reduce((acc, slotsName) => {
-        acc[slotsName] = () => h('slot', { name: slotsName });
+        acc[slotsName] = () => h('slot', {
+          name: slotsName,
+        });
         return acc;
       }, {});
 
@@ -148,5 +170,10 @@ export const defineCustomElement = ({
         }
       );
     },
-  }, disableShadowDOM && { shadowRoot: false });
+  }, disableShadowDOM && { shadowRoot: false })
+
+  return asyncInitialization().then(() => {
+    return customElementConfig;
+  })
+
 }

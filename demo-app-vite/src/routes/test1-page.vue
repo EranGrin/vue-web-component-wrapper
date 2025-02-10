@@ -12,10 +12,24 @@
 
 <script lang="ts">
 import TestComponent1 from '../components/TestComponent1.vue'
+import { useRoute }  from 'vue-router';
+
 export default {
   components: {
     TestComponent1,
   },
+
+  setup() {
+
+    const route = useRoute();
+    const param = route.query.param;
+
+  
+    console.log(param);
+
+    return {}
+  },
+
 }
 </script>
 

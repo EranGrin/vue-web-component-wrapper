@@ -13,7 +13,10 @@ export const createWebComponent = ({
   getCurrentInstance,
   disableRemoveStylesOnUnmount = false,
   disableShadowDOM = false,
-  replaceRootWithHostInCssFramework = false
+  replaceRootWithHostInCssFramework = false,
+  asyncInitialization = () => Promise.resolve(),
+  loaderAttribute = 'data-web-component-loader',
+  hideSlotContentUntilMounted = false,
 }) => {
   if (!rootComponent) {
     console.warn('No root component provided. Please provide a root component to create a web component.')
@@ -42,7 +45,7 @@ export const createWebComponent = ({
     return
   }
 
-  const customElementConfig = defineCustomElement({
+  defineCustomElement({
     rootComponent,
     plugins,
     cssFrameworkStyles,
@@ -53,14 +56,16 @@ export const createWebComponent = ({
     elementName,
     disableRemoveStylesOnUnmount,
     disableShadowDOM,
-    replaceRootWithHostInCssFramework
-  }, )
-
-
-  customElements.define(
-    elementName,
-    customElementConfig
-  )
+    replaceRootWithHostInCssFramework,
+    asyncInitialization,
+    loaderAttribute,
+    hideSlotContentUntilMounted
+  }, ).then((customElementConfig) => {
+    customElements.define(
+      elementName,
+      customElementConfig
+    )
+  })
 }
 
 export { defineCustomElement } from './src/web-component-util'

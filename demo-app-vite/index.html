@@ -58,7 +58,10 @@
       ></my-child-component>
 
       <!-- named slot -->
-      <div slot="customName">I am a custom named slot </div>
+      <div class="customName" hidden slot="customName">I am a custom named slot </div>
+      <div class="customName" data-web-component-loader slot="customName">
+        <div class="spinner"></div>
+      </div>
     </my-web-component>
 
     <script type="module" src="./src/main.ts"></script>
@@ -116,6 +119,21 @@
     justify-content: center;
     color: white;
     font-weight: bold;
+  }
+  .spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #4a90e2; /* Customize spinner color if needed */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: auto;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
   }
   </style>
 </html>

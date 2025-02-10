@@ -22,6 +22,8 @@ export default {
           { text: 'disable-shadow-dom', link: '/disable-shadow-dom' },
           { text: 'host-implementation', link: '/host-implementation' },
           { text: 'SFC as Custom Element', link: '/sfc-as-custom-element' },
+          { text: 'Async Initialization', link: '/async-initialization' },
+          { text: 'Replace :root with :host', link: '/replace-root-with-host' },
         ],
       },
       {

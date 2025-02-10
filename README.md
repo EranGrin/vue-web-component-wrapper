@@ -46,7 +46,9 @@ See the [Documentation](https://erangrin.github.io/vue-web-component-wrapper) fo
 - **Disable Removal of Styles on Unmount**: Control the removal of styles upon component unmount to solve issues with CSS transitions.
 - **Disable Shadow DOM**: Option to disable Shadow DOM for web components.
 - **Replace `:root` with `:host`**: Optionally replace `:root` selectors with `:host` in your CSS to ensure styles are correctly scoped within the Shadow DOM.
-
+- **Async Initialization**: Option to delay the initialization until its Promise resolves.
+- **Loader Support**: Support for loader spinner elements until the application is fully initialized.
+- **Hide slot content until the component is fully mounted**: Option to hide the content of named slots until the web-component is fully mounted.
 ## CSS Frameworks Examples
 
 - **Tailwind CSS**: [Demo](https://stackblitz.com/edit/vue-web-component-wrapper?file=README.md&startScript=tailwind-demo)
@@ -144,6 +146,8 @@ createWebComponent({
   disableStyleRemoval: false, // default is false
   disableShadowDOM: false,    // default is false
   replaceRootWithHostInCssFramework: false, // default is false
+  loaderAttribute: 'data-web-component-loader', // default is 'data-web-component-loader'
+  hideSlotContentUntilMounted: true, // default is false
 });
 ```
 
@@ -160,10 +164,91 @@ createWebComponent({
 - **disableStyleRemoval**: Disable removal of styles on unmount (useful for CSS transitions).
 - **disableShadowDOM**: Disable Shadow DOM for web components.
 - **replaceRootWithHostInCssFramework**: Replace `:root` selectors with `:host` in your CSS styles.
+- **asyncInitialization**: Accepts a function that returns a Promise.
+- **loaderAttribute**: Defines the attribute used to mark loader spinner (default is `data-web-component-loader`).
+- **hideSlotContentUntilMounted**: Hide the content of named slots until the component is fully mounted.
+
+### asyncInitialization
+
+The `asyncInitialization` option accepts a function that returns a Promise. The custom element waits for this Promise to resolve before completing its initialization. This is useful for performing asynchronous tasks (e.g., API calls, dynamic imports) before the app mounts.
+
+#### Example Usage
+
+```javascript
+const asyncPromise = () => { 
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve()
+    }, 1000)
+  })
+}
+
+createWebComponent({
+  rootComponent: App,
+  elementName: 'my-web-component',
+  plugins: pluginsWrapper,
+  cssFrameworkStyles: tailwindStyles,
+  VueDefineCustomElement,
+  h,
+  createApp,
+  getCurrentInstance,
+  asyncInitialization: asyncPromise, // default is Promise.resolve() 
+  loaderAttribute: 'data-web-component-loader',
+  hideSlotContentUntilMounted: true, // default is false
+});
+```
+
+### loaderAttribute
+
+The `loaderAttribute` option defines the attribute used to mark loader spinner elements in your custom element's DOM. Elements with this attribute will be removed automatically once the component is fully mounted.
+
+```html
+    <my-web-component
+      class="my-web-component"
+    >
+      <!-- named slot -->
+      <div class="customName" data-web-component-loader slot="customName">
+        <div class="spinner"></div>
+      </div>
+    </my-web-component>
+
+  <style>
+    .spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #4a90e2; /* Customize spinner color if needed */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: auto;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  </style>
+```
+
+### hideSlotContentUntilMounted
+
+The `hideSlotContentUntilMounted` option hides the content of named slots until the component is fully mounted.
+- By using the `hidden` attribute on the slot element, the content will be hidden until the component is fully mounted, and the web component wrapper will remove the `hidden` attribute once the component is fully mounted.
+- This could be break the layout of your application, if you use the `hidden` attribute internally in your application.
+- If you want to use the `hidden` attribute internally in your application, you can set the `hideSlotContentUntilMounted` option to `false`.
+
+```html
+<my-web-component>
+  <!-- named slot -->
+  <div class="customName" hidden slot="customName">I am a custom named slot </div>
+</my-web-component>
+```
 
 ### replaceRootWithHostInCssFramework
 
 The `replaceRootWithHostInCssFramework` option replaces all occurrences of `:root` with `:host` in your `cssFrameworkStyles`. This is useful when working with CSS variables defined on `:root`, ensuring they are properly scoped within the Shadow DOM.
+
 
 #### Example Usage
 
