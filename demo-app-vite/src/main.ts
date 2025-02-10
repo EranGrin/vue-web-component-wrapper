@@ -15,6 +15,14 @@ import createWebComponent  from '../../package/index.js'
 // import createWebComponent from 'vue-web-component-wrapper'
 // add vue-web-component-wrapper to package.json asl well
 
+const asyncPromise = () => { 
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("p1")
+    }, 1000)
+  })
+}
+
 createWebComponent({
   rootComponent: app,
   elementName: 'my-web-component',
@@ -24,7 +32,7 @@ createWebComponent({
   h,
   createApp,
   getCurrentInstance,
-  asyncInitialization: () => new Promise((res) => setTimeout(() => res("p1"), 1000))
+  asyncInitialization: asyncPromise
 })
 
 createWebComponent({
