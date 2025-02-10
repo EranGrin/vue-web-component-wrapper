@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [1.7.0] - 10.02.2025
+### Added
+- Added support for `asyncInitialization`
+- Added support for loader
+- Added support for `hideSlotContentUntilMounted`
+
 ## [1.6.11] - 16.12.2024
 ### Fixed
 - Fixed issue with slots with no shadow DOM

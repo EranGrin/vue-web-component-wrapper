@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <header class="bg-blue-300 rounded-lg shadow-lg p-4 mx-0 md:mx-20">
+  <div :style="{ opacity: componentOpacity, transition: 'opacity 0.5s ease' }">  <header class="bg-blue-300 rounded-lg shadow-lg p-4 mx-0 md:mx-20">
       <nav>
         <ul class="flex justify-between sm:mx-1 md:mx-20">
           <li>
@@ -48,15 +47,6 @@
     </header>
     <main class="mt-4 p-4 mx-0 md:mx-20 bg-gray-200 rounded-lg shadow-lg">
       <router-view />
-
-      <button @click="showTestContent = !showTestContent">
-        Toggle Test Content
-      </button>
-      <Transition name="fade">
-        <div v-if="showTestContent" class="test-content">
-          <p>This is test content that should fade.</p>
-        </div>
-      </Transition>
     </main>
     <footer
       class="bg-gray-800 text-white text-center p-4 mt-4 rounded-lg shadow-lg mx-0 md:mx-20"
@@ -72,7 +62,7 @@
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+
 
 export default {
   name: 'App',
@@ -95,8 +85,16 @@ export default {
       apiToken: '',
       baseUri: '',
     },
-    showTestContent: false, // Added for test
+    componentOpacity: 0,     // Initial opacity set to 0
   }),
+
+  mounted() {
+    // Delay setting opacity to 1 to trigger fade-in
+    setTimeout(() => {
+      this.componentOpacity = 1;
+    }, 10); // Small delay, adjust if needed
+  },
+
 
   methods: {
     testEmit() {
@@ -124,19 +122,4 @@ main {
   @apply font-sans;
 }
 
-/* Added for test transition */
-.test-content {
-  background-color: lightblue;
-  padding: 20px;
-  margin-top: 10px;
-}
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
 </style>

@@ -38,8 +38,9 @@ export const defineCustomElement = ({
   disableRemoveStylesOnUnmount,
   disableShadowDOM,
   replaceRootWithHostInCssFramework,
-  asyncInitialization = () => Promise.resolve(),
-  loaderAttribute = 'data-web-component-loader'
+  asyncInitialization,
+  loaderAttribute,
+  hideSlotContentUntilMounted
 }) =>
   {
     const customElementDefiner = disableShadowDOM ? VueDefineCustomElementPatch : VueDefineCustomElement
@@ -94,13 +95,16 @@ export const defineCustomElement = ({
 
           const host = this.$el.getRootNode()?.host || nearestElement(this.$el);
           if (host) {
-            const hiddenEls = host.querySelectorAll(`[hidden]`);
+            console.log('hideSlotContentUntilMounted', hideSlotContentUntilMounted)
+            if (hideSlotContentUntilMounted) {
+              console.log('hideSlotContentUntilMounted', hideSlotContentUntilMounted)
+              const hiddenEls = host.querySelectorAll(`[hidden]`);
+              hiddenEls.forEach(el => {
+                el.removeAttribute('hidden');
+              });
+            }
+            
             const loaderEls = host.querySelectorAll(`[${loaderAttribute}]`);
-      
-            hiddenEls.forEach(el => {
-              el.removeAttribute('hidden');
-            });
-
             loaderEls.forEach(el => {
               el.remove();
             });

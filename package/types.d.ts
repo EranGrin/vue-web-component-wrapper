@@ -16,6 +16,9 @@ export interface CreateWebComponentOptions {
   disableRemoveStylesOnUnmount?: boolean
   disableShadowDOM?: boolean
   replaceRootWithHostInCssFramework?: boolean
+  asyncInitialization?: () => Promise<any>
+  loaderAttribute?: string
+  hideSlotContentUntilMounted?: boolean
 }
 
 export function createWebComponent(options: CreateWebComponentOptions): void

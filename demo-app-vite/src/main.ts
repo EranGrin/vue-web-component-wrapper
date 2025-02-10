@@ -33,7 +33,8 @@ createWebComponent({
   createApp,
   getCurrentInstance,
   disableShadowDOM: false,
-  asyncInitialization: asyncPromise
+  asyncInitialization: asyncPromise,
+  hideSlotContentUntilMounted: true
 })
 
 createWebComponent({
@@ -46,5 +47,6 @@ createWebComponent({
   h,
   createApp,
   getCurrentInstance,
-  asyncInitialization: () => new Promise((res) => setTimeout(() => res("p1"), 1000))
+  asyncInitialization: () => new Promise((res) => setTimeout(() => res("p1"), 1000)),
+  hideSlotContentUntilMounted: true
 })
