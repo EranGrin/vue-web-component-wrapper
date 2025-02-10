@@ -32,6 +32,7 @@ createWebComponent({
   h,
   createApp,
   getCurrentInstance,
+  disableShadowDOM: false,
   asyncInitialization: asyncPromise
 })
 
@@ -40,6 +41,7 @@ createWebComponent({
   elementName: 'my-child-component',
   plugins: pluginsWrapper,
   cssFrameworkStyles: style,
+  disableShadowDOM: false,
   VueDefineCustomElement,
   h,
   createApp,

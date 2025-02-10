@@ -39,6 +39,7 @@ export const defineCustomElement = ({
   disableShadowDOM,
   replaceRootWithHostInCssFramework,
   asyncInitialization = () => Promise.resolve(),
+  loaderAttribute = 'data-web-component-loader'
 }) =>
   {
     const customElementDefiner = disableShadowDOM ? VueDefineCustomElementPatch : VueDefineCustomElement
@@ -90,6 +91,21 @@ export const defineCustomElement = ({
               insertStyles(comp.styles);
             }
           }
+
+          const host = this.$el.getRootNode()?.host || nearestElement(this.$el);
+          if (host) {
+            const hiddenEls = host.querySelectorAll(`[hidden]`);
+            const loaderEls = host.querySelectorAll(`[${loaderAttribute}]`);
+      
+            hiddenEls.forEach(el => {
+              el.removeAttribute('hidden');
+            });
+
+            loaderEls.forEach(el => {
+              el.remove();
+            });
+
+          }
         },
         unmounted() {
           if (!disableRemoveStylesOnUnmount) {
@@ -133,17 +149,6 @@ export const defineCustomElement = ({
       const namedSlots = rootComponent?.namedSlots?.reduce((acc, slotsName) => {
         acc[slotsName] = () => h('slot', {
           name: slotsName,
-          onSlotchange: (event) => {
-            const slotElement = event.target;
-            const nodes = typeof slotElement.assignedElements === 'function'
-              ? slotElement.assignedElements()
-              : (slotElement.assignedNodes ? slotElement.assignedNodes().filter(node => node.nodeType === 1) : []);
-            nodes.forEach(node => {
-              if (node.hasAttribute('hidden')) {
-                node.removeAttribute('hidden');
-              }
-            });
-          }
         });
         return acc;
       }, {});
