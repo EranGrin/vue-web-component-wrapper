@@ -1,6 +1,6 @@
 {
   "name": "vue-web-component-wrapper",
-  "version": "1.6.2",
+  "version": "1.6.11",
   "description": "A Vue 3 plugin that provides a web component wrapper with styles, seamlessly integrating with Vuex, Vue Router, Vue I18n, and supporting Tailwind CSS and Sass styles.",
   "types": "types.d.ts",
   "repository": {
@@ -14,8 +14,14 @@
   "module": "dist/vue-web-component-wrapper.es.js",
   "exports": {
     ".": {
-      "import": "./dist/vue-web-component-wrapper.es.js",
-      "require": "./dist/vue-web-component-wrapper.umd.js"
+      "import": {
+        "types": "./types.d.ts",
+        "default": "./dist/vue-web-component-wrapper.es.js"
+      },
+      "require": {
+        "types": "./types.d.ts",
+        "default": "./dist/vue-web-component-wrapper.umd.js"
+      }
     }
   },
   "files": [
@@ -29,9 +35,9 @@
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
-    "vue": "^3.4.27",
-    "@vue/runtime-core": "^3.4.27",
-    "@vue/runtime-dom": "^3.4.27"
+    "vue": "^3.5.13",
+    "@vue/runtime-core": "^3.5.13",
+    "@vue/runtime-dom": "^3.5.13"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.5",
@@ -39,8 +45,8 @@
     "@babel/preset-env": "^7.22.4",
     "@types/node": "^18.16.16",
     "@vitejs/plugin-vue": "^4.2.3",
-    "@vue/shared": "^3.4.27",
-    "vite": "^4.3.9",
-    "vite-plugin-dts": "^2.3.0"
+    "@vue/shared": "^3.5.13",
+    "vite": "^6.0.2",
+    "vite-plugin-dts": "^4.3.0"
   }
 }

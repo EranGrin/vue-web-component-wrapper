@@ -1,12 +1,13 @@
 <template>
+  <BaseComponent />
   <div id="test">Hello, Web Component!</div>
-  <other-component/>
+  <slot></slot>
 </template>
 
 <script lang="ts">
-import OtherComponent from './OtherComponent.vue';
+import BaseComponent from './BaseComponent.vue';
 export default {
-  components: { OtherComponent },
+  components: { BaseComponent },
   name: 'MyComponent',
 }
 </script>

@@ -58,6 +58,7 @@ createWebComponent({
   getCurrentInstance,
   disableStyleRemoval: false,
   disableShadowDOM: false,
+  replaceRootWithHostInCssFramework: false,
 });
 ```
 Each option in the `createWebComponent` function has a specific purpose:
@@ -71,3 +72,4 @@ Each option in the `createWebComponent` function has a specific purpose:
 - `getCurrentInstance`: The `getCurrentInstance` function from Vue.
 - `disableStyleRemoval`: A boolean value that determines whether or not to remove styles on unmount. This is useful for CSS transitions.
 - `disableShadowDOM`: A boolean value that determines whether or not to use Shadow DOM for the web component.
+- `replaceRootWithHostInCssFramework`: A boolean value that determines whether or not to replace `:root` with `:host` in your CSS framework styles. This is useful for CSS variables that penetrate the Shadow DOM.

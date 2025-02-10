@@ -14,7 +14,7 @@ export const createWebComponent = ({
   disableRemoveStylesOnUnmount = false,
   disableShadowDOM = false,
   asyncInitialization = () => Promise.resolve()
-
+  replaceRootWithHostInCssFramework = false
 }) => {
   if (!rootComponent) {
     console.warn('No root component provided. Please provide a root component to create a web component.')
@@ -54,14 +54,14 @@ export const createWebComponent = ({
     elementName,
     disableRemoveStylesOnUnmount,
     disableShadowDOM,
-    asyncInitialization
+    asyncInitialization,
+    replaceRootWithHostInCssFramework
   }, ).then((customElementConfig) => {
     customElements.define(
       elementName,
       customElementConfig
     )
   })
-
 }
 
 export { defineCustomElement } from './src/web-component-util'
