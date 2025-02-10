@@ -128,9 +128,23 @@ export const defineCustomElement = ({
           return acc;
         }, {});
 
-      // Establish named slots
+      // Establish named slots with an onSlotchange listener that iterates over
+      // all parent nodes of the slot (non recursive) and removes the "hidden" attribute from each.
       const namedSlots = rootComponent?.namedSlots?.reduce((acc, slotsName) => {
-        acc[slotsName] = () => h('slot',{ name: slotsName});
+        acc[slotsName] = () => h('slot', {
+          name: slotsName,
+          onSlotchange: (event) => {
+            const slotElement = event.target;
+            const nodes = typeof slotElement.assignedElements === 'function'
+              ? slotElement.assignedElements()
+              : (slotElement.assignedNodes ? slotElement.assignedNodes().filter(node => node.nodeType === 1) : []);
+            nodes.forEach(node => {
+              if (node.hasAttribute('hidden')) {
+                node.removeAttribute('hidden');
+              }
+            });
+          }
+        });
         return acc;
       }, {});
 
