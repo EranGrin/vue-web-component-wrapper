@@ -30,7 +30,7 @@
         "docs:preview": "vitepress preview docs --port 8080",
         "vite-demo": "pnpm -C demo-app-vite run dev",
         "webpack-demo": "pnpm -C demo-app-webpack run start",
-        "tailwind-demo": "pnpm -C demo-app-tailwind run dev",
+        "tailwind-demo": "pnpm -C demo-app-vite run dev",
         "SFC-demo": "pnpm -C demo-SFC-vite run build && pnpm -C demo-SFC-vite run dev",
         "lint": "eslint --ext .js,.vue ."
     },
@@ -52,5 +52,6 @@
         "eslint": "^9.16.0",
         "eslint-plugin-vue": "^9.32.0",
         "vitepress": "^1.2.3"
-    }
+    },
+    "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }
