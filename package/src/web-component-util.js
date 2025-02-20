@@ -95,9 +95,7 @@ export const defineCustomElement = ({
 
           const host = this.$el.getRootNode()?.host || nearestElement(this.$el);
           if (host) {
-            console.log('hideSlotContentUntilMounted', hideSlotContentUntilMounted)
             if (hideSlotContentUntilMounted) {
-              console.log('hideSlotContentUntilMounted', hideSlotContentUntilMounted)
               const hiddenEls = host.querySelectorAll(`[hidden]`);
               hiddenEls.forEach(el => {
                 el.removeAttribute('hidden');
