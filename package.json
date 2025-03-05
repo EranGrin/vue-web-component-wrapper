@@ -1,6 +1,6 @@
 {
     "name": "vue-web-component-wrapper",
-    "version": "1.7.5",
+    "version": "1.7.6",
     "description": "A Vue 3 plugin that provides a web component wrapper with styles, seamlessly integrating with Vuex, Vue Router, Vue I18n, and supporting Tailwind CSS and Sass styles.",
     "repository": {
         "type": "git",
@@ -52,6 +52,5 @@
         "eslint": "^9.16.0",
         "eslint-plugin-vue": "^9.32.0",
         "vitepress": "^1.2.3"
-    },
-    "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
+    }
 }

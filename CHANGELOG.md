@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
-## [1.7.5] - 20.02.2025
+## [1.7.6] - 20.02.2025
 ### Fixed
 - Fixed issue with demo app
 - Fixes logging issue

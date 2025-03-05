@@ -82,7 +82,7 @@ class T extends ee {
       if (this._numberProps = b, r && this._resolveProps(o), !this._config.shadowRoot) {
         this._slots = {};
         const h = (c) => Array.from(c).map((l) => {
-          var p;
+          var d;
           if (l.nodeType === Node.ELEMENT_NODE) {
             const f = l, v = Object.fromEntries(
               Array.from(f.attributes).map((O) => [O.name, O.value])
@@ -93,25 +93,25 @@ class T extends ee {
               h(f.childNodes)
             );
           } else if (l.nodeType === Node.TEXT_NODE)
-            return ((p = l.textContent) == null ? void 0 : p.trim()) || null;
+            return ((d = l.textContent) == null ? void 0 : d.trim()) || null;
           return null;
         }).filter((l) => l != null);
         for (const c of Array.from(this.childNodes)) {
           const l = c.nodeType === Node.ELEMENT_NODE && c.getAttribute("slot") || "default";
           if (this._slots[l] || (this._slots[l] = []), c.nodeType === Node.ELEMENT_NODE) {
-            const p = c, f = Object.fromEntries(
-              Array.from(p.attributes).map((v) => [v.name, v.value])
+            const d = c, f = Object.fromEntries(
+              Array.from(d.attributes).map((v) => [v.name, v.value])
             );
             this._slots[l].push(
               R(
-                p.tagName.toLowerCase(),
+                d.tagName.toLowerCase(),
                 f,
-                h(p.childNodes)
+                h(d.childNodes)
               )
             );
           } else if (c.nodeType === Node.TEXT_NODE) {
-            const p = (E = c.textContent) == null ? void 0 : E.trim();
-            p && this._slots[l].push(p);
+            const d = (E = c.textContent) == null ? void 0 : E.trim();
+            d && this._slots[l].push(d);
           }
         }
         this.replaceChildren();
@@ -219,7 +219,7 @@ const oe = ({
   replaceRootWithHostInCssFramework: h,
   asyncInitialization: c,
   loaderAttribute: l,
-  hideSlotContentUntilMounted: p
+  hideSlotContentUntilMounted: d
 }) => {
   const f = E ? Y : s, v = h ? se(t) : t, O = f({
     styles: [v],
@@ -234,8 +234,8 @@ const oe = ({
       const P = [...(e == null ? void 0 : e.emits) || [], "update:modelValue"], _ = r();
       if (_.component("app-root", e), e.provide) {
         const a = typeof e.provide == "function" ? e.provide() : e.provide;
-        Object.keys(a).forEach((d) => {
-          _.provide(d, a[d]);
+        Object.keys(a).forEach((p) => {
+          _.provide(p, a[p]);
         });
       }
       _.mixin({
@@ -249,10 +249,10 @@ const oe = ({
           if (a((j = this.$) == null ? void 0 : j.type.styles), this.$options.components)
             for (const y of Object.values(this.$options.components))
               a(y.styles);
-          const d = ((V = this.$el.getRootNode()) == null ? void 0 : V.host) || H(this.$el);
-          d && (console.log("hideSlotContentUntilMounted", p), p && (console.log("hideSlotContentUntilMounted", p), d.querySelectorAll("[hidden]").forEach((k) => {
+          const p = ((V = this.$el.getRootNode()) == null ? void 0 : V.host) || H(this.$el);
+          p && (d && p.querySelectorAll("[hidden]").forEach((k) => {
             k.removeAttribute("hidden");
-          })), d.querySelectorAll(`[${l}]`).forEach((x) => {
+          }), p.querySelectorAll(`[${l}]`).forEach((x) => {
             x.remove();
           }));
         },
@@ -265,21 +265,21 @@ const oe = ({
       if (Object.assign(w.appContext, _._context), Object.assign(w.provides, _._context.provides), process.env.NODE_ENV === "development" && window.__VUE_DEVTOOLS_GLOBAL_HOOK__) {
         const a = document.querySelector(u);
         _._container = a, _._instance = w;
-        const d = {
+        const p = {
           Comment: Symbol("v-cmt"),
           Fragment: Symbol("v-fgt"),
           Static: Symbol("v-stc"),
           Text: Symbol("v-txt")
         };
-        window.__VUE_DEVTOOLS_GLOBAL_HOOK__.emit("app:init", _, _.version, d), window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = _;
+        window.__VUE_DEVTOOLS_GLOBAL_HOOK__.emit("app:init", _, _.version, p), window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = _;
       }
-      const U = P == null ? void 0 : P.reduce((a, d) => {
-        const g = te(d);
+      const U = P == null ? void 0 : P.reduce((a, p) => {
+        const g = te(p);
         return a[g] = (A) => {
-          w.emit(d, A);
+          w.emit(p, A);
         }, a;
-      }, {}), z = (L = e == null ? void 0 : e.namedSlots) == null ? void 0 : L.reduce((a, d) => (a[d] = () => o("slot", {
-        name: d
+      }, {}), z = (L = e == null ? void 0 : e.namedSlots) == null ? void 0 : L.reduce((a, p) => (a[p] = () => o("slot", {
+        name: p
       }), a), {});
       return () => o(
         e,
@@ -310,7 +310,7 @@ const oe = ({
   replaceRootWithHostInCssFramework: h = !1,
   asyncInitialization: c = () => Promise.resolve(),
   loaderAttribute: l = "data-web-component-loader",
-  hideSlotContentUntilMounted: p = !1
+  hideSlotContentUntilMounted: d = !1
 }) => {
   if (!n) {
     console.warn("No root component provided. Please provide a root component to create a web component.");
@@ -352,7 +352,7 @@ const oe = ({
     replaceRootWithHostInCssFramework: h,
     asyncInitialization: c,
     loaderAttribute: l,
-    hideSlotContentUntilMounted: p
+    hideSlotContentUntilMounted: d
   }).then((f) => {
     customElements.define(
       e,
