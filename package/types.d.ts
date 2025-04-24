@@ -19,6 +19,7 @@ export interface CreateWebComponentOptions {
   asyncInitialization?: () => Promise<any>
   loaderAttribute?: string
   hideSlotContentUntilMounted?: boolean
+  nonce?: string
 }
 
 export function createWebComponent(options: CreateWebComponentOptions): void

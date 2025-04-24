@@ -40,7 +40,8 @@ export const defineCustomElement = ({
   replaceRootWithHostInCssFramework,
   asyncInitialization,
   loaderAttribute,
-  hideSlotContentUntilMounted
+  hideSlotContentUntilMounted,
+  nonce
 }) =>
   {
     const customElementDefiner = disableShadowDOM ? VueDefineCustomElementPatch : VueDefineCustomElement
@@ -50,6 +51,7 @@ export const defineCustomElement = ({
     : cssFrameworkStyles;
     const customElementConfig = customElementDefiner({
     styles: [modifiedCssFrameworkStyles],
+    nonce,
     props: {
       ...rootComponent.props,
       modelValue: { type: [String, Number, Boolean, Array, Object] } // v-model support
@@ -82,6 +84,7 @@ export const defineCustomElement = ({
             if (styles?.length) {
               this.__style = document.createElement('style')
               this.__style.innerText = styles.join().replace(/\n/g, '')
+              if (nonce) this.__style.setAttribute('nonce', nonce);
               nearestElement(this.$el).append(this.__style)
             }
           }

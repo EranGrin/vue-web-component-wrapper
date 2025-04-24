@@ -17,6 +17,7 @@ export const createWebComponent = ({
   asyncInitialization = () => Promise.resolve(),
   loaderAttribute = 'data-web-component-loader',
   hideSlotContentUntilMounted = false,
+  nonce
 }) => {
   if (!rootComponent) {
     console.warn('No root component provided. Please provide a root component to create a web component.')
@@ -59,7 +60,8 @@ export const createWebComponent = ({
     replaceRootWithHostInCssFramework,
     asyncInitialization,
     loaderAttribute,
-    hideSlotContentUntilMounted
+    hideSlotContentUntilMounted,
+    nonce
   }, ).then((customElementConfig) => {
     customElements.define(
       elementName,
