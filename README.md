@@ -49,6 +49,7 @@ See the [Documentation](https://erangrin.github.io/vue-web-component-wrapper) fo
 - **Async Initialization**: Option to delay the initialization until its Promise resolves.
 - **Loader Support**: Support for loader spinner elements until the application is fully initialized.
 - **Hide slot content until the component is fully mounted**: Option to hide the content of named slots until the web-component is fully mounted.
+
 ## CSS Frameworks Examples
 
 - **Tailwind CSS**: [Demo](https://stackblitz.com/edit/vue-web-component-wrapper?file=README.md&startScript=tailwind-demo)
@@ -167,6 +168,7 @@ createWebComponent({
 - **asyncInitialization**: Accepts a function that returns a Promise.
 - **loaderAttribute**: Defines the attribute used to mark loader spinner (default is `data-web-component-loader`).
 - **hideSlotContentUntilMounted**: Hide the content of named slots until the component is fully mounted.
+- **nonce**: Content Security Policy (CSP) nonce for your web component.
 
 ### asyncInitialization
 
@@ -175,7 +177,7 @@ The `asyncInitialization` option accepts a function that returns a Promise. The 
 #### Example Usage
 
 ```javascript
-const asyncPromise = () => { 
+const asyncPromise = () => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve()
@@ -192,7 +194,7 @@ createWebComponent({
   h,
   createApp,
   getCurrentInstance,
-  asyncInitialization: asyncPromise, // default is Promise.resolve() 
+  asyncInitialization: asyncPromise, // default is Promise.resolve()
   loaderAttribute: 'data-web-component-loader',
   hideSlotContentUntilMounted: true, // default is false
 });
@@ -269,6 +271,10 @@ createWebComponent({
 ### cssFrameworkStyles
 
 The `cssFrameworkStyles` option imports the CSS of your CSS framework or any other global CSS styles your application needs. By setting `replaceRootWithHostInCssFramework` to `true`, any `:root` selectors in your styles will be replaced with `:host`, ensuring correct scoping within the web component.
+
+### nonce
+
+The `nonce` option is used to set a Content Security Policy (CSP) nonce for your web component. This is useful when your application uses inline scripts or styles, as it allows you to specify a unique nonce value that can be used to whitelist the inline content.
 
 ### 4. Build Your Application
 

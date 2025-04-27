@@ -171,7 +171,7 @@ export const defineCustomElement = ({
         }
       );
     },
-  }, disableShadowDOM && { shadowRoot: false })
+  }, { shadowRoot: !disableShadowDOM, nonce })
 
   return asyncInitialization().then(() => {
     return customElementConfig;
