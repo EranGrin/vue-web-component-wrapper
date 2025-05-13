@@ -17,7 +17,7 @@ export const createWebComponent = ({
   asyncInitialization = () => Promise.resolve(),
   loaderAttribute = 'data-web-component-loader',
   hideSlotContentUntilMounted = false,
-  nonce
+  nonce  // Used for Content Security Policy (CSP) compliance - will be applied to inline styles
 }) => {
   if (!rootComponent) {
     console.warn('No root component provided. Please provide a root component to create a web component.')
