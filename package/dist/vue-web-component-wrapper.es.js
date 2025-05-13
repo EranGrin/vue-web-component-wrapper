@@ -1,7 +1,7 @@
-var q = Object.defineProperty;
-var F = (e, n, t) => n in e ? q(e, n, { enumerable: !0, configurable: !0, writable: !0, value: t }) : e[n] = t;
-var m = (e, n, t) => F(e, typeof n != "symbol" ? n + "" : n, t);
-import { defineComponent as G, nextTick as W, render as D, createVNode as X, h as R } from "vue";
+var F = Object.defineProperty;
+var G = (e, n, t) => n in e ? F(e, n, { enumerable: !0, configurable: !0, writable: !0, value: t }) : e[n] = t;
+var m = (e, n, t) => G(e, typeof n != "symbol" ? n + "" : n, t);
+import { defineComponent as W, nextTick as X, render as D, createVNode as I, h as R } from "vue";
 /**
 * @vue/shared v3.5.13
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
@@ -9,21 +9,21 @@ import { defineComponent as G, nextTick as W, render as D, createVNode as X, h a
 **/
 process.env.NODE_ENV !== "production" && Object.freeze({});
 process.env.NODE_ENV !== "production" && Object.freeze([]);
-const I = Object.assign, $ = Array.isArray, Z = (e) => typeof e == "string", B = (e) => {
+const Z = Object.assign, $ = Array.isArray, J = (e) => typeof e == "string", B = (e) => {
   const n = /* @__PURE__ */ Object.create(null);
   return (t) => n[t] || (n[t] = e(t));
-}, J = /-(\w)/g, S = B(
-  (e) => e.replace(J, (n, t) => t ? t.toUpperCase() : "")
-), Q = /\B([A-Z])/g, N = B(
-  (e) => e.replace(Q, "-$1").toLowerCase()
+}, Q = /-(\w)/g, S = B(
+  (e) => e.replace(Q, (n, t) => t ? t.toUpperCase() : "")
+), Y = /\B([A-Z])/g, N = B(
+  (e) => e.replace(Y, "-$1").toLowerCase()
 ), C = (e) => {
-  const n = Z(e) ? Number(e) : NaN;
+  const n = J(e) ? Number(e) : NaN;
   return isNaN(n) ? e : n;
 };
 /*!#__NO_SIDE_EFFECTS__*/
 // @__NO_SIDE_EFFECTS__
-function Y(e, n, t) {
-  const s = G(e);
+function ee(e, n, t) {
+  const s = W(e);
   class o extends T {
     constructor(i) {
       super(s, i, n, t);
@@ -31,9 +31,9 @@ function Y(e, n, t) {
   }
   return m(o, "def", s), o;
 }
-const ee = typeof HTMLElement < "u" ? HTMLElement : class {
+const te = typeof HTMLElement < "u" ? HTMLElement : class {
 };
-class T extends ee {
+class T extends te {
   constructor(t, s = {}, o = { shadowRoot: !0 }, r) {
     super();
     /**
@@ -55,7 +55,7 @@ class T extends ee {
     this._connected = !0, this._instance || (this._resolved ? this._update() : this._resolveDef());
   }
   disconnectedCallback() {
-    this._connected = !1, W(() => {
+    this._connected = !1, X(() => {
       this._connected || (this._ob && (this._ob.disconnect(), this._ob = null), D(null, this._root), this._instance = null);
     });
   }
@@ -71,52 +71,52 @@ class T extends ee {
         this._setAttr(r.attributeName);
     }), this._ob.observe(this, { attributes: !0 });
     const t = (o, r = !1) => {
-      var E;
-      const { props: i } = o, u = this._collectNestedStyles(o);
-      let b;
+      var y;
+      const { props: i } = o, _ = this._collectNestedStyles(o);
+      let E;
       if (i && !$(i))
-        for (const h in i) {
-          const c = i[h];
-          (c === Number || c && c.type === Number) && (h in this._props && (this._props[h] = C(this._props[h])), (b || (b = /* @__PURE__ */ Object.create(null)))[S(h)] = !0);
+        for (const d in i) {
+          const c = i[d];
+          (c === Number || c && c.type === Number) && (d in this._props && (this._props[d] = C(this._props[d])), (E || (E = /* @__PURE__ */ Object.create(null)))[S(d)] = !0);
         }
-      if (this._numberProps = b, r && this._resolveProps(o), !this._config.shadowRoot) {
+      if (this._numberProps = E, r && this._resolveProps(o), !this._config.shadowRoot) {
         this._slots = {};
-        const h = (c) => Array.from(c).map((l) => {
-          var d;
+        const d = (c) => Array.from(c).map((l) => {
+          var h;
           if (l.nodeType === Node.ELEMENT_NODE) {
-            const f = l, v = Object.fromEntries(
-              Array.from(f.attributes).map((O) => [O.name, O.value])
+            const u = l, b = Object.fromEntries(
+              Array.from(u.attributes).map((O) => [O.name, O.value])
             );
             return R(
-              f.tagName.toLowerCase(),
-              v,
-              h(f.childNodes)
+              u.tagName.toLowerCase(),
+              b,
+              d(u.childNodes)
             );
           } else if (l.nodeType === Node.TEXT_NODE)
-            return ((d = l.textContent) == null ? void 0 : d.trim()) || null;
+            return ((h = l.textContent) == null ? void 0 : h.trim()) || null;
           return null;
         }).filter((l) => l != null);
         for (const c of Array.from(this.childNodes)) {
           const l = c.nodeType === Node.ELEMENT_NODE && c.getAttribute("slot") || "default";
           if (this._slots[l] || (this._slots[l] = []), c.nodeType === Node.ELEMENT_NODE) {
-            const d = c, f = Object.fromEntries(
-              Array.from(d.attributes).map((v) => [v.name, v.value])
+            const h = c, u = Object.fromEntries(
+              Array.from(h.attributes).map((b) => [b.name, b.value])
             );
             this._slots[l].push(
               R(
-                d.tagName.toLowerCase(),
-                f,
-                h(d.childNodes)
+                h.tagName.toLowerCase(),
+                u,
+                d(h.childNodes)
               )
             );
           } else if (c.nodeType === Node.TEXT_NODE) {
-            const d = (E = c.textContent) == null ? void 0 : E.trim();
-            d && this._slots[l].push(d);
+            const h = (y = c.textContent) == null ? void 0 : y.trim();
+            h && this._slots[l].push(h);
           }
         }
         this.replaceChildren();
       }
-      this._applyStyles(u), this._update();
+      this._applyStyles(_), this._update();
     }, s = this._def.__asyncLoader;
     s ? s().then((o) => t(o, !0)) : t(this._def);
   }
@@ -155,18 +155,18 @@ class T extends ee {
     D(this._createVNode(), this._root);
   }
   _createVNode() {
-    const t = X(this._def, I({}, this._props), this._slots);
+    const t = I(this._def, Z({}, this._props), this._slots);
     return this._instance || (t.ce = (s) => {
       this._instance = s, s.isCE = !0;
-      const o = (i, u) => {
+      const o = (i, _) => {
         this.dispatchEvent(
           new CustomEvent(i, {
-            detail: u
+            detail: _
           })
         );
       };
-      s.emit = (i, ...u) => {
-        o(i, u), N(i) !== i && o(N(i), u);
+      s.emit = (i, ..._) => {
+        o(i, _), N(i) !== i && o(N(i), _);
       };
       let r = this;
       for (; r = r && (r.parentNode || r.host); )
@@ -179,7 +179,7 @@ class T extends ee {
   _applyStyles(t) {
     t && t.forEach((s) => {
       const o = document.createElement("style");
-      o.textContent = s, this._root.prepend(o);
+      o.textContent = s, this._config.nonce && o.setAttribute("nonce", this._config.nonce), this._root.prepend(o);
     });
   }
   _collectNestedStyles(t) {
@@ -199,13 +199,13 @@ const H = (e) => {
   }
   return e;
 };
-function te(e) {
+function se(e) {
   return "on" + e.charAt(0).toUpperCase() + e.slice(1);
 }
-function se(e) {
+function oe(e) {
   return typeof e == "string" ? e.replace(/:root/g, ":host") : Array.isArray(e) ? e.map((n) => n.replace(/:root/g, ":host")) : e;
 }
-const oe = ({
+const re = ({
   rootComponent: e,
   plugins: n,
   cssFrameworkStyles: t,
@@ -213,90 +213,92 @@ const oe = ({
   h: o,
   createApp: r,
   getCurrentInstance: i,
-  elementName: u,
-  disableRemoveStylesOnUnmount: b,
-  disableShadowDOM: E,
-  replaceRootWithHostInCssFramework: h,
+  elementName: _,
+  disableRemoveStylesOnUnmount: E,
+  disableShadowDOM: y,
+  replaceRootWithHostInCssFramework: d,
   asyncInitialization: c,
   loaderAttribute: l,
-  hideSlotContentUntilMounted: d
+  hideSlotContentUntilMounted: h,
+  nonce: u
 }) => {
-  const f = E ? Y : s, v = h ? se(t) : t, O = f({
-    styles: [v],
+  const b = y ? ee : s, O = d ? oe(t) : t, M = b({
+    styles: [O],
+    nonce: u,
     props: {
       ...e.props,
       modelValue: { type: [String, Number, Boolean, Array, Object] }
       // v-model support
     },
     emits: e == null ? void 0 : e.emits,
-    setup(M, { slots: K }) {
+    setup(K, { slots: U }) {
       var L;
-      const P = [...(e == null ? void 0 : e.emits) || [], "update:modelValue"], _ = r();
-      if (_.component("app-root", e), e.provide) {
+      const P = [...(e == null ? void 0 : e.emits) || [], "update:modelValue"], f = r();
+      if (f.component("app-root", e), e.provide) {
         const a = typeof e.provide == "function" ? e.provide() : e.provide;
         Object.keys(a).forEach((p) => {
-          _.provide(p, a[p]);
+          f.provide(p, a[p]);
         });
       }
-      _.mixin({
+      f.mixin({
         mounted() {
           var g, A, j, V;
           if (((A = (g = this.$) == null ? void 0 : g.type) == null ? void 0 : A.name) === "vue-custom-element-root-component")
             return;
-          const a = (y) => {
-            y != null && y.length && (this.__style = document.createElement("style"), this.__style.innerText = y.join().replace(/\n/g, ""), H(this.$el).append(this.__style));
+          const a = (v) => {
+            v != null && v.length && (this.__style = document.createElement("style"), this.__style.innerText = v.join().replace(/\n/g, ""), u && this.__style.setAttribute("nonce", u), H(this.$el).append(this.__style));
           };
           if (a((j = this.$) == null ? void 0 : j.type.styles), this.$options.components)
-            for (const y of Object.values(this.$options.components))
-              a(y.styles);
+            for (const v of Object.values(this.$options.components))
+              a(v.styles);
           const p = ((V = this.$el.getRootNode()) == null ? void 0 : V.host) || H(this.$el);
-          p && (d && p.querySelectorAll("[hidden]").forEach((k) => {
-            k.removeAttribute("hidden");
+          p && (h && p.querySelectorAll("[hidden]").forEach((q) => {
+            q.removeAttribute("hidden");
           }), p.querySelectorAll(`[${l}]`).forEach((x) => {
             x.remove();
           }));
         },
         unmounted() {
           var a;
-          b || (a = this.__style) == null || a.remove();
+          E || (a = this.__style) == null || a.remove();
         }
-      }), _.use(n);
+      }), f.use(n);
       const w = i();
-      if (Object.assign(w.appContext, _._context), Object.assign(w.provides, _._context.provides), process.env.NODE_ENV === "development" && window.__VUE_DEVTOOLS_GLOBAL_HOOK__) {
-        const a = document.querySelector(u);
-        _._container = a, _._instance = w;
+      if (Object.assign(w.appContext, f._context), Object.assign(w.provides, f._context.provides), process.env.NODE_ENV === "development" && window.__VUE_DEVTOOLS_GLOBAL_HOOK__) {
+        const a = document.querySelector(_);
+        f._container = a, f._instance = w;
         const p = {
           Comment: Symbol("v-cmt"),
           Fragment: Symbol("v-fgt"),
           Static: Symbol("v-stc"),
           Text: Symbol("v-txt")
         };
-        window.__VUE_DEVTOOLS_GLOBAL_HOOK__.emit("app:init", _, _.version, p), window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = _;
+        window.__VUE_DEVTOOLS_GLOBAL_HOOK__.emit("app:init", f, f.version, p), window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = f;
       }
-      const U = P == null ? void 0 : P.reduce((a, p) => {
-        const g = te(p);
+      const z = P == null ? void 0 : P.reduce((a, p) => {
+        const g = se(p);
         return a[g] = (A) => {
           w.emit(p, A);
         }, a;
-      }, {}), z = (L = e == null ? void 0 : e.namedSlots) == null ? void 0 : L.reduce((a, p) => (a[p] = () => o("slot", {
+      }, {}), k = (L = e == null ? void 0 : e.namedSlots) == null ? void 0 : L.reduce((a, p) => (a[p] = () => o("slot", {
         name: p
       }), a), {});
       return () => o(
         e,
         {
-          ...M,
-          ...U
+          ...K,
+          ...z
         },
         {
           default: () => o("slot"),
-          ...z,
-          ...K
+          ...k,
+          ...U
         }
       );
     }
-  }, E && { shadowRoot: !1 });
-  return c().then(() => O);
-}, ie = ({
+  }, { shadowRoot: !y, nonce: u });
+  return c().then(() => M);
+}, ce = ({
   elementName: e,
   rootComponent: n,
   plugins: t,
@@ -304,13 +306,15 @@ const oe = ({
   VueDefineCustomElement: o,
   h: r,
   createApp: i,
-  getCurrentInstance: u,
-  disableRemoveStylesOnUnmount: b = !1,
-  disableShadowDOM: E = !1,
-  replaceRootWithHostInCssFramework: h = !1,
+  getCurrentInstance: _,
+  disableRemoveStylesOnUnmount: E = !1,
+  disableShadowDOM: y = !1,
+  replaceRootWithHostInCssFramework: d = !1,
   asyncInitialization: c = () => Promise.resolve(),
   loaderAttribute: l = "data-web-component-loader",
-  hideSlotContentUntilMounted: d = !1
+  hideSlotContentUntilMounted: h = !1,
+  nonce: u
+  // Used for Content Security Policy (CSP) compliance - will be applied to inline styles
 }) => {
   if (!n) {
     console.warn("No root component provided. Please provide a root component to create a web component.");
@@ -334,35 +338,36 @@ const oe = ({
     console.warn("No createApp provided. Please provide a createApp to create a web component.");
     return;
   }
-  if (!u) {
+  if (!_) {
     console.warn("No getCurrentInstance provided. Please provide a getCurrentInstance to create a web component.");
     return;
   }
-  oe({
+  re({
     rootComponent: n,
     plugins: t,
     cssFrameworkStyles: s,
     VueDefineCustomElement: o,
     h: r,
     createApp: i,
-    getCurrentInstance: u,
+    getCurrentInstance: _,
     elementName: e,
-    disableRemoveStylesOnUnmount: b,
-    disableShadowDOM: E,
-    replaceRootWithHostInCssFramework: h,
+    disableRemoveStylesOnUnmount: E,
+    disableShadowDOM: y,
+    replaceRootWithHostInCssFramework: d,
     asyncInitialization: c,
     loaderAttribute: l,
-    hideSlotContentUntilMounted: d
-  }).then((f) => {
+    hideSlotContentUntilMounted: h,
+    nonce: u
+  }).then((b) => {
     customElements.define(
       e,
-      f
+      b
     );
   });
 };
 export {
-  ie as createWebComponent,
-  ie as default,
-  oe as defineCustomElement,
-  Y as defineCustomElementSFC
+  ce as createWebComponent,
+  ce as default,
+  re as defineCustomElement,
+  ee as defineCustomElementSFC
 };

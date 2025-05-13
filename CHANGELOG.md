@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. The format 
 
 ## [Unreleased]
 
+## [1.7.7] - 13.05.2025
+### Added
+- Add support for CSP `nonce` Content-Security-Policy
+
 ## [1.7.6] - 20.02.2025
 ### Fixed
 - Fixed issue with demo app
