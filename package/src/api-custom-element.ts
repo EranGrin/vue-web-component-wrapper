@@ -46,6 +46,10 @@ export interface DefineCustomElementConfig {
    * @default true
    */
   shadowRoot?: boolean
+  /**
+   * Nonce to use for CSP
+   */
+  nonce?: string
 }
 
 // defineCustomElement provides the same type inference as defineComponent
@@ -186,6 +190,7 @@ export const defineSSRCustomElement = ((
   config?: DefineCustomElementConfig
 ) => {
   
+
   // @ts-expect-error
   return defineCustomElement(options, hydrate)
 }) as typeof defineCustomElement
@@ -525,6 +530,7 @@ export class VueElement extends BaseClass {
       styles.forEach(css => {
         const s = document.createElement('style')
         s.textContent = css
+        if (this._config.nonce) s.setAttribute('nonce', this._config.nonce);
         this._root!.prepend(s)
         if (__DEV__) {
           ;(this._styles || (this._styles = [])).push(s)
